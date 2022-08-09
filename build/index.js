@@ -39,17 +39,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 process.setMaxListeners(Infinity);
 var CDP = require('chrome-remote-interface');
 var socketIo = require('socket.io-client');
-var chromeConfig_1 = require("./chromeConfig");
-var helpers_1 = require("./helpers");
-var playerConfig_1 = require("./playerConfig");
+var chromeConfig_1 = require("./config/chromeConfig");
+var playerConfig_1 = require("./config/playerConfig");
+var helpers_1 = require("./helpers/helpers");
 var userConnect_1 = require("./userConnect");
 var clientSocket = socketIo('http://216.158.239.199:3000', { transports: ['websocket'] });
 var arg = process.argv[2];
 var max = process.argv[3] || 1;
 var checkAccount = process.argv[4];
-console.log(arg, max);
 var check = !!checkAccount || /check/i.test(arg);
-var account = '';
+var account = 'spotify:katie.williams@use.startmail.com:055625Ff';
 var socketEmit = function (event, params) {
     // socket.emit(event, {
     // 	parentId,
@@ -59,7 +58,7 @@ var socketEmit = function (event, params) {
     // });
 };
 var go = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, player, login, pass, appleGoToPage, S, launchChrome, chrome, options, protocol, Network, Page, Runtime, DOM, Input, Browser, Target, N, P, R, D, B, I, T;
+    var _a, player, login, pass, appleGoToPage, S, launchChrome, chrome, options, protocol, Network, Page, Runtime, DOM, Input, Browser, Target, N, P, R, D, B, I, T, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -79,17 +78,18 @@ var go = function () { return __awaiter(void 0, void 0, void 0, function () {
                 }); };
                 S = (0, playerConfig_1.getConfig)(player);
                 launchChrome = (0, chromeConfig_1.chromeConfig)(player, login);
-                chrome = false // await launchChrome()
-                ;
+                return [4 /*yield*/, launchChrome()];
+            case 1:
+                chrome = _b.sent();
                 options = {
                     host: '127.0.0.1',
                     port: chrome.port
                 };
                 return [4 /*yield*/, (0, helpers_1.wait)(5 * 1000)];
-            case 1:
+            case 2:
                 _b.sent();
                 return [4 /*yield*/, CDP(options)];
-            case 2:
+            case 3:
                 protocol = _b.sent();
                 Network = protocol.Network, Page = protocol.Page, Runtime = protocol.Runtime, DOM = protocol.DOM, Input = protocol.Input, Browser = protocol.Browser, Target = protocol.Target;
                 N = Network;
@@ -99,8 +99,18 @@ var go = function () { return __awaiter(void 0, void 0, void 0, function () {
                 B = Browser;
                 I = Input;
                 T = Target;
-                (0, userConnect_1.userConnect)(protocol, S, account, socketEmit, check);
-                return [2 /*return*/];
+                _b.label = 4;
+            case 4:
+                _b.trys.push([4, 6, , 7]);
+                return [4 /*yield*/, (0, userConnect_1.userConnect)(protocol, S, account, socketEmit, check)];
+            case 5:
+                _b.sent();
+                return [3 /*break*/, 7];
+            case 6:
+                error_1 = _b.sent();
+                console.log('error', error_1);
+                return [3 /*break*/, 7];
+            case 7: return [2 /*return*/];
         }
     });
 }); };

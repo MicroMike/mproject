@@ -1,5 +1,5 @@
-import { albums } from './albums'
-import { TPlayer } from './types';
+import { albums } from '../config/albums'
+import { TPlayer } from '../config/types';
 
 const wait = (time: number) => new Promise(async (res, rej) => {
 	setTimeout(async () => {
@@ -23,11 +23,11 @@ const waitForSelector = (R: any, selector: string, time = 60) => new Promise((re
 		const el = R && await R.evaluate({ expression: 'document.querySelector(\'' + selector + '\')' })
 
 		if (el.result.objectId) {
-			res(true)
 			clearInterval(inter)
 			clearTimeout(timeToWait)
+			res(true)
 		}
-	}, 500);
+	}, 1000);
 })
 
 const click = (R: any, selector: string, time?: number, exitOnError = true) => new Promise(async (res, rej) => {
@@ -66,12 +66,12 @@ const getTimePlayer = async (R: any, S: any) => {
 	return time
 }
 
-const goToPage = async (url: string, P: any, S: any) => {
+const goToPage = async (url: string, P: any) => {
 
 	await wait(rand(5, 3) * 1000)
 
 	await P.navigate({ url: url });
-	await P.loadEventFired();
+	P.loadEventFired();
 
 	await wait(rand(5, 3) * 1000)
 }

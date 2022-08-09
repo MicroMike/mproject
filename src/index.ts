@@ -4,10 +4,10 @@ process.setMaxListeners(Infinity)
 const CDP = require('chrome-remote-interface');
 const socketIo = require('socket.io-client')
 
-import { chromeConfig } from "./chromeConfig";
-import { click, wait } from "./helpers";
-import { getConfig } from "./playerConfig";
-import { TPlayer } from "./types";
+import { chromeConfig } from "./config/chromeConfig";
+import { getConfig } from "./config/playerConfig";
+import { TPlayer } from "./config/types";
+import { click, wait } from "./helpers/helpers";
 import { userConnect } from "./userConnect";
 
 const clientSocket = socketIo('http://216.158.239.199:3000', { transports: ['websocket'] });
@@ -62,8 +62,10 @@ const go = async () => {
 	const I = Input;
 	const T = Target;
 
-	userConnect(protocol, S, account, socketEmit, check)
+	let error = false
 
+	await userConnect(protocol, S, account, socketEmit, check)
+		.catch((e) => error = e)
 }
 
 go()
