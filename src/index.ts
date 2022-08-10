@@ -48,6 +48,7 @@ const exit = async (code = 0) => {
 }
 
 clientSocket.on('activate', async (socketId: any) => {
+	console.log('activate')
 	back = !!streamId
 	streamId = socketId
 
@@ -60,11 +61,13 @@ clientSocket.on('activate', async (socketId: any) => {
 })
 
 clientSocket.on('canRun', async (a: any) => {
+	console.log('canRun', a)
 	account = a
 	!checkLive && clientSocket.emit('client', { parentId, streamId, account, max })
 })
 
 clientSocket.on('mRun', async (props: any) => {
+	console.log('mRun')
 	const [p, a, pass] = account.split(':')
 	player = p
 	login = a
