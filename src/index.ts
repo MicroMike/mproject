@@ -2,7 +2,6 @@
 process.setMaxListeners(Infinity)
 
 import CDP from 'chrome-remote-interface'
-import socketIo from 'socket.io-client'
 import shell from 'shelljs'
 
 import { chromeConfig } from "./config/chromeConfig";
@@ -12,7 +11,7 @@ import { click, wait } from "./helpers/helpers";
 import { userConnect } from "./userConnect";
 import { copyBack, getSession } from './helpers/copy';
 
-const clientSocket = socketIo('http://216.158.239.199:3000', { transports: ['websocket'] });
+const clientSocket = require('socket.io-client')('http://216.158.239.199:3000', { transports: ['websocket'] });
 
 const arg = process.argv[2]
 const max = process.argv[3] || 1
