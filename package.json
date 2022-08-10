@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
+		"inst": "rm -rf node_modules/ && rm package-lock.json && npm i",
 		"start": "tsc && node build/index.js"
 	},
 	"author": "",
