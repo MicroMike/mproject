@@ -129,5 +129,8 @@ const go = async () => {
 	const returnCode = await userConnect(protocol, S, account, socketEmit, check)
 		.catch((e) => error = e)
 
+	protocol.close()
+	chrome.close()
+
 	return error || returnCode
 }
