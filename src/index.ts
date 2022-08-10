@@ -1,14 +1,16 @@
 
 process.setMaxListeners(Infinity)
 
-const CDP = require('chrome-remote-interface');
-const socketIo = require('socket.io-client')
+import CDP from 'chrome-remote-interface'
+import socketIo from 'socket.io-client'
+import shell from 'shelljs'
 
 import { chromeConfig } from "./config/chromeConfig";
 import { getConfig } from "./config/playerConfig";
 import { TPlayer } from "./config/types";
 import { click, wait } from "./helpers/helpers";
 import { userConnect } from "./userConnect";
+import { copyBack, getSession } from './helpers/copy';
 
 const clientSocket = socketIo('http://216.158.239.199:3000', { transports: ['websocket'] });
 
@@ -17,16 +19,73 @@ const max = process.argv[3] || 1
 const checkAccount = process.argv[4]
 
 const check = !!checkAccount || /check/i.test(arg)
-let account = 'spotify:katie.williams@use.startmail.com:055625Ff'
+const checkLive = /checklive/i.test(arg)
+const varPath = process.platform === 'darwin' ? '/Users/mike/Dev/puppet/puppet/' : '/root/puppet/puppet/'
+
+let account = checkAccount || ''
+let parentId = arg
+let streamId: string
+let back: boolean
+let player: string
+let login: string
 
 const socketEmit = (event: any, params: any) => {
-	// socket.emit(event, {
-	// 	parentId,
-	// 	streamId,
-	// 	account,
-	// 	...params,
-	// });
+	clientSocket.emit(event, {
+		parentId,
+		streamId,
+		account,
+		...params,
+	});
 }
+
+const exit = async (code = 0) => {
+	console.log('EXIT', code)
+
+	clientSocket.emit('checkok', { account })
+	clientSocket && clientSocket.disconnect()
+
+	process.exit(code)
+}
+
+clientSocket.on('activate', async (socketId: any) => {
+	back = !!streamId
+	streamId = socketId
+
+	if (!back) {
+		clientSocket.emit('isWaiting', { parentId, streamId, max })
+	}
+	else {
+		clientSocket.emit('client', { parentId, streamId, account, max, back })
+	}
+})
+
+clientSocket.on('canRun', async (a: any) => {
+	account = a
+	!checkLive && clientSocket.emit('client', { parentId, streamId, account, max })
+})
+
+clientSocket.on('mRun', async (props: any) => {
+	const [p, a, pass] = account.split(':')
+	player = p
+	login = a
+
+	try {
+		shell.exec('rm -rf ' + varPath + player + login, { silent: false })
+		!check && await getSession(player, login)
+	} catch (e) {
+		console.log(e)
+	}
+
+	if (check) {
+		console.log(account);
+	}
+
+	const returnCode: any = await go()
+
+	console.log('returnCode', returnCode)
+
+	exit(returnCode)
+})
 
 const go = async () => {
 	const [player, login, pass] = account.split(':')
@@ -64,8 +123,8 @@ const go = async () => {
 
 	let error = false
 
-	await userConnect(protocol, S, account, socketEmit, check)
+	const returnCode = await userConnect(protocol, S, account, socketEmit, check)
 		.catch((e) => error = e)
-}
 
-go()
+	return error || returnCode
+}
