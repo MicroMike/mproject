@@ -135,6 +135,8 @@ const go = async () => {
 		socketEmit('time', time)
 	}, 5000)
 
+	await wait(5 * 60 * 1000)
+
 	protocol.close()
 	chrome.kill()
 
