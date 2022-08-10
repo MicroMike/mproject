@@ -16,19 +16,8 @@ import {
 } from './helpers/helpers';
 var colors = require('colors');
 
-export const userConnect = async (protocol: any, S: any, account: string, socketEmit: any, check: boolean) => new Promise(async (res, rej) => {
+export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: any) => new Promise(async (res, rej) => {
 	try {
-		const { Network, Page, Runtime, DOM, Input, Browser, Target } = protocol;
-
-		// extract domains
-		const N = Network;
-		const P = Page;
-		const R = Runtime;
-		const D = DOM;
-		const B = Browser;
-		const I = Input;
-		const T = Target;
-
 		const [player, login, pass] = account.split(':')
 
 		const isTidal = player === 'tidal'

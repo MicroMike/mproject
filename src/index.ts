@@ -8,7 +8,7 @@ import { io } from "socket.io-client";
 import { chromeConfig } from "./config/chromeConfig";
 import { getConfig } from "./config/playerConfig";
 import { TPlayer } from "./config/types";
-import { click, wait } from "./helpers/helpers";
+import { click, getTimePlayer, wait } from "./helpers/helpers";
 import { userConnect } from "./userConnect";
 import { copyBack, getSession } from './helpers/copy';
 
@@ -125,9 +125,15 @@ const go = async () => {
 	const T = Target;
 
 	let error = false
+	const props = { P, R, I, S, account, check, socketEmit }
 
-	const returnCode = await userConnect(protocol, S, account, socketEmit, check)
+	const returnCode = await userConnect(props)
 		.catch((e) => error = e)
+
+	const inter = setInterval(async () => {
+		const time = await getTimePlayer(R, S)
+		socketEmit('time', time)
+	}, 5000)
 
 	protocol.close()
 	chrome.kill()
