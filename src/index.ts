@@ -130,7 +130,7 @@ const go = async () => {
 		.catch((e) => error = e)
 
 	protocol.close()
-	chrome.close()
+	chrome.kill()
 
 	return error || returnCode
 }
