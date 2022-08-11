@@ -66,9 +66,9 @@ export const go = (props: any) => new Promise((res) => {
 	clientSocket.on('activate', async (socketId: any) => {
 		console.log('activate')
 		back = !!streamId
-		streamId = socketId
 
 		if (!back) {
+			streamId = socketId
 			clientSocket.emit('isWaiting', { parentId, streamId, max })
 		}
 		else {
