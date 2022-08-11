@@ -59,7 +59,6 @@ export const go = (props: any) => new Promise((res) => {
 	}
 
 	const waitForOut = async () => {
-		console.log('waitForOut')
 		await wait(5 * 1000)
 		!out && await waitForOut()
 	}
@@ -169,13 +168,11 @@ export const go = (props: any) => new Promise((res) => {
 				socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 3, countPlays })
 			}
 
-			if (countPlays > 1) {
+			if (countPlays > 5) {
 				goOut()
 			}
 
 			currTime = time
-
-			console.log('inter time', time)
 		}, 5000)
 
 		await waitForOut()
