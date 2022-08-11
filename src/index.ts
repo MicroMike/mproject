@@ -175,6 +175,8 @@ const go = async () => {
 			// socketEmit('disconnect') // update to changeAlbum after test correct
 		}
 
+		currTime = time
+
 		console.log('inter time', time)
 	}, 5000)
 
