@@ -169,7 +169,9 @@ const go = async () => {
 		}
 
 		if (countPlays > 1) {
-			socketEmit('disconnect') // update to changeAlbum after test correct
+			clearInterval(inter)
+			out = true
+			// socketEmit('disconnect') // update to changeAlbum after test correct
 		}
 
 		console.log('inter time', time)
