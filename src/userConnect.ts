@@ -166,8 +166,8 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 			}
 		}
 
-		res(true)
+		res({ alb })
 	} catch (error) {
-		rej(error)
+		rej({ error })
 	}
 })

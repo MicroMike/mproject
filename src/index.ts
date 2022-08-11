@@ -30,8 +30,12 @@ let player: string
 let login: string
 let out = false
 let inter: any
+let currTime: number
+let next: boolean
+let countPlays = 0
+let pauseCount = 0
 
-const socketEmit = (event: any, params: any) => {
+const socketEmit = (event: any, params = {}) => {
 	clientSocket.emit(event, {
 		parentId,
 		streamId,
@@ -137,15 +141,38 @@ const go = async () => {
 	const T = Target;
 
 	let error = false
+
 	const props = { P, R, I, S, account, check, socketEmit }
 
-	const returnCode = await userConnect(props)
+	const userCallback: any = await userConnect(props)
 		.catch((e) => error = e)
 
 	inter = setInterval(async () => {
 		const time = await getTimePlayer(R, S)
+
+		if (time > currTime) {
+			pauseCount = 0
+
+			if (!next && time > 30) {
+				next = true
+				++countPlays
+				socketEmit('plays', { next: false, currentAlbum: userCallback.alb, countPlays })
+			} else {
+				socketEmit('playerInfos', { time, ok: true, countPlays })
+			}
+		} else if (time < currTime) {
+			pauseCount = 0
+			next = false
+		} else {
+			++pauseCount
+			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 3, countPlays })
+		}
+
+		if (countPlays > 1) {
+			socketEmit('disconnect') // update to changeAlbum after test correct
+		}
+
 		console.log('inter time', time)
-		socketEmit('time', { time })
 	}, 5000)
 
 	await waitForOut()
@@ -153,5 +180,5 @@ const go = async () => {
 	protocol.close()
 	chrome.kill()
 
-	return error || returnCode
+	return error || userCallback.error
 }

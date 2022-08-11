@@ -63,7 +63,7 @@ const getTimePlayer = async (R: any, S: any) => {
 	const e = R && await R.evaluate({ expression: `document.querySelector('${S.timeLine}') && document.querySelector('${S.timeLine}').innerText` })
 	const time = e.result.value && S.callback(e.result.value)
 
-	return time
+	return Number(time)
 }
 
 const goToPage = async (url: string, P: any) => {
