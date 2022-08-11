@@ -48,7 +48,7 @@ export const go = (props: any) => new Promise((res) => {
 		console.log('EXIT', code)
 
 		clientSocket.emit('checkok', { account })
-		clientSocket && clientSocket.disconnect()
+		socketEmit('disconnect')
 
 		res(code)
 	}
