@@ -143,8 +143,8 @@ const go = async () => {
 		.catch((e) => error = e)
 
 	inter = setInterval(async () => {
-		console.log('inter time')
 		const time = await getTimePlayer(R, S)
+		console.log('inter time', time)
 		socketEmit('time', { time })
 	}, 5000)
 
