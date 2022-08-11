@@ -96,6 +96,8 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 						}
 						throw 'out_no_logging'
 					}
+				}else{
+					console.log('amazonReLog')
 				}
 
 				await type(R, pass, S.pass)
