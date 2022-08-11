@@ -96,10 +96,10 @@ clientSocket.on('mRun', async (props: any) => {
 	exit(returnCode)
 })
 
-clientSocket.on('outlog', () => {
+const goOut = () => {
 	clearInterval(inter)
 	out = true
-})
+}
 
 const waitForOut = async () => {
 	console.log('waitForOut')
@@ -170,9 +170,7 @@ const go = async () => {
 		}
 
 		if (countPlays > 1) {
-			clearInterval(inter)
-			out = true
-			// socketEmit('disconnect') // update to changeAlbum after test correct
+			goOut()
 		}
 
 		currTime = time

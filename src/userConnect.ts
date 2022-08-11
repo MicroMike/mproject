@@ -73,7 +73,6 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 				await pressedEnter(I)
 			}
 			else {
-				await waitForSelector(R, S.email, 120)
 				const amazonReLog = isAmazon && await waitForSelector(R, '#ap-credential-autofill-hint', 5)
 
 				await I.dispatchMouseEvent({
@@ -83,33 +82,36 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 					y: 390
 				})
 
-				!amazonReLog && await type(R, login, S.email)
+				if (!amazonReLog) {
+					await waitForSelector(R, S.email, 30)
+					await type(R, login, S.email)
 
-				isTidal && await click(R, S.next)
+					isTidal && await click(R, S.next)
 
-				let error = await waitForSelector(R, S.loginError, 10)
+					const outNoLogging = await waitForSelector(R, S.loginError, 5)
 
-				if (error) {
-					if (isTidal) {
-						throw 'del'
+					if (outNoLogging) {
+						if (isTidal) {
+							throw 'del'
+						}
+						throw 'out_no_logging'
 					}
-					throw 'out_no_logging'
 				}
 
 				await type(R, pass, S.pass)
 
 				await click(R, S.connectBtn)
 
-				error = await waitForSelector(R, S.loginError, 10)
+				const outErrorConnect = await waitForSelector(R, S.loginError, 10)
 
-				if (error) {
+				if (outErrorConnect) {
 					if (isTidal) {
 						throw 'del'
 					}
 					throw 'out_error_connect'
 				}
 
-				await tidalSelect(R)
+				isTidal && await tidalSelect(R)
 			}
 		}
 
