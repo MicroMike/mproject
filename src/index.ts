@@ -1,9 +1,10 @@
-import shell from 'shelljs'
+import { go } from './go'
 
-const arg = process.argv[2]
 const max = process.argv[3] || 1
-const checkAccount = process.argv[4]
+const promises: Promise<unknown>[] = []
 
 for (let i = 0; i < max; i++) {
-	shell.exec(`node build/go.js ${arg} ${max} ${checkAccount}`)
+	promises.push(go(process.argv))
 }
+
+Promise.all(promises).then(() => console.log('over'))
