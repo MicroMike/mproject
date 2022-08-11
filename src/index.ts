@@ -28,6 +28,8 @@ let streamId: string
 let back: boolean
 let player: string
 let login: string
+let out = false
+let inter: any
 
 const socketEmit = (event: any, params: any) => {
 	clientSocket.emit(event, {
@@ -90,6 +92,16 @@ clientSocket.on('mRun', async (props: any) => {
 	exit(returnCode)
 })
 
+clientSocket.on('outlog', () => {
+	clearInterval(inter)
+	out = true
+})
+
+const waitForOut = async () => {
+	await wait(30 * 1000)
+	!out && await waitForOut()
+}
+
 const go = async () => {
 	const [player, login, pass] = account.split(':')
 
@@ -130,12 +142,13 @@ const go = async () => {
 	const returnCode = await userConnect(props)
 		.catch((e) => error = e)
 
-	const inter = setInterval(async () => {
+	inter = setInterval(async () => {
+		console.log('inter time')
 		const time = await getTimePlayer(R, S)
 		socketEmit('time', time)
 	}, 5000)
 
-	await wait(5 * 60 * 1000)
+	await waitForOut()
 
 	protocol.close()
 	chrome.kill()
