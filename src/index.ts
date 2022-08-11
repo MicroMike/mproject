@@ -145,7 +145,7 @@ const go = async () => {
 	inter = setInterval(async () => {
 		console.log('inter time')
 		const time = await getTimePlayer(R, S)
-		socketEmit('time', time)
+		socketEmit('time', { time })
 	}, 5000)
 
 	await waitForOut()
