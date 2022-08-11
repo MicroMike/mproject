@@ -40,6 +40,8 @@ export const go = (props: any) => new Promise((res) => {
 			parentId,
 			streamId,
 			account,
+			player,
+			login,
 			...params,
 		});
 	}
