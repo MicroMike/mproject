@@ -102,7 +102,8 @@ clientSocket.on('outlog', () => {
 })
 
 const waitForOut = async () => {
-	await wait(30 * 1000)
+	console.log('waitForOut')
+	await wait(5 * 1000)
 	!out && await waitForOut()
 }
 
