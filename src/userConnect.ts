@@ -159,7 +159,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 
 		await wait(rand(5, 3) * 1000)
 
-		!check && await copyBack(player, login)
+		await copyBack(player, login)
 
 		if (isTidal) {
 			const delTidal = await get(R, '.ReactModal__Overlay', 'innerText')
