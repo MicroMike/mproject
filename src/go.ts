@@ -148,6 +148,10 @@ export const go = (props: any) => new Promise((res) => {
 			.catch((e) => error = e)
 
 		inter = setInterval(async () => {
+			if (pauseCount > 5) {
+				return goOut()
+			}
+
 			const time = await getTimePlayer(R, S)
 
 			if (time > currTime) {
