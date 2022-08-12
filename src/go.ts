@@ -51,6 +51,11 @@ export const go = (props: any) => new Promise((res) => {
 		res(code)
 	}
 
+	process.on('SIGINT', () => {
+		socketEmit('over')
+		clientSocket.disconnect()
+	})
+
 	const goOut = () => {
 		clearInterval(inter)
 		out = true
