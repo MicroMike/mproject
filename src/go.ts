@@ -1,13 +1,13 @@
-import CDP from 'chrome-remote-interface'
 import shell from 'shelljs'
 import { io } from "socket.io-client";
 
-import { chromeConfig } from "./config/chromeConfig";
 import { getConfig } from "./config/playerConfig";
 import { TPlayer } from "./config/types";
 import { click, getTimePlayer, wait } from "./helpers/helpers";
 import { userConnect } from "./userConnect";
 import { copyBack, getSession } from './helpers/copy';
+import { openBrowser } from './openBrowser';
+import { start } from './start';
 
 export const go = (props: any) => new Promise((res) => {
 	process.setMaxListeners(Infinity)
@@ -30,10 +30,7 @@ export const go = (props: any) => new Promise((res) => {
 	let login: string
 	let out = false
 	let inter: any
-	let currTime: number
-	let next: boolean
-	let countPlays = 0
-	let pauseCount = 0
+	let S: any
 
 	const socketEmit = (event: any, params = {}) => {
 		clientSocket.emit(event, {
@@ -59,11 +56,6 @@ export const go = (props: any) => new Promise((res) => {
 		out = true
 	}
 
-	const waitForOut = async () => {
-		await wait(5 * 1000)
-		!out && await waitForOut()
-	}
-
 	clientSocket.on('activate', async (socketId: any) => {
 		console.log('activate')
 		back = !!streamId
@@ -85,7 +77,7 @@ export const go = (props: any) => new Promise((res) => {
 
 	clientSocket.on('mRun', async (props: any) => {
 		console.log('mRun')
-		const [p, a, pass] = account.split(':')
+		const [p, a] = account.split(':')
 		player = p
 		login = a
 
@@ -100,91 +92,14 @@ export const go = (props: any) => new Promise((res) => {
 			console.log(account);
 		}
 
-		const returnCode: any = await start()
+		S = getConfig(player as TPlayer)
+
+		const { chrome, protocol, ...browserProps } = await openBrowser(player, login)
+
+		const returnCode: any = await start({ ...browserProps, S, account, check, socketEmit }, chrome, protocol)
 
 		console.log('returnCode', returnCode)
 
 		exit(returnCode)
 	})
-
-	const start = async () => {
-		const [player, login, pass] = account.split(':')
-
-		const appleGoToPage = async () => {
-			if (player === 'apple') {
-				await click(R, S.pauseBtn, 1, false)
-			}
-		}
-
-		const S = getConfig(player as TPlayer)
-		const launchChrome = chromeConfig(player, login)
-
-		const chrome = await launchChrome()
-
-		const options = {
-			host: '127.0.0.1',
-			port: chrome.port
-		}
-
-		await wait(5 * 1000)
-
-		const protocol = await CDP(options);
-
-		const { Network, Page, Runtime, DOM, Input, Browser, Target } = protocol;
-
-		// extract domains
-		const N = Network;
-		const P = Page;
-		const R = Runtime;
-		const D = DOM;
-		const B = Browser;
-		const I = Input;
-		const T = Target;
-
-		let error = false
-
-		const props = { P, R, I, S, account, check, socketEmit }
-
-		const userCallback: any = await userConnect(props)
-			.catch((e) => error = e)
-
-		inter = setInterval(async () => {
-			if (pauseCount > 5) {
-				return goOut()
-			}
-
-			const time = await getTimePlayer(R, S)
-
-			if (time > currTime) {
-				pauseCount = 0
-
-				if (!next && time > 30) {
-					next = true
-					++countPlays
-					socketEmit('plays', { next: false, currentAlbum: userCallback.alb, countPlays })
-				} else {
-					socketEmit('playerInfos', { time, ok: true, countPlays })
-				}
-			} else if (time < currTime) {
-				pauseCount = 0
-				next = false
-			} else {
-				++pauseCount
-				socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 3, countPlays })
-			}
-
-			if (countPlays > 5) {
-				goOut()
-			}
-
-			currTime = time
-		}, 5000)
-
-		await waitForOut()
-
-		protocol.close()
-		chrome.kill()
-
-		return error || userCallback.error
-	}
 })
