@@ -46,14 +46,12 @@ export const go = (props: any) => new Promise((res) => {
 
 		clientSocket.emit('checkok', { account })
 		socketEmit('over')
-		clientSocket.disconnect()
 
 		res(code)
 	}
 
 	process.on('SIGINT', () => {
 		socketEmit('over')
-		clientSocket.disconnect()
 	})
 
 	const goOut = () => {
