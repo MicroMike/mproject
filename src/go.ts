@@ -52,6 +52,7 @@ export const go = (props: any) => new Promise((res) => {
 
 	process.on('SIGINT', () => {
 		console.log('SIGINT over go')
+		shell.exec('killall chrome')
 		socketEmit('over')
 		process.exit()
 	})
