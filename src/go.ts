@@ -57,13 +57,13 @@ export const go = (props: any) => new Promise((res) => {
 
 	clientSocket.on('activate', async (socketId: any) => {
 		console.log('activate')
-		back = !!streamId && account && account !== ''
+		back = !!streamId
 
 		if (!back) {
 			streamId = socketId
 			clientSocket.emit('isWaiting', { parentId, streamId, max })
 		}
-		else {
+		else if (account && account !== '') {
 			clientSocket.emit('client', { parentId, streamId, account, max, back })
 		}
 	})
