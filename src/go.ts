@@ -68,6 +68,11 @@ export const go = (props: any) => new Promise((res) => {
 		}
 	})
 
+	clientSocket.on('loaded', async () => {
+		await wait(5 * 1000)
+		clientSocket.emit('isWaiting', { parentId, streamId, max })
+	})
+
 	clientSocket.on('canRun', async (a: any) => {
 		console.log('canRun', a)
 		account = a
