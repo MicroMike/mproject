@@ -57,7 +57,7 @@ export const go = (props: any) => new Promise((res) => {
 
 	clientSocket.on('activate', async (socketId: any) => {
 		console.log('activate')
-		back = !!streamId
+		back = !!streamId && account && account !== ''
 
 		if (!back) {
 			streamId = socketId
