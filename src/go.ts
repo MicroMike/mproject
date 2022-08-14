@@ -51,13 +51,9 @@ export const go = (props: any) => new Promise((res) => {
 	}
 
 	process.on('SIGINT', () => {
+		console.log('SIGINT over')
 		socketEmit('over')
 	})
-
-	const goOut = () => {
-		clearInterval(inter)
-		out = true
-	}
 
 	clientSocket.on('activate', async (socketId: any) => {
 		console.log('activate')
