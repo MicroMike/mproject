@@ -51,9 +51,8 @@ export const go = (props: any) => new Promise((res) => {
 	}
 
 	process.on('SIGINT', () => {
-		console.log('SIGINT over')
+		console.log('SIGINT over go')
 		socketEmit('over')
-		process.exit()
 	})
 
 	clientSocket.on('activate', async (socketId: any) => {
