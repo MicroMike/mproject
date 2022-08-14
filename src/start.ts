@@ -1,15 +1,17 @@
-import { getTimePlayer, wait } from "./helpers/helpers"
+import { TPlayer } from "./config/types"
+import { album, click, getTimePlayer, goToPage, rand, wait } from "./helpers/helpers"
 import { userConnect } from "./userConnect"
 
 export const start = (props: any, chrome: any, protocol: any) => new Promise(async (res) => {
-	const { N, P, R, D, B, I, T, S, socketEmit } = props
+	const { N, P, R, D, B, I, T, S, socketEmit, player } = props
 
 	let error = false
 	let currTime: number
 	let next: boolean
 	let countPlays = 0
 	let pauseCount = 0
-	let out = false
+	let out: any = false
+	let playlLoop = 0
 
 	const userCallback: any = await userConnect(props)
 		.catch((e) => error = e)
@@ -36,10 +38,21 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		}
 
 		if (countPlays > 5) {
-			out = true
+			++playlLoop
+			countPlays = 0
+
+			const alb = album(player as TPlayer)
+			await goToPage(alb, P)
+
+			await wait(rand(5, 3) * 1000)
+			await click(R, S.play)
+
+			socketEmit('playerInfos', { time: 'PLAY', ok: true })
 		}
 		else if (pauseCount > 5) {
-			out = true
+			out = 'freeze'
+		} else if (playlLoop === 5) {
+			out = 'logout'
 		}
 
 		currTime = time
@@ -53,5 +66,5 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	protocol.close()
 	chrome.kill()
 
-	res(error || userCallback.error)
+	res(out || error || userCallback.error)
 })

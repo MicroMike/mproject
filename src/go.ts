@@ -102,7 +102,7 @@ export const go = (props: any) => new Promise((res) => {
 
 		const { chrome, protocol, ...browserProps } = await openBrowser(player, login)
 
-		const returnCode: any = await start({ ...browserProps, S, account, check, socketEmit }, chrome, protocol)
+		const returnCode: any = await start({ ...browserProps, S, account, check, player, socketEmit }, chrome, protocol)
 
 		console.log('returnCode', returnCode)
 
