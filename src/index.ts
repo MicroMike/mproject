@@ -10,4 +10,6 @@ const infiniteLoop = async () => {
 	await infiniteLoop()
 }
 
-infiniteLoop()
+for (let i = 0; i < max; i++) {
+	infiniteLoop()
+}
