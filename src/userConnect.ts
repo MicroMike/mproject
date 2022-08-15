@@ -74,31 +74,37 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 			}
 			else {
 				// const amazonReLog = isAmazon && await waitForSelector(R, '#ap_switch_account_link', 5)
+				const amazonReLogBody = isAmazon && await get(R, 'body', 'innerText')
+				const loginRegex = new RegExp(login)
+				const amazonReLog = amazonReLogBody && loginRegex.test(amazonReLogBody)
 
-				await I.dispatchMouseEvent({
-					type: 'mousePressed',
-					button: 'left',
-					x: 315,
-					y: 390
-				})
+				console.log('loginRegex', loginRegex)
+				console.log('amazonReLogBody', amazonReLogBody)
 
-				// if (!amazonReLog) {
-				await waitForSelector(R, S.email, 30)
-				await type(R, login, S.email)
+				if (amazonReLog) {
+					console.log('amazonReLog')
+				} else {
+					await I.dispatchMouseEvent({
+						type: 'mousePressed',
+						button: 'left',
+						x: 315,
+						y: 390
+					})
 
-				isTidal && await click(R, S.next)
+					await waitForSelector(R, S.email, 30)
+					await type(R, login, S.email)
 
-				const outNoLogging = await waitForSelector(R, S.loginError, 5)
+					isTidal && await click(R, S.next)
 
-				if (outNoLogging) {
-					if (isTidal) {
-						throw 'del'
+					const outNoLogging = await waitForSelector(R, S.loginError, 5)
+
+					if (outNoLogging) {
+						if (isTidal) {
+							throw 'del'
+						}
+						throw 'out_no_logging'
 					}
-					throw 'out_no_logging'
 				}
-				// }else{
-				// 	console.log('amazonReLog')
-				// }
 
 				await type(R, pass, S.pass)
 
