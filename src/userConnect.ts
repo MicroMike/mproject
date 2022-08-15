@@ -73,7 +73,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 				await pressedEnter(I)
 			}
 			else {
-				const amazonReLog = isAmazon && await waitForSelector(R, '#ap_switch_account_link', 5)
+				// const amazonReLog = isAmazon && await waitForSelector(R, '#ap_switch_account_link', 5)
 
 				await I.dispatchMouseEvent({
 					type: 'mousePressed',
