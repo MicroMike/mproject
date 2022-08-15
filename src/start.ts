@@ -1,9 +1,9 @@
 import { TPlayer } from "./config/types"
-import { album, click, getTimePlayer, goToPage, rand, wait } from "./helpers/helpers"
+import { album, click, getTimePlayer, goToPage, rand, takeScreenshot, wait } from "./helpers/helpers"
 import { userConnect } from "./userConnect"
 
 export const start = (props: any, chrome: any, protocol: any) => new Promise(async (res) => {
-	const { N, P, R, D, B, I, T, S, socketEmit, player } = props
+	const { N, P, R, D, B, I, T, S, socketEmit, player, login } = props
 
 	let error = false
 	let currTime: number
@@ -55,6 +55,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			socketEmit('playerInfos', { time: 'PLAY', ok: true })
 		}
 		else if (pauseCount > 5) {
+			await takeScreenshot(P, 'freeze', socketEmit, login)
 			out = 'freeze'
 		} else if (playlLoop === 5) {
 			out = 'logout'

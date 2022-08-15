@@ -153,6 +153,16 @@ const get = async (R: any, selector: string, getter = 'innerHTML') => {
 	return e.result.value
 }
 
+const takeScreenshot = async (P: any, e: string, socketEmit: any, login: string) => {
+	try {
+		const { data } = await P.captureScreenshot();
+		socketEmit('screen', { img: data, log: login + ' => ' + e })
+	}
+	catch (e) {
+		console.log('screenshot error', e)
+	}
+}
+
 export {
 	album,
 	click,
@@ -163,6 +173,7 @@ export {
 	press,
 	pressedEnter,
 	rand,
+	takeScreenshot,
 	tidalSelect,
 	type,
 	wait,
