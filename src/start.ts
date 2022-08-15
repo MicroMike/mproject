@@ -41,6 +41,11 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			++playlLoop
 			countPlays = 0
 
+			if (player === 'apple') {
+				await click(R, S.pauseBtn)
+				await wait(rand(5, 3) * 1000)
+			}
+
 			const alb = album(player as TPlayer)
 			await goToPage(alb, P)
 
