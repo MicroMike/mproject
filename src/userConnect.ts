@@ -82,23 +82,23 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 					y: 390
 				})
 
-				if (!amazonReLog) {
-					await waitForSelector(R, S.email, 30)
-					await type(R, login, S.email)
+				// if (!amazonReLog) {
+				await waitForSelector(R, S.email, 30)
+				await type(R, login, S.email)
 
-					isTidal && await click(R, S.next)
+				isTidal && await click(R, S.next)
 
-					const outNoLogging = await waitForSelector(R, S.loginError, 5)
+				const outNoLogging = await waitForSelector(R, S.loginError, 5)
 
-					if (outNoLogging) {
-						if (isTidal) {
-							throw 'del'
-						}
-						throw 'out_no_logging'
+				if (outNoLogging) {
+					if (isTidal) {
+						throw 'del'
 					}
-				}else{
-					console.log('amazonReLog')
+					throw 'out_no_logging'
 				}
+				// }else{
+				// 	console.log('amazonReLog')
+				// }
 
 				await type(R, pass, S.pass)
 
