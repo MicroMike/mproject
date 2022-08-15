@@ -50,7 +50,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			await goToPage(alb, P)
 
 			await wait(rand(5, 3) * 1000)
-			await click(R, S.play)
+			await click(R, S.play, 60)
 
 			socketEmit('playerInfos', { time: 'PLAY', ok: true })
 		}
