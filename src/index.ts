@@ -1,10 +1,13 @@
 import { go } from './go'
+import { wait } from './helpers/helpers'
 
 const max = process.argv[3] || 1
 const promises: Promise<unknown>[] = []
 
-for (let i = 0; i < max; i++) {
-	promises.push(go(process.argv))
+const infiniteLoop = async () => {
+	await go(process.argv)
+	await wait(5000)
+	await infiniteLoop()
 }
 
-Promise.all(promises).then(() => console.log('over'))
+infiniteLoop()
