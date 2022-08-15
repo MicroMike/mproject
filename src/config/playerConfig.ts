@@ -11,6 +11,7 @@ export const getConfig = (player: TPlayer) => {
 		connectBtn: '.btn-success.btn-client-primary',
 		play: '[data-test="shuffle-all"]',
 		pauseBtn: '',
+		shuffleBtn: '',
 		timeLine: '[data-test="current-time"]',
 		callback: (a: any) => (a.split(':').reduce((a: any, b: any) => a * 60 + Number(b))),
 		nextBtn: '[data-test="next"]'
@@ -25,6 +26,7 @@ export const getConfig = (player: TPlayer) => {
 		S.connectBtn = '#login-button'
 		S.play = '[data-testid="play-button"]'
 		S.timeLine = '[data-testid="playback-position"]'
+		S.shuffleBtn = '[aria-checked="false"][data-testid="control-button-shuffle"]'
 
 		// S.repeatBtn = '[class*="spoticon-repeat"]'
 		// S.repeatBtnOk = '.spoticon-repeat-16.control-button--active'

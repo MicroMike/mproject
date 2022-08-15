@@ -19,6 +19,8 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	const inter = async () => {
 		const time = await getTimePlayer(R, S)
 
+		S.shuffleBtn !== '' && await click(R, S.shuffleBtn)
+
 		if (time > currTime) {
 			pauseCount = 0
 
