@@ -36,7 +36,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			next = false
 		} else {
 			++pauseCount
-			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 3, countPlays })
+			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 5, countPlays })
 		}
 
 		if (countPlays > 5) {
@@ -56,7 +56,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 			socketEmit('playerInfos', { time: 'PLAY', ok: true })
 		}
-		else if (pauseCount > 5) {
+		else if (pauseCount > 10) {
 			await takeScreenshot(P, 'freeze', socketEmit, login)
 			out = 'freeze'
 		} else if (playlLoop === 5) {
