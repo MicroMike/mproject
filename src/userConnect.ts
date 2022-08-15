@@ -78,9 +78,6 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 				const loginRegex = new RegExp(login)
 				const amazonReLog = amazonReLogBody && loginRegex.test(amazonReLogBody)
 
-				console.log('loginRegex', loginRegex)
-				console.log('amazonReLogBody', amazonReLogBody)
-
 				if (amazonReLog) {
 					console.log('amazonReLog')
 				} else {
