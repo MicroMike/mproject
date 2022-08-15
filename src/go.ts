@@ -108,4 +108,8 @@ export const go = (props: any) => new Promise((res) => {
 
 		exit(returnCode)
 	})
+
+	clientSocket.on('disconnect', async (props: any) => {
+		console.log('disconnect client')
+	})
 })
