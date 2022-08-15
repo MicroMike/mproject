@@ -55,6 +55,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			socketEmit('playerInfos', { time: 'PLAY', ok: true })
 		}
 		else if (pauseCount > 5) {
+			console.log('takeScreenshot', login)
 			await takeScreenshot(P, 'freeze', socketEmit, login)
 			out = 'freeze'
 		} else if (playlLoop === 5) {

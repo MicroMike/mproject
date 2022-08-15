@@ -155,7 +155,6 @@ const get = async (R: any, selector: string, getter = 'innerHTML') => {
 
 const takeScreenshot = async (P: any, e: string, socketEmit: any, login: string) => {
 	try {
-		console.log('takeScreenshot', login)
 		const { data } = await P.captureScreenshot();
 		socketEmit('screen', { img: data, log: login + ' => ' + e })
 	}
