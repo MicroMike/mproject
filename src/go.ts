@@ -3,9 +3,8 @@ import { io } from "socket.io-client";
 
 import { getConfig } from "./config/playerConfig";
 import { TPlayer } from "./config/types";
-import { click, getTimePlayer, wait } from "./helpers/helpers";
-import { userConnect } from "./userConnect";
-import { copyBack, getSession } from './helpers/copy';
+import { wait } from "./helpers/helpers";
+import { getSession } from './helpers/copy';
 import { openBrowser } from './openBrowser';
 import { start } from './start';
 
@@ -89,7 +88,7 @@ export const go = (props: any) => new Promise((res) => {
 
 		try {
 			shell.exec('rm -rf ' + varPath + player + login, { silent: false })
-			!check && await getSession(player, login)
+			!check && getSession(player, login)
 		} catch (e) {
 			console.log(e)
 		}
