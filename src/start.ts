@@ -11,7 +11,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	let countPlays = 0
 	let pauseCount = 0
 	let out: any = false
-	let playlLoop = 0
+	let playlLoop = rand(10, 5)
 
 	const userCallback: any = await userConnect(props)
 		.catch((e) => error = e)
@@ -39,22 +39,24 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 5, countPlays })
 		}
 
-		if (countPlays > 5) {
-			++playlLoop
-			countPlays = 0
+		if (countPlays > playlLoop) {
+			out = 'logout'
 
-			if (player === 'apple') {
-				await click(R, S.pauseBtn)
-				await wait(rand(5, 3) * 1000)
-			}
+			// ++playlLoop
+			// countPlays = 0
 
-			const alb = album(player as TPlayer)
-			await goToPage(alb, P)
+			// if (player === 'apple') {
+			// 	await click(R, S.pauseBtn)
+			// 	await wait(rand(5, 3) * 1000)
+			// }
 
-			await wait(rand(5, 3) * 1000)
-			await click(R, S.play, 60)
+			// const alb = album(player as TPlayer)
+			// await goToPage(alb, P)
 
-			socketEmit('playerInfos', { time: 'PLAY', ok: true })
+			// await wait(rand(5, 3) * 1000)
+			// await click(R, S.play, 60)
+
+			// socketEmit('playerInfos', { time: 'PLAY', ok: true })
 		}
 		else if (pauseCount > 10) {
 			await takeScreenshot(P, 'freeze', socketEmit, login)
