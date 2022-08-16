@@ -109,6 +109,7 @@ export const albums = {
 		'https://music.apple.com/fr/album/marching-smile/1472877269',
 		'https://music.apple.com/fr/album/he-knows-she-knows/1472572875',
 		'https://music.apple.com/fr/album/good-memories-single/1596423159',
+		'https://music.apple.com/fr/album/fresh-mix-ep/1602522645',
 		// 'https://music.apple.com/tr/album/lunar-january/1596985047',
 		// 'https://music.apple.com/tr/album/boombeats/1383283815',
 		// 'https://music.apple.com/tr/album/house-of-beats/1380210761',
