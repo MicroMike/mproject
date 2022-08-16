@@ -42,7 +42,9 @@ export const getConfig = (player: TPlayer) => {
 		S.email = '#account_name_text_field'
 		S.pass = '#password_text_field'
 		S.connectBtn = '#sign-in'
-		S.play = '.shuffle-button'
+		// S.play = '.shuffle-button'
+		S.shuffleBtn='[aria-label="Lecture aléatoire"][aria-disabled="false"]'
+		S.play = '.play-button'
 		S.pauseBtn = '.web-chrome-playback-controls__playback-btn[aria-label="Pause"]'
 		S.timeLine = '.web-chrome-playback-lcd__playback-time'
 	}
