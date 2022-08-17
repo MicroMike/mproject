@@ -26,13 +26,6 @@ export const openBrowser = async (player: string, login: string) => {
 	const B = Browser;
 	const I = Input;
 	const T = Target;
-	
-	process.on('SIGINT', () => {
-		console.log('SIGINT over browser')
-
-		protocol.close()
-		chrome.kill()
-	})
 
 	return { chrome, protocol, N, P, R, D, B, I, T }
 }

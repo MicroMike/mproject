@@ -27,9 +27,9 @@ export const go = (props: any) => new Promise((res) => {
 	let back: boolean
 	let player: string
 	let login: string
-	let out = false
-	let inter: any
 	let S: any
+	let chro: any
+	let proto: any
 
 	const socketEmit = (event: any, params = {}) => {
 		clientSocket.emit(event, {
@@ -51,6 +51,9 @@ export const go = (props: any) => new Promise((res) => {
 
 	process.on('SIGINT', () => {
 		console.log('SIGINT over go')
+
+		proto.close()
+		chro.kill()
 		shell.exec('killall chrome')
 		socketEmit('over')
 		process.exit()
@@ -100,6 +103,8 @@ export const go = (props: any) => new Promise((res) => {
 		S = getConfig(player as TPlayer)
 
 		const { chrome, protocol, ...browserProps } = await openBrowser(player, login)
+		chro = chrome
+		proto = protocol
 
 		const returnCode: any = await start({ ...browserProps, S, account, check, player, login, socketEmit }, chrome, protocol)
 
