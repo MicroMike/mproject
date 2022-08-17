@@ -90,8 +90,5 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 	await inter()
 
-	protocol.close()
-	chrome.kill()
-
 	res(out || error || userCallback.error)
 })

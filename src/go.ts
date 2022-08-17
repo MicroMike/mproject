@@ -42,20 +42,18 @@ export const go = (props: any) => new Promise((res) => {
 
 	const exit = async (code = 0) => {
 		console.log('EXIT', code)
+		proto.close()
+		chro.kill()
 
-		clientSocket.emit('checkok', { account })
+		socketEmit('checkok', { account })
 		socketEmit('over')
 
-		res(code)
+		code !== 500 && res(code)
 	}
 
 	process.on('SIGINT', () => {
 		console.log('SIGINT over go')
-
-		proto.close()
-		chro.kill()
-		shell.exec('killall chrome')
-		socketEmit('over')
+		exit(500)
 		process.exit()
 	})
 
