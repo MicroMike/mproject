@@ -111,7 +111,8 @@ export const go = (props: any) => new Promise((res) => {
 		exit(returnCode)
 	})
 
-	clientSocket.on('disconnect', async (props: any) => {
-		console.log('disconnect client')
+	clientSocket.on('forceOut', async (props: any) => {
+		shell.exec(`kill -9 ${chro.pid}`)
+		exit(200)
 	})
 })
