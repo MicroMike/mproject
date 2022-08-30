@@ -30,6 +30,7 @@ export const go = (props: any) => new Promise((res) => {
 	let S: any
 	let chro: any
 	let proto: any
+	let pid: any
 
 	const socketEmit = (event: any, params = {}) => {
 		clientSocket.emit(event, {
@@ -103,6 +104,7 @@ export const go = (props: any) => new Promise((res) => {
 		const { chrome, protocol, ...browserProps } = await openBrowser(player, login)
 		chro = chrome
 		proto = protocol
+		pid = chrome.pid
 
 		const returnCode: any = await start({ ...browserProps, S, account, check, player, login, socketEmit }, chrome, protocol)
 
@@ -112,7 +114,7 @@ export const go = (props: any) => new Promise((res) => {
 	})
 
 	clientSocket.on('forceOut', async (props: any) => {
-		shell.exec(`kill -9 ${chro.pid}`)
+		shell.exec(`kill -9 ${pid}`)
 		exit(200)
 	})
 })
