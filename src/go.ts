@@ -109,9 +109,6 @@ export const go = (props: any) => new Promise((res) => {
 		proto = protocol
 		pid = chrome.pid
 
-		console.log('PID', pid)
-		console.log('chrome', chrome)
-
 		const returnCode: any = await start({ ...browserProps, S, account, check, player, login, socketEmit }, chrome, protocol)
 
 		console.log('returnCode', returnCode)
@@ -120,7 +117,7 @@ export const go = (props: any) => new Promise((res) => {
 	})
 
 	clientSocket.on('forceOut', async (props: any) => {
-		shell.exec(`kill -9 ${pid}`)
+		shell.exec(`kill -9 ${pid}`, { silent: true })
 		exit(200)
 	})
 })
