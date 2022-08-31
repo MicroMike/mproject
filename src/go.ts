@@ -43,8 +43,11 @@ export const go = (props: any) => new Promise((res) => {
 
 	const exit = async (code = 0) => {
 		console.log('EXIT', code)
-		proto.close()
-		chro.kill()
+
+		try {
+			proto.close()
+			chro.kill()
+		} catch (error) { }
 
 		socketEmit('checkok', { account })
 		socketEmit('over')
@@ -105,6 +108,9 @@ export const go = (props: any) => new Promise((res) => {
 		chro = chrome
 		proto = protocol
 		pid = chrome.pid
+
+		console.log('PID', pid)
+		console.log('chrome', chrome)
 
 		const returnCode: any = await start({ ...browserProps, S, account, check, player, login, socketEmit }, chrome, protocol)
 
