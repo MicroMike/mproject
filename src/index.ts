@@ -1,8 +1,11 @@
 import { go } from './go'
 import { wait } from './helpers/helpers'
+import shell from 'shelljs'
 
 const max = process.argv[3] || 1
 const promises: Promise<unknown>[] = []
+
+shell.exec('rm -rf /root/puppet/puppet/')
 
 const infiniteLoop = async () => {
 	await go(process.argv)
