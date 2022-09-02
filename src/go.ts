@@ -117,7 +117,7 @@ export const go = (props: any) => new Promise((res) => {
 	})
 
 	clientSocket.on('forceOut', async (props: any) => {
-		shell.exec(`kill -9 ${pid}`, { silent: true })
+		// shell.exec(`kill -9 ${pid}`, { silent: true })
 		exit(200)
 	})
 })
