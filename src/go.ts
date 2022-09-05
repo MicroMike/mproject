@@ -49,7 +49,12 @@ export const go = (props: any) => new Promise((res) => {
 			chro.kill()
 		} catch (error) { }
 
-		socketEmit('checkok', { account })
+		if (/out_error_connect|tidalError|out_log_error/.test(code.toString())) {
+			socketEmit('errorcheck', { account })
+		} else {
+			socketEmit('checkok', { account })
+		}
+
 		socketEmit('over')
 
 		code !== 500 && res(code)
