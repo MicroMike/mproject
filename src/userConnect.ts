@@ -143,9 +143,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 
 		isSpotify && await click(R, '#onetrust-accept-btn-handler', 5)
 
-		if (isAmazon || isNapster) {
-			await goToPage(alb, P)
-		}
+		await goToPage(alb, P)
 
 		await wait(rand(5, 3) * 1000)
 
