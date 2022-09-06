@@ -144,7 +144,7 @@ const tidalSelect = (R: any) => new Promise(async (res, rej) => {
 	res(true)
 })
 
-const get = async (R: any, selector: string, getter = 'innerHTML') => {
+const get = async (R: any, selector: string, getter = 'innerHTML'): Promise<string> => {
 	await wait(rand(5, 3) * 1000)
 
 	const expression = `document.querySelector('${selector}') && document.querySelector('${selector}')['${getter}']`
