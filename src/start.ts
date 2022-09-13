@@ -15,7 +15,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	let playlLoop = 0
 
 	const userCallback: any = await userConnect(props)
-		.catch((e) => error = e)
+		.catch((e) => error = e.error)
 
 	const isError = () => out || error || userCallback.error
 
