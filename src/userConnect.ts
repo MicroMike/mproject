@@ -122,12 +122,13 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 
 		await wait(rand(5, 3) * 1000)
 
-		const logSuccess = await waitForSelector(R, S.noNeedLog, 120)
 		const spotifyLogError = await get(R, 'body', 'innerText')
 
-		if (/incorrect/i.test(spotifyLogError)) {
+		if (spotifyLogError && /Incorrect/.test(spotifyLogError)) {
 			throw 'out_log_error'
 		}
+
+		const logSuccess = await waitForSelector(R, S.noNeedLog, 120)
 
 		if (!logSuccess) {
 			if (isTidal) {
