@@ -60,9 +60,10 @@ export const go = (props: any) => new Promise((res) => {
 		code !== 500 && res(code)
 	}
 
-	process.on('SIGINT', () => {
+	process.on('SIGINT', async () => {
 		console.log('SIGINT over go')
-		exit(500)
+		await exit(500)
+		shell.exec('killall chrome')
 		process.exit()
 	})
 
