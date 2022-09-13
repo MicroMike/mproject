@@ -17,6 +17,13 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	const userCallback: any = await userConnect(props)
 		.catch((e) => error = e)
 
+	const isError = out || error || userCallback.error
+
+	if (isError) {
+		res(isError)
+		return
+	}
+
 	const inter = async () => {
 		const time = await getTimePlayer(R, S)
 
@@ -90,5 +97,5 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 	await inter()
 
-	res(out || error || userCallback.error)
+	res(isError)
 })
