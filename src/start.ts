@@ -17,10 +17,10 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	const userCallback: any = await userConnect(props)
 		.catch((e) => error = e)
 
-	const isError = out || error || userCallback.error
+	const isError = () => out || error || userCallback.error
 
-	if (isError) {
-		res(isError)
+	if (isError()) {
+		res(isError())
 		return
 	}
 
@@ -97,5 +97,5 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 	await inter()
 
-	res(isError)
+	res(isError())
 })
