@@ -3,7 +3,7 @@ import { album, click, getTimePlayer, goToPage, rand, takeScreenshot, wait } fro
 import { userConnect } from "./userConnect"
 
 export const start = (props: any, chrome: any, protocol: any) => new Promise(async (res) => {
-	const { N, P, R, D, B, I, T, S, socketEmit, player, login } = props
+	const { N, P, R, D, B, I, T, S, socketEmit, player, login, check } = props
 
 	let error = false
 	let currTime: number
@@ -85,7 +85,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		else if (pauseCount > 10) {
 			await takeScreenshot(P, 'freeze', socketEmit, login)
 			out = 'freeze'
-		} else if (playlLoop === 5) {
+		} else if (playlLoop === 5 || check) {
 			out = 'logout'
 		}
 
