@@ -60,6 +60,10 @@ export const go = (props: any) => new Promise((res) => {
 		code !== 500 && res(code)
 	}
 
+	setTimeout(() => {
+		exit(400)
+	}, 60 * 60 * 1000);
+
 	process.on('SIGINT', async () => {
 		console.log('SIGINT over go')
 		await exit(500)
