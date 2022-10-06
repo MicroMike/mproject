@@ -15,9 +15,9 @@ export const go = () => new Promise((res) => {
 
 	const clientSocket = io('http://216.158.239.199:3000');
 
-	const arg = props[2]
-	const max = props[3] || 1
-	const checkAccount = props[4]
+	const arg = props[3]
+	const max = props[4] || 1
+	const checkAccount = props[5]
 
 	const check = !!checkAccount || /check/i.test(arg)
 	const checkLive = /checklive/i.test(arg)
