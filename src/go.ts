@@ -11,7 +11,6 @@ import { start } from './start';
 export const go = () => new Promise((res) => {
 	process.setMaxListeners(Infinity)
 	const props = process.argv
-	console.log('props', props)
 
 	const clientSocket = io('http://216.158.239.199:3000');
 
