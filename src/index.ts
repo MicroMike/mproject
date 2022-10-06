@@ -2,7 +2,7 @@ import { go } from './go'
 import { wait } from './helpers/helpers'
 import shell from 'shelljs'
 
-const [a, arg, max = 1, checkAccount] = process.argv
+const [a, b, arg, max = 1, checkAccount] = process.argv
 const promises: Promise<unknown>[] = []
 console.log(a, arg, max, checkAccount)
 
