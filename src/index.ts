@@ -9,7 +9,7 @@ shell.exec('rm -rf /root/puppet/puppet/')
 
 const infiniteLoop = async () => {
 	// await go(process.argv)
-	await shell.exec(`node build/go.js ${arg} ${max} ${checkAccount}`)
+	await shell.exec(`node build/go.js ${arg} ${max} ${checkAccount || ''}`)
 	await wait(5000)
 	await infiniteLoop()
 }
