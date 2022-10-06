@@ -4,7 +4,7 @@ import shell from 'shelljs'
 
 const props = process.argv
 const arg = props[2]
-const max = props[3] || 1
+const max = Number(props[3] || 1)
 const checkAccount = props[4] || ''
 
 shell.exec('rm -rf /root/puppet/puppet/')
