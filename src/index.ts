@@ -4,6 +4,7 @@ import shell from 'shelljs'
 
 const [a, arg, max = 1, checkAccount] = process.argv
 const promises: Promise<unknown>[] = []
+console.log(a, arg, max, checkAccount)
 
 shell.exec('rm -rf /root/puppet/puppet/')
 
