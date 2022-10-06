@@ -2,7 +2,7 @@
 import { wait } from './helpers/helpers'
 import shell from 'shelljs'
 
-const [a, b, arg, max = 1, checkAccount] = process.argv
+const [a, b, arg, max, checkAccount] = process.argv
 const promises: Promise<unknown>[] = []
 
 shell.exec('rm -rf /root/puppet/puppet/')
@@ -14,6 +14,6 @@ const infiniteLoop = async () => {
 	await infiniteLoop()
 }
 
-for (let i = 0; i < max; i++) {
+for (let i = 0; i < (max || 1); i++) {
 	infiniteLoop()
 }
