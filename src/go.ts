@@ -58,6 +58,7 @@ export const go = (props: any) => new Promise((res) => {
 		socketEmit('over')
 
 		code !== 500 && res(code)
+		process.exit()
 	}
 
 	setTimeout(() => {
