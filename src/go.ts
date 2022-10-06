@@ -75,7 +75,7 @@ export const go = () => new Promise((res) => {
 	})
 
 	clientSocket.on('activate', async (socketId: any) => {
-		console.log('activate', streamId, arg)
+		console.log('activate', streamId, arg, max)
 		back = !!streamId
 
 		if (!back) {
