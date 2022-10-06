@@ -16,6 +16,6 @@ const infiniteLoop = async () => {
 	await infiniteLoop()
 }
 
-for (let i = 0; i < (max || 1); i++) {
+for (let i = 0; i < max; i++) {
 	infiniteLoop()
 }
