@@ -74,34 +74,28 @@ export const go = () => new Promise((res) => {
 	})
 
 	clientSocket.on('activate', async (socketId: any) => {
-		console.log('activate')
 		back = !!streamId
 
 		if (!back) {
-			console.log('activate new')
 			streamId = socketId
 			clientSocket.emit('isWaiting', { parentId, streamId, max })
 		}
 		else if (account && account !== '') {
-			console.log('activate back')
 			clientSocket.emit('client', { parentId, streamId, account, max, back })
 		}
 	})
 
 	clientSocket.on('loaded', async () => {
-		console.log('loaded')
 		await wait(5 * 1000)
 		clientSocket.emit('isWaiting', { parentId, streamId, max })
 	})
 
 	clientSocket.on('canRun', async (a: any) => {
-		console.log('canRun', a)
 		account = a
 		!checkLive && clientSocket.emit('client', { parentId, streamId, account, max })
 	})
 
 	clientSocket.on('mRun', async (props: any) => {
-		console.log('mRun')
 		const [p, a] = account.split(':')
 		player = p
 		login = a
