@@ -16,7 +16,7 @@ export const go = () => new Promise((res) => {
 	const clientSocket = io('http://216.158.239.199:3000');
 
 	const arg = props[2]
-	const max = props[3] || 1
+	const max = Number(props[3] || 1)
 	const checkAccount = props[4]
 
 	const check = !!checkAccount || /check/i.test(arg)
@@ -75,7 +75,7 @@ export const go = () => new Promise((res) => {
 	})
 
 	clientSocket.on('activate', async (socketId: any) => {
-		console.log('activate')
+		console.log('activate', streamId, arg)
 		back = !!streamId
 
 		if (!back) {
