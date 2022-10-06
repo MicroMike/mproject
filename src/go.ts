@@ -65,7 +65,7 @@ export const go = () => new Promise((res) => {
 
 	setTimeout(() => {
 		exit(400)
-	}, 60 * 60 * 1000);
+	}, 30 * 60 * 1000);
 
 	process.on('SIGINT', async () => {
 		console.log('SIGINT over go')
@@ -75,19 +75,22 @@ export const go = () => new Promise((res) => {
 	})
 
 	clientSocket.on('activate', async (socketId: any) => {
-		console.log('activate', streamId, arg, max)
+		console.log('activate')
 		back = !!streamId
 
 		if (!back) {
+			console.log('activate new')
 			streamId = socketId
 			clientSocket.emit('isWaiting', { parentId, streamId, max })
 		}
 		else if (account && account !== '') {
+			console.log('activate back')
 			clientSocket.emit('client', { parentId, streamId, account, max, back })
 		}
 	})
 
 	clientSocket.on('loaded', async () => {
+		console.log('loaded')
 		await wait(5 * 1000)
 		clientSocket.emit('isWaiting', { parentId, streamId, max })
 	})
