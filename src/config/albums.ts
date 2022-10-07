@@ -29,6 +29,7 @@ export const albums = {
 		'https://music.amazon.fr/albums/B07WCHK4JR',//my-stash
 		'https://music.amazon.fr/albums/B09PF7R5H1',// fresh mix
 		'https://music.amazon.fr/albums/B09WRFW2Y6',// alvin fay
+		'https://music.amazon.fr/albums/B0BHFGDMKS',// take it easy
 		// 'https://music.amazon.fr/albums/B09MG4RYBF',//mior lunar
 		// 'https://music.amazon.fr/albums/B07CZDXC9B',
 		// 'https://music.amazon.fr/albums/B07G5PPYSY',
