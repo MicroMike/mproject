@@ -8,9 +8,9 @@ import { getSession } from './helpers/copy';
 import { openBrowser } from './openBrowser';
 import { start } from './start';
 
-export const go = () => new Promise((res) => {
+export const go = (propsPass?: any) => new Promise((res) => {
 	process.setMaxListeners(Infinity)
-	const props = process.argv
+	const props = propsPass || process.argv
 
 	const clientSocket = io('http://216.158.239.199:3000');
 

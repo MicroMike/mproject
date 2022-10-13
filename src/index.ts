@@ -1,4 +1,4 @@
-// import { go } from './go'
+import { go } from './go'
 import { wait } from './helpers/helpers'
 import shell from 'shelljs'
 
@@ -11,12 +11,12 @@ shell.exec('rm -rf /root/puppet/puppet/')
 shell.exec('killall chrome')
 
 const infiniteLoop = async () => {
-	// await go(process.argv)
-	shell.exec(`node build/go.js ${arg} ${max} ${checkAccount}`, async () => {
-		shell.exec('git pull', { async: true })
-		await wait(7000)
-		infiniteLoop()
-	})
+	await go(process.argv)
+	// shell.exec(`node build/go.js ${arg} ${max} ${checkAccount}`, async () => {
+	shell.exec('git pull')
+	await wait(7000)
+	infiniteLoop()
+	// })
 }
 
 for (let i = 0; i < max; i++) {
