@@ -8,6 +8,7 @@ const max = Number(props[3] || 1)
 const checkAccount = props[4] || ''
 
 shell.exec('rm -rf /root/puppet/puppet/')
+shell.exec('killall chrome')
 
 const infiniteLoop = async () => {
 	// await go(process.argv)
