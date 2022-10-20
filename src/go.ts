@@ -65,7 +65,7 @@ export const go = (propsPass?: any) => new Promise((res) => {
 	}
 
 	timeout = setTimeout(() => {
-		exit(400)
+		// exit(400)
 	}, 30 * 60 * 1000);
 
 	process.on('SIGINT', async () => {
