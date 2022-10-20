@@ -32,6 +32,7 @@ export const go = (propsPass?: any) => new Promise((res) => {
 	let chro: any
 	let proto: any
 	let pid: any
+	let timeout: any
 
 	const socketEmit = (event: any, params = {}) => {
 		clientSocket.emit(event, {
@@ -43,6 +44,7 @@ export const go = (propsPass?: any) => new Promise((res) => {
 	}
 
 	const exit = async (code = 0) => {
+		clearTimeout(timeout)
 		console.log('EXIT', code)
 
 		try {
@@ -62,7 +64,7 @@ export const go = (propsPass?: any) => new Promise((res) => {
 		process.exit()
 	}
 
-	setTimeout(() => {
+	timeout = setTimeout(() => {
 		exit(400)
 	}, 30 * 60 * 1000);
 
