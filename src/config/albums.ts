@@ -53,6 +53,7 @@ export const albums = {
 		'https://listen.tidal.com/album/115558312', // my stash
 		'https://listen.tidal.com/album/222894826', // alvin fay
 		'https://listen.tidal.com/album/210703692', // fresh mix
+		'https://listen.tidal.com/album/252505614', // ordhn take it easy
 		// 'https://listen.tidal.com/album/206322539',//mior lunar
 		// 'https://listen.tidal.com/album/93312939',
 		// 'https://listen.tidal.com/album/112969038',
@@ -69,12 +70,14 @@ export const albums = {
 		// 'https://listen.tidal.com/album/107892456',
 	],
 	spotify: [
-		'https://open.spotify.com/album/1VFYQwx6WVZ9eLRLkQEPRH',//mior good memories
 		'https://open.spotify.com/album/4EYeIhS1bRq51bui82dGNR',//marching smile
+		'https://open.spotify.com/album/1VFYQwx6WVZ9eLRLkQEPRH',//mior good memories
 		'https://open.spotify.com/album/0Tt1ldQ8b4zn5LRcM706ll',//red beast
 		'https://open.spotify.com/album/4griwLkxXcEjmW1gIHDFRf',//He Knows She Knows
 		'https://open.spotify.com/album/7IQzrFiKgjNqqdetqxEiIz',//my stash
+		'https://open.spotify.com/album/6c61czb1qlMadW11uq6Lor', // alvin fay
 		'https://open.spotify.com/album/4szjKFxbsHKpqpxhrm7H6L',// fresh mix
+		'https://open.spotify.com/album/3YZrjrJjUYOmrmFqqv3EMA',// take it easy
 		// 'https://open.spotify.com/album/1Coms61c9kWhzH11cZzCrD',//mior lunar
 		// 'https://open.spotify.com/album/3FJdPTLyJVPYMqQQUyb6lr',
 		// 'https://open.spotify.com/album/2jmPHLM2be2g19841vHjWE',
