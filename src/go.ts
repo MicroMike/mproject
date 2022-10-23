@@ -119,17 +119,17 @@ export const go = (propsPass?: any) => new Promise((res) => {
 		const pids = list.stdout.split(' ').map(p => Number(p))
 
 		// @ts-ignore
-		const all = process.pids.flat()
+		const all = process.env.pids.flat()
 
 		const filtredPid = pids.filter(p => !all.includes(p))
 
 		// @ts-ignore
-		process.pids[nb] = filtredPid
+		process.env.pids[nb] = filtredPid
 
 		setTimeout(() => {
 			// shell.exec(`kill -9 ${pids.join(' ')}`, { silent: true })
 			// @ts-ignore
-			console.log('process.pids[nb]', process.pids[nb])
+			console.log('process.env.pids[nb]', process.env.pids[nb])
 		}, 10000);
 
 		const returnCode: any = await start({ ...browserProps, S, account, check, player, login, socketEmit }, chrome, protocol)

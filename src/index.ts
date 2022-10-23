@@ -14,7 +14,7 @@ const status = Array(max).fill(false)
 const pids = Array(max).fill([])
 
 // @ts-ignore
-process.pids = pids
+process.env.pids = pids
 
 const infiniteLoop = async (i: number) => {
 	// await go(process.argv)
