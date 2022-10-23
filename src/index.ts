@@ -8,7 +8,7 @@ const max = Number(props[3] || 1)
 const checkAccount = props[4] || 'none'
 
 shell.exec('rm -rf /root/puppet/puppet/', { async: true })
-// shell.exec('killall chrome')
+shell.exec('killall chrome')
 
 const status = Array(max).fill(false)
 
