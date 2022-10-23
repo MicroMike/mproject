@@ -38,12 +38,16 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	let pid: any
 
 	const socketEmit = (event: any, params = {}) => {
-		clientSocket.emit(event, {
-			parentId,
-			streamId,
-			account,
-			...params,
-		});
+		try {
+			clientSocket.emit(event, {
+				parentId,
+				streamId,
+				account,
+				...params,
+			});
+		} catch (error) {
+			console.log('socket already out')
+		}
 	}
 
 	const exit = async (code = 0) => {
