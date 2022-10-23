@@ -115,17 +115,14 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		const list = shell.exec('pidof chrome', { silent: true })
 		const pids = list.stdout.split(' ').map(p => String(Number(p)))
 
-		const all = Array(max).fill('').map((a, index) => process.env[`pid${index}`]?.split(',')).flat()
+		const all = Array(max).fill('').map((a, index) => (process.env[`pid${index}`] || '')?.split(',')).flat()
 		console.log('all', all, process.env[`pid${nb}`])
 		const filtredPid = pids.filter(p => !all.includes(p))
 		console.log('filtredPid', filtredPid.join(','))
 
 		process.env[`pid${nb}`] = filtredPid.join(',')
 
-		setTimeout(() => {
-			// shell.exec(`kill -9 ${pids.join(' ')}`, { silent: true })
-			Array(max).fill('').map((a, index) => console.log('process.env', index, process.env[`pid${index}`]))
-		}, 10000);
+		Array(max).fill('').map((a, index) => console.log('process.env', index, process.env[`pid${index}`]))
 
 		const returnCode: any = await start({ ...browserProps, S, account, check, player, login, socketEmit }, chrome, protocol)
 
