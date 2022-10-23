@@ -25,11 +25,13 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		return
 	}
 
-	timeout = setTimeout(() => {
-		res('timeout')
-	}, 30 * 60 * 1000);
-
 	const inter = async () => {
+		clearTimeout(timeout)
+
+		timeout = setTimeout(() => {
+			res('timeout')
+		}, 5 * 60 * 1000);
+
 		const time = await getTimePlayer(R, S)
 
 		S.shuffleBtn !== '' && await click(R, S.shuffleBtn)
