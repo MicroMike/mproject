@@ -29,7 +29,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		clearTimeout(timeout)
 
 		timeout = setTimeout(() => {
-			res('timeout')
+			out = true
 		}, 5 * 60 * 1000);
 
 		const time = await getTimePlayer(R, S)
@@ -103,7 +103,5 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	}
 
 	await inter()
-
-	clearTimeout(timeout)
 	res(isError())
 })
