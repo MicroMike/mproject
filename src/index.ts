@@ -12,10 +12,6 @@ shell.exec('killall chrome')
 
 const status = Array(max).fill(false)
 
-Array(max).fill(0).forEach((a, i) => {
-	process.env[`pid${i}`] = ''
-})
-
 const infiniteLoop = async (i: number) => {
 	if (!i) { return }
 
@@ -27,7 +23,9 @@ const infiniteLoop = async (i: number) => {
 	// })
 }
 
-for (let i = 0; i < max; i++) {
+Array(max).fill(0).forEach((a, i) => {
+	process.env[`pid${i}`] = ''
+
 	if (!status[i]) {
 		status[i] = true
 		infiniteLoop(i)
@@ -39,4 +37,4 @@ for (let i = 0; i < max; i++) {
 			infiniteLoop(i)
 		}
 	}, 1000 * 60 * 5)
-}
+})
