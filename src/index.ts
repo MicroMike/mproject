@@ -29,6 +29,7 @@ Array(max).fill('').forEach((a, index) => {
 	process.env[`pid${idx}`] = ''
 
 	if (!status[idx]) {
+		console.log('go idx', idx)
 		status[idx] = true
 		infiniteLoop(idx)
 	}
