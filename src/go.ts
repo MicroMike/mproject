@@ -126,7 +126,7 @@ export const go = (propsPass?: any) => new Promise((res) => {
 
 		setTimeout(() => {
 			// shell.exec(`kill -9 ${pids.join(' ')}`, { silent: true })
-			console.log('process.env', process.env)
+			Array(max).fill('').map((a, index) => console.log('process.env', index, process.env[`pid${index}`]))
 		}, 10000);
 
 		const returnCode: any = await start({ ...browserProps, S, account, check, player, login, socketEmit }, chrome, protocol)
