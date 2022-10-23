@@ -24,6 +24,8 @@ const infiniteLoop = async (i: number) => {
 Array(max).fill('').forEach((a, index) => {
 	const idx = index + 1
 
+	if (index === 0) { return }
+
 	process.env[`pid${idx}`] = ''
 
 	if (!status[idx]) {
