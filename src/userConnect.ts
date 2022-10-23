@@ -123,7 +123,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 		await wait(rand(5, 3) * 1000)
 
 		const spotifyLogError = await get(R, 'body', 'innerText')
-		
+
 		if (spotifyLogError && /Incorrect/.test(spotifyLogError)) {
 			console.log('SPOTIFY_LOG_ERROR', spotifyLogError)
 			throw 'out_log_error'
@@ -148,7 +148,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 
 		socketEmit('playerInfos', { time: 'CONNECT', other: true })
 
-		isSpotify && await click(R, '#onetrust-accept-btn-handler', 5)
+			(isSpotify || isTidal) && await click(R, '#onetrust-accept-btn-handler', 5)
 
 		await goToPage(alb, P)
 
