@@ -114,6 +114,8 @@ export const go = (propsPass?: any) => new Promise((res) => {
 		proto = protocol
 		pid = chrome.pid
 
+		shell.exec('pidof chrome', (e) => console.log('pids => ', e))
+
 		const returnCode: any = await start({ ...browserProps, S, account, check, player, login, socketEmit }, chrome, protocol)
 
 		console.log('returnCode', returnCode)
