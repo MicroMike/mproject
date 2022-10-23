@@ -13,6 +13,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	let out: any = false
 	let playByLoop = rand(5)
 	let playlLoop = 0
+	let timeout: any
 
 	const userCallback: any = await userConnect(props)
 		.catch((e) => error = e.error)
@@ -23,6 +24,10 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		res(isError())
 		return
 	}
+
+	timeout = setTimeout(() => {
+		res(isError())
+	}, 30 * 60 * 1000);
 
 	const inter = async () => {
 		const time = await getTimePlayer(R, S)
@@ -97,5 +102,6 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 	await inter()
 
+	clearTimeout(timeout)
 	res(isError())
 })
