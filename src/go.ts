@@ -8,18 +8,18 @@ import { getSession } from './helpers/copy';
 import { openBrowser } from './openBrowser';
 import { start } from './start';
 
-export const go = (propsPass?: any, indexNb?: number) => new Promise((res) => {
+export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	process.setMaxListeners(Infinity)
 	const props = propsPass || process.argv
-
-	const clientSocket = io('http://216.158.239.199:3000');
 
 	const arg = props[2]
 	const max = Number(props[3] || 1)
 	const checkAccount = props[4] !== 'none' ? props[4] : ''
 	const nb = indexNb || props[5]
 
-	console.log('go', indexNb, nb)
+	if (!nb) { return }
+
+	const clientSocket = io('http://216.158.239.199:3000');
 
 	const check = !!checkAccount || /check/i.test(arg)
 	const checkLive = /checklive/i.test(arg)

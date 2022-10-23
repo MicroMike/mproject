@@ -13,7 +13,7 @@ const checkAccount = props[4] || 'none'
 const status = Array(max).fill(false)
 
 const infiniteLoop = async (i: number) => {
-	await go(process.argv, i)
+	await go(process.argv, String(i))
 	// shell.exec(`node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
 	// shell.exec('git pull')
 	status[i] = false
