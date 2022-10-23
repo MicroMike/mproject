@@ -19,6 +19,8 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	const checkAccount = props[4] !== 'none' ? props[4] : ''
 	const nb = indexNb || props[5]
 
+	console.log('go', nb)
+
 	const check = !!checkAccount || /check/i.test(arg)
 	const checkLive = /checklive/i.test(arg)
 	const varPath = process.platform === 'darwin' ? '/Users/mike/Dev/puppet/puppet/' : '/root/puppet/puppet/'
