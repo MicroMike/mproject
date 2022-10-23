@@ -77,7 +77,7 @@ export const albums = {
 		'https://open.spotify.com/album/7IQzrFiKgjNqqdetqxEiIz',//my stash
 		'https://open.spotify.com/album/6c61czb1qlMadW11uq6Lor', // alvin fay
 		'https://open.spotify.com/album/4szjKFxbsHKpqpxhrm7H6L',// fresh mix
-		'https://open.spotify.com/album/3YZrjrJjUYOmrmFqqv3EMA',// take it easy
+		// 'https://open.spotify.com/album/3YZrjrJjUYOmrmFqqv3EMA',// take it easy
 		// 'https://open.spotify.com/album/1Coms61c9kWhzH11cZzCrD',//mior lunar
 		// 'https://open.spotify.com/album/3FJdPTLyJVPYMqQQUyb6lr',
 		// 'https://open.spotify.com/album/2jmPHLM2be2g19841vHjWE',
