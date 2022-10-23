@@ -125,7 +125,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 
 		process.env[`pid${nb}`] = filtredPid.join(',')
 
-		Array(max).fill('').map((a, index) => console.log('process.env', index, process.env[`pid${index}`]))
+		// Array(max).fill('').map((a, index) => console.log('process.env', index, process.env[`pid${index}`]))
 
 		const returnCode: any = await start({ ...browserProps, S, account, check, player, login, socketEmit }, chrome, protocol)
 
