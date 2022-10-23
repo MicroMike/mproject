@@ -10,12 +10,10 @@ const checkAccount = props[4] || 'none'
 shell.exec('rm -rf /root/puppet/puppet/')
 // shell.exec('killall chrome')
 
-const status = Array(max).fill(false)
+const status = Array(Number(max) + 1).fill(false)
 
 const infiniteLoop = async (i: number) => {
-	if (!i) { return }
-
-	await go(process.argv, String(i) || '0')
+	await go(process.argv, i)
 	// shell.exec(`node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
 	// shell.exec('git pull')
 	status[i] = false
@@ -24,17 +22,19 @@ const infiniteLoop = async (i: number) => {
 }
 
 Array(max).fill('').forEach((a, index) => {
-	process.env[`pid${index}`] = ''
+	const idx = index + 1
 
-	if (!status[index]) {
-		status[index] = true
-		infiniteLoop(index)
+	process.env[`pid${idx}`] = ''
+
+	if (!status[idx]) {
+		status[idx] = true
+		infiniteLoop(idx)
 	}
 
 	setInterval(() => {
-		if (!status[index]) {
-			status[index] = true
-			infiniteLoop(index)
+		if (!status[idx]) {
+			status[idx] = true
+			infiniteLoop(idx)
 		}
 	}, 1000 * 60 * 5)
 })
