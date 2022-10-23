@@ -17,12 +17,12 @@ Array(max).fill(0).forEach((a, i) => {
 })
 
 const infiniteLoop = async (i: number) => {
-	// await go(process.argv)
-	shell.exec(`node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
-		shell.exec('git pull')
-		status[i] = false
-		process.env[`pid${i}`] = ''
-	})
+	await go(process.argv)
+	// shell.exec(`node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
+	shell.exec('git pull')
+	status[i] = false
+	process.env[`pid${i}`] = ''
+	// })
 }
 
 for (let i = 0; i < max; i++) {
