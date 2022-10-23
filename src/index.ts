@@ -21,19 +21,19 @@ const infiniteLoop = async (i: number) => {
 	// })
 }
 
-Array(max).fill('').forEach((a, index) => {
-	process.env[`pid${index}`] = ''
+for (let a = 0; a < max; a++) {
+	process.env[`pid${a}`] = ''
 
-	if (!status[index]) {
-		console.log('go index', index)
-		status[index] = true
-		infiniteLoop(index)
+	if (!status[a]) {
+		console.log('go a', a)
+		status[a] = true
+		infiniteLoop(a)
 	}
 
 	setInterval(() => {
-		if (!status[index]) {
-			status[index] = true
-			infiniteLoop(index)
+		if (!status[a]) {
+			status[a] = true
+			infiniteLoop(a)
 		}
 	}, 1000 * 60 * 5)
-})
+}
