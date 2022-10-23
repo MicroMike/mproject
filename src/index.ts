@@ -7,6 +7,8 @@ const arg = props[2]
 const max = Number(props[3] || 1)
 const checkAccount = props[4] || 'none'
 
+console.log('checkAccount', checkAccount)
+
 shell.exec('rm -rf /root/puppet/puppet/')
 shell.exec('killall chrome')
 
