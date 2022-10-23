@@ -46,11 +46,6 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	const exit = async (code = 0) => {
 		console.log('EXIT', code)
 
-		try {
-			proto.close()
-			chro.kill()
-		} catch (error) { }
-
 		if (/out_error_connect|tidalError|out_log_error/.test(code.toString())) {
 			socketEmit('errorcheck', { account })
 		} else {
@@ -58,6 +53,8 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		}
 
 		socketEmit('over')
+
+		shell.exec(`kill -9 ${process.env[`pid${nb}`]}`, { silent: true })
 
 		code !== 500 && res(code)
 		// process.exit()
