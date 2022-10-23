@@ -118,17 +118,14 @@ export const go = (propsPass?: any) => new Promise((res) => {
 		const list = shell.exec('pidof chrome', { silent: true })
 		const pids = list.stdout.split(' ').map(p => String(Number(p)))
 
-		// @ts-ignore
-		const all = Array(max).fill('').map((a, index) => process.env[`pid${index}`].join(',')).flat()
+		const all = Array(max).fill('').map((a, index) => process.env[`pid${index}`]?.split(',')).flat()
 		console.log('all', all)
 		const filtredPid = pids.filter(p => !all.includes(p))
 
-		// @ts-ignore
-		process.env[`pid${nb}`] = filtredPid.split(',')
+		process.env[`pid${nb}`] = filtredPid.join(',')
 
 		setTimeout(() => {
 			// shell.exec(`kill -9 ${pids.join(' ')}`, { silent: true })
-			// @ts-ignore
 			console.log('process.env', process.env)
 		}, 10000);
 

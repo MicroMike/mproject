@@ -7,12 +7,14 @@ const arg = props[2]
 const max = Number(props[3] || 1)
 const checkAccount = props[4] || 'none'
 
-console.log('checkAccount', checkAccount)
-
 shell.exec('rm -rf /root/puppet/puppet/')
 shell.exec('killall chrome')
 
 const status = Array(max).fill(false)
+
+Array(max).fill(0).forEach((a, i) => {
+	process.env[`pid${i}`] = ''
+})
 
 const infiniteLoop = async (i: number) => {
 	// await go(process.argv)
@@ -25,8 +27,6 @@ const infiniteLoop = async (i: number) => {
 }
 
 for (let i = 0; i < max; i++) {
-	// @ts-ignore
-	process.env[`pid${i}`] = ''
 
 	if (!status[i]) {
 		status[i] = true
