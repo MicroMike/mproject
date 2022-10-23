@@ -11,10 +11,6 @@ shell.exec('rm -rf /root/puppet/puppet/')
 shell.exec('killall chrome')
 
 const status = Array(max).fill(false)
-const pids = [[1,7,8], [2], [3], [0], [0], [0], [0], [0], [0], [0]]
-
-// @ts-ignore
-process.env.pids = pids
 
 const infiniteLoop = async (i: number) => {
 	// await go(process.argv)
@@ -22,11 +18,14 @@ const infiniteLoop = async (i: number) => {
 		shell.exec('git pull')
 		status[i] = false
 		// @ts-ignore
-		process.pids[i] = []
+		process.env[`pid${i}`] = []
 	})
 }
 
 for (let i = 0; i < max; i++) {
+	// @ts-ignore
+	process.env[`pid${i}`] = []
+
 	if (!status[i]) {
 		status[i] = true
 		infiniteLoop(i)
