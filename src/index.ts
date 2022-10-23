@@ -11,7 +11,7 @@ shell.exec('rm -rf /root/puppet/puppet/')
 shell.exec('killall chrome')
 
 const status = Array(max).fill(false)
-const pids = Array(max).fill([0])
+const pids = [[0], [0], [0], [0], [0], [0], [0], [0], [0], [0]]
 
 // @ts-ignore
 process.env.pids = pids
