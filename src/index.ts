@@ -11,12 +11,18 @@ shell.exec('rm -rf /root/puppet/puppet/')
 shell.exec('killall chrome')
 
 const status = Array(max).fill(false)
+const pids = Array(max).fill([])
+
+// @ts-ignore
+process.pids = pids
 
 const infiniteLoop = async (i: number) => {
 	// await go(process.argv)
-	shell.exec(`node build/go.js ${arg} ${max} ${checkAccount}`, async () => {
+	shell.exec(`node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
 		shell.exec('git pull')
 		status[i] = false
+		// @ts-ignore
+		process.pids[i] = []
 	})
 }
 
