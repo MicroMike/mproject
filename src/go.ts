@@ -119,8 +119,9 @@ export const go = (propsPass?: any) => new Promise((res) => {
 		const pids = list.stdout.split(' ').map(p => String(Number(p)))
 
 		const all = Array(max).fill('').map((a, index) => process.env[`pid${index}`]?.split(',')).flat()
-		console.log('all', all)
+		console.log('all', all, process.env[`pid${nb}`])
 		const filtredPid = pids.filter(p => !all.includes(p))
+		console.log('filtredPid', filtredPid.join(','))
 
 		process.env[`pid${nb}`] = filtredPid.join(',')
 
