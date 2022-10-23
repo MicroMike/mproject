@@ -16,7 +16,7 @@ export const go = (propsPass?: any) => new Promise((res) => {
 
 	const arg = props[2]
 	const max = Number(props[3] || 1)
-	const checkAccount = props[4]
+	const checkAccount = props[4] !== 'none' ? props[4] : ''
 	const nb = props[5]
 
 	const check = !!checkAccount || /check/i.test(arg)

@@ -5,7 +5,7 @@ import shell from 'shelljs'
 const props = process.argv
 const arg = props[2]
 const max = Number(props[3] || 1)
-const checkAccount = props[4] || ''
+const checkAccount = props[4] || 'none'
 
 shell.exec('rm -rf /root/puppet/puppet/')
 shell.exec('killall chrome')
