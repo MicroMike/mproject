@@ -25,17 +25,17 @@ shell.exec('rm -rf /root/puppet/puppet/', () => {
 		Array(max).fill(0).forEach((a, i) => {
 			process.env[`pid${i}`] = ''
 
-			if (!status[i]) {
-				status[i] = true
-				infiniteLoop(i)
-			}
+			// if (!status[i]) {
+			// 	status[i] = true
+			// 	infiniteLoop(i)
+			// }
 
 			setInterval(() => {
 				if (!status[i]) {
 					status[i] = true
 					infiniteLoop(i)
 				}
-			}, 1000 * 60 * 5)
+			}, 1000 * 60)
 		})
 	})
 })
