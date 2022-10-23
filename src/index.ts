@@ -17,6 +17,8 @@ Array(max).fill(0).forEach((a, i) => {
 })
 
 const infiniteLoop = async (i: number) => {
+	if (!i) { return }
+
 	await go(process.argv, String(i))
 	// shell.exec(`node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
 	// shell.exec('git pull')
@@ -25,19 +27,16 @@ const infiniteLoop = async (i: number) => {
 	// })
 }
 
+for (let i = 0; i < max; i++) {
+	if (!status[i]) {
+		status[i] = true
+		infiniteLoop(i)
+	}
 
-setTimeout(() => {
-	for (let i = 0; i < max; i++) {
+	setInterval(() => {
 		if (!status[i]) {
 			status[i] = true
 			infiniteLoop(i)
 		}
-
-		setInterval(() => {
-			if (!status[i]) {
-				status[i] = true
-				infiniteLoop(i)
-			}
-		}, 1000 * 60 * 5)
-	}
-}, 5000);
+	}, 1000 * 60 * 5)
+}
