@@ -18,6 +18,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	const nb = indexNb || props[5]
 
 	if (!nb) { return }
+	console.log('go ', nb)
 
 	const clientSocket = io('http://216.158.239.199:3000');
 
