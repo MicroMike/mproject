@@ -20,7 +20,7 @@ export const go = (propsPass?: any, indexNb?: number) => new Promise((res) => {
 	const checkAccount = props[4] !== 'none' ? props[4] : ''
 	const nb = indexNb || props[5]
 
-	console.log('go', nb)
+	console.log('go', indexNb, nb)
 
 	const check = !!checkAccount || /check/i.test(arg)
 	const checkLive = /checklive/i.test(arg)
