@@ -8,7 +8,7 @@ import { getSession } from './helpers/copy';
 import { openBrowser } from './openBrowser';
 import { start } from './start';
 
-export const go = (propsPass?: any, indexNb?: number) => new Promise((res) => {
+export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	process.setMaxListeners(Infinity)
 	const props = propsPass || process.argv
 
@@ -17,7 +17,7 @@ export const go = (propsPass?: any, indexNb?: number) => new Promise((res) => {
 	const arg = props[2]
 	const max = Number(props[3] || 1)
 	const checkAccount = props[4] !== 'none' ? props[4] : ''
-	const nb = props[5] || indexNb
+	const nb = indexNb || props[5]
 
 	const check = !!checkAccount || /check/i.test(arg)
 	const checkLive = /checklive/i.test(arg)

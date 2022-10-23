@@ -17,7 +17,7 @@ Array(max).fill(0).forEach((a, i) => {
 })
 
 const infiniteLoop = async (i: number) => {
-	await go(process.argv, i)
+	await go(process.argv, String(i))
 	// shell.exec(`node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
 	shell.exec('git pull')
 	status[i] = false
