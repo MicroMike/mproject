@@ -60,7 +60,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		socketEmit('over')
 
 		code !== 500 && res(code)
-		process.exit()
+		// process.exit()
 	}
 
 	process.on('SIGINT', async () => {
