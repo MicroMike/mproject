@@ -21,6 +21,11 @@ const infiniteLoop = async (i: number) => {
 }
 
 for (let i = 0; i < max; i++) {
+	if (!status[i]) {
+		status[i] = true
+		infiniteLoop(i)
+	}
+
 	setInterval(() => {
 		if (!status[i]) {
 			status[i] = true
