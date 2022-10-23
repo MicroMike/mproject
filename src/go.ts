@@ -119,12 +119,12 @@ export const go = (propsPass?: any) => new Promise((res) => {
 		const pids = list.stdout.split(' ').map(p => String(Number(p)))
 
 		// @ts-ignore
-		const all = Array(max).fill('').map((a, index) => process.env[`pid${index}`]).flat()
-
+		const all = Array(max).fill('').map((a, index) => process.env[`pid${index}`].join(',')).flat()
+		console.log('all', all)
 		const filtredPid = pids.filter(p => !all.includes(p))
 
 		// @ts-ignore
-		process.env[`pid${nb}`] = filtredPid
+		process.env[`pid${nb}`] = filtredPid.split(',')
 
 		setTimeout(() => {
 			// shell.exec(`kill -9 ${pids.join(' ')}`, { silent: true })

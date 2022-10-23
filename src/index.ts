@@ -18,13 +18,13 @@ const infiniteLoop = async (i: number) => {
 		shell.exec('git pull')
 		status[i] = false
 		// @ts-ignore
-		process.env[`pid${i}`] = []
+		process.env[`pid${i}`] = ''
 	})
 }
 
 for (let i = 0; i < max; i++) {
 	// @ts-ignore
-	process.env[`pid${i}`] = []
+	process.env[`pid${i}`] = ''
 
 	if (!status[i]) {
 		status[i] = true
