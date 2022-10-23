@@ -26,7 +26,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	}
 
 	timeout = setTimeout(() => {
-		res(isError())
+		res('timeout')
 	}, 30 * 60 * 1000);
 
 	const inter = async () => {
