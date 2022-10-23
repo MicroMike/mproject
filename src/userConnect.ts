@@ -148,7 +148,9 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 
 		socketEmit('playerInfos', { time: 'CONNECT', other: true })
 
-			(isSpotify || isTidal) && await click(R, '#onetrust-accept-btn-handler', 5)
+		if (isSpotify || isTidal) {
+			await click(R, '#onetrust-accept-btn-handler', 5)
+		}
 
 		await goToPage(alb, P)
 
