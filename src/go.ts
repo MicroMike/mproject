@@ -18,7 +18,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	const nb = indexNb || props[5]
 
 	if (!nb) { return }
-	console.log('go ', nb)
+	// console.log('go ', nb)
 
 	const clientSocket = io('http://216.158.239.199:3000');
 
@@ -119,9 +119,9 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		const pids = list.stdout.split(' ').map(p => String(Number(p)))
 
 		const all = Array(max).fill('').map((a, index) => (process.env[`pid${index}`] || '')?.split(',')).flat()
-		console.log('all', all, process.env[`pid${nb}`])
+		// console.log('all', all, process.env[`pid${nb}`])
 		const filtredPid = pids.filter(p => !all.includes(p))
-		console.log('filtredPid', nb, filtredPid.join(','))
+		// console.log('filtredPid', nb, filtredPid.join(','))
 
 		process.env[`pid${nb}`] = filtredPid.join(',')
 

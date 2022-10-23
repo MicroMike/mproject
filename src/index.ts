@@ -25,7 +25,7 @@ for (let a = 0; a < max; a++) {
 	process.env[`pid${a}`] = ''
 
 	if (!status[a]) {
-		console.log('go a', a)
+		// console.log('go a', a)
 		status[a] = true
 		infiniteLoop(a)
 	}
