@@ -11,7 +11,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	let countPlays = 0
 	let pauseCount = 0
 	let out: any = false
-	let playByLoop = rand(7,2)
+	let playByLoop = rand(7, 2)
 	let playlLoop = 0
 	let timeout: any
 
@@ -66,10 +66,11 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 5, countPlays })
 		}
 
-		if (countPlays > playByLoop) {
-			++playlLoop
-			countPlays = 0
-
+		if (pauseCount > 10) {
+			await takeScreenshot(P, 'freeze', socketEmit, login)
+			out = 'freeze'
+		}
+		else if (countPlays > playByLoop || pauseCount > 5) {
 			if (player === 'apple') {
 				await click(R, S.pauseBtn)
 				await wait(rand(5, 3) * 1000)
@@ -88,11 +89,11 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			await wait(rand(5, 3) * 1000)
 			await click(R, S.play, 60)
 
-			socketEmit('playerInfos', { time: 'PLAY', ok: true })
-		}
-		else if (pauseCount > 10) {
-			await takeScreenshot(P, 'freeze', socketEmit, login)
-			out = 'freeze'
+			if (pauseCount === 0) {
+				++playlLoop
+				countPlays = 0
+				socketEmit('playerInfos', { time: 'PLAY', ok: true })
+			}
 		} else if (playlLoop === 5 || check) {
 			out = 'logout'
 		}
