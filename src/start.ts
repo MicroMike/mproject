@@ -11,7 +11,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	let countPlays = 0
 	let pauseCount = 0
 	let out: any = false
-	let playByLoop = rand(5)
+	let playByLoop = rand(7,2)
 	let playlLoop = 0
 	let timeout: any
 
