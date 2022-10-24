@@ -51,7 +51,6 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			next = false
 		} else {
 			++pauseCount
-			await takeScreenshot(P, 'freeze', socketEmit, login)
 
 			await I.dispatchMouseEvent({
 				type: 'mousePressed',
