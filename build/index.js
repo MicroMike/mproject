@@ -35,83 +35,50 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-process.setMaxListeners(Infinity);
-var CDP = require('chrome-remote-interface');
-var socketIo = require('socket.io-client');
-var chromeConfig_1 = require("./config/chromeConfig");
-var playerConfig_1 = require("./config/playerConfig");
-var helpers_1 = require("./helpers/helpers");
-var userConnect_1 = require("./userConnect");
-var clientSocket = socketIo('http://216.158.239.199:3000', { transports: ['websocket'] });
-var arg = process.argv[2];
-var max = process.argv[3] || 1;
-var checkAccount = process.argv[4];
-var check = !!checkAccount || /check/i.test(arg);
-var account = 'spotify:katie.williams@use.startmail.com:055625Ff';
-var socketEmit = function (event, params) {
-    // socket.emit(event, {
-    // 	parentId,
-    // 	streamId,
-    // 	account,
-    // 	...params,
-    // });
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var go = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, player, login, pass, appleGoToPage, S, launchChrome, chrome, options, protocol, Network, Page, Runtime, DOM, Input, Browser, Target, N, P, R, D, B, I, T, error_1;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _a = account.split(':'), player = _a[0], login = _a[1], pass = _a[2];
-                appleGoToPage = function () { return __awaiter(void 0, void 0, void 0, function () {
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0:
-                                if (!(player === 'apple')) return [3 /*break*/, 2];
-                                return [4 /*yield*/, (0, helpers_1.click)(R, S.pauseBtn, 1, false)];
-                            case 1:
-                                _a.sent();
-                                _a.label = 2;
-                            case 2: return [2 /*return*/];
-                        }
-                    });
-                }); };
-                S = (0, playerConfig_1.getConfig)(player);
-                launchChrome = (0, chromeConfig_1.chromeConfig)(player, login);
-                return [4 /*yield*/, launchChrome()];
+Object.defineProperty(exports, "__esModule", { value: true });
+var go_1 = require("./go");
+var shelljs_1 = __importDefault(require("shelljs"));
+var props = process.argv;
+var arg = props[2];
+var max = Number(props[3] || 1);
+var checkAccount = props[4] || 'none';
+shelljs_1.default.exec('rm -rf /root/puppet/puppet/', { async: true });
+shelljs_1.default.exec('killall chrome');
+var status = Array(max).fill(false);
+var infiniteLoop = function (i) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, (0, go_1.go)(process.argv, String(i))
+                // shell.exec(`node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
+                // shell.exec('git pull')
+            ];
             case 1:
-                chrome = _b.sent();
-                options = {
-                    host: '127.0.0.1',
-                    port: chrome.port
-                };
-                return [4 /*yield*/, (0, helpers_1.wait)(5 * 1000)];
-            case 2:
-                _b.sent();
-                return [4 /*yield*/, CDP(options)];
-            case 3:
-                protocol = _b.sent();
-                Network = protocol.Network, Page = protocol.Page, Runtime = protocol.Runtime, DOM = protocol.DOM, Input = protocol.Input, Browser = protocol.Browser, Target = protocol.Target;
-                N = Network;
-                P = Page;
-                R = Runtime;
-                D = DOM;
-                B = Browser;
-                I = Input;
-                T = Target;
-                _b.label = 4;
-            case 4:
-                _b.trys.push([4, 6, , 7]);
-                return [4 /*yield*/, (0, userConnect_1.userConnect)(protocol, S, account, socketEmit, check)];
-            case 5:
-                _b.sent();
-                return [3 /*break*/, 7];
-            case 6:
-                error_1 = _b.sent();
-                console.log('error', error_1);
-                return [3 /*break*/, 7];
-            case 7: return [2 /*return*/];
+                _a.sent();
+                // shell.exec(`node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
+                // shell.exec('git pull')
+                status[i] = false;
+                process.env["pid".concat(i)] = '';
+                return [2 /*return*/];
         }
     });
 }); };
-go();
+var _loop_1 = function (a) {
+    process.env["pid".concat(a)] = '';
+    if (!status[a]) {
+        // console.log('go a', a)
+        status[a] = true;
+        infiniteLoop(a);
+    }
+    setInterval(function () {
+        if (!status[a]) {
+            status[a] = true;
+            infiniteLoop(a);
+        }
+    }, 1000 * 60 * 5);
+};
+for (var a = 0; a < max; a++) {
+    _loop_1(a);
+}

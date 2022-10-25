@@ -4,7 +4,8 @@
 	"main": "index.js",
 	"scripts": {
 		"inst": "rm -rf node_modules/ && rm package-lock.json && npm i",
-		"start": "git pull && tsc && node build/index.js"
+		"start": "git pull && tsc && node build/index.js",
+		"amazon": "tsc && node build/amazon.js"
 	},
 	"author": "",
 	"license": "ISC",
