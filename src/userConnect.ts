@@ -13,6 +13,7 @@ import {
 	click,
 	tidalSelect,
 	get,
+	takeScreenshot,
 } from './helpers/helpers';
 var colors = require('colors');
 
@@ -99,6 +100,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 						if (isTidal) {
 							throw 'del'
 						}
+						await takeScreenshot(P, 'out_no_logging', socketEmit, login)
 						throw 'out_no_logging'
 					}
 				}
@@ -113,6 +115,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 					if (isTidal) {
 						throw 'del'
 					}
+					await takeScreenshot(P, 'out_error_connect', socketEmit, login)
 					throw 'out_error_connect'
 				}
 
@@ -126,6 +129,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 
 		if (spotifyLogError && /Incorrect/.test(spotifyLogError)) {
 			console.log('SPOTIFY_LOG_ERROR', spotifyLogError)
+			await takeScreenshot(P, 'out_log_error', socketEmit, login)
 			throw 'out_log_error'
 		}
 
@@ -135,6 +139,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 			if (isTidal) {
 				throw 'tidalError'
 			}
+			await takeScreenshot(P, 'out_log_error', socketEmit, login)
 			throw 'out_log_error'
 		}
 
