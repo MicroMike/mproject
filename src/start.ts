@@ -62,7 +62,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			await wait(rand(5, 3) * 1000)
 			await click(R, S.play, 60)
 
-			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 5, countPlays })
+			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 5, countPlays, playlLoop })
 		}
 
 		if (pauseCount > 10) {
