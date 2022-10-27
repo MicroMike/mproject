@@ -77,7 +77,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	clientSocket.on('activate', async (socketId: any) => {
 		back = !!streamId
 
-		if (!back) {
+		if (!back && account === '') {
 			streamId = socketId
 			clientSocket.emit('isWaiting', { parentId, streamId, max })
 		}
