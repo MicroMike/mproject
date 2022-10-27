@@ -137,6 +137,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 
 		if (!logSuccess) {
 			if (isTidal) {
+				await takeScreenshot(P, 'tidalError', socketEmit, login)
 				throw 'tidalError'
 			}
 			await takeScreenshot(P, 'out_log_error', socketEmit, login)
