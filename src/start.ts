@@ -12,7 +12,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	let pauseCount = 0
 	let out: any = false
 	let playByLoop = rand(7, 2)
-	let playlLoop = 0
+	let playLoop = 0
 	let timeout: any
 
 	const userCallback: any = await userConnect(props)
@@ -62,7 +62,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			await wait(rand(5, 3) * 1000)
 			await click(R, S.play, 60)
 
-			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 5, countPlays, playlLoop })
+			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 5, countPlays, playLoop })
 		}
 
 		if (pauseCount > 10) {
@@ -89,11 +89,11 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			await click(R, S.play, 60)
 
 			if (pauseCount === 0) {
-				++playlLoop
+				++playLoop
 				countPlays = 0
 				socketEmit('playerInfos', { time: 'PLAY', ok: true })
 			}
-		} else if (playlLoop === 5 || check) {
+		} else if (playLoop === 5 || check) {
 			out = 'logout'
 		}
 
