@@ -47,7 +47,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 				await P.navigate({ url: 'https://web.napster.com/auth/login' });
 				await P.loadEventFired();
 			} else {
-				await click(R, S.gotoLog)
+				await click(I, R, S.gotoLog)
 			}
 
 			if (isApple) {
@@ -92,7 +92,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 					await waitForSelector(R, S.email, 30)
 					await type(R, login, S.email)
 
-					isTidal && await click(R, S.next)
+					isTidal && await click(I, R, S.next)
 
 					const outNoLogging = await waitForSelector(R, S.loginError, 5)
 
@@ -107,7 +107,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 
 				await type(R, pass, S.pass)
 
-				await click(R, S.connectBtn)
+				await click(I, R, S.connectBtn)
 
 				const outErrorConnect = await waitForSelector(R, S.loginError, 10)
 
@@ -155,7 +155,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 		socketEmit('playerInfos', { time: 'CONNECT', other: true })
 
 		if (isSpotify || isTidal) {
-			await click(R, '#onetrust-accept-btn-handler', 5)
+			await click(I, R, '#onetrust-accept-btn-handler', 5)
 		}
 
 		await goToPage(alb, P)
@@ -170,7 +170,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 		})
 
 		await wait(rand(5, 3) * 1000)
-		await click(R, S.play)
+		await click(I, R, S.play)
 		await wait(rand(5, 3) * 1000)
 
 		socketEmit('playerInfos', { time: 'PLAY', ok: true })

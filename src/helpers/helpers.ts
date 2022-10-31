@@ -30,11 +30,22 @@ const waitForSelector = (R: any, selector: string, time = 60) => new Promise((re
 	}, 1000);
 })
 
-const click = (R: any, selector: string, time?: number, exitOnError = true) => new Promise(async (res, rej) => {
+const click = (I: any, R: any, selector: string, time?: number, exitOnError = true) => new Promise(async (res, rej) => {
 	const wfs = R && await waitForSelector(R, selector, time)
 
 	await wait(rand(5, 1) * 1000)
-	R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].click()' })
+	const e = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].offsetLeft' })
+	const f = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].offsetTop' })
+
+	const x = e.result.value
+	const y = f.result.value
+
+	await I.dispatchMouseEvent({
+		type: 'mousePressed',
+		button: 'left',
+		x,
+		y
+	})
 
 	res(wfs)
 })

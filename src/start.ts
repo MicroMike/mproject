@@ -34,7 +34,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 		const time = await getTimePlayer(R, S)
 
-		S.shuffleBtn !== '' && await click(R, S.shuffleBtn)
+		S.shuffleBtn !== '' && await click(I, R, S.shuffleBtn)
 
 		if (time > currTime) {
 			pauseCount = 0
@@ -60,7 +60,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			})
 
 			await wait(rand(5, 3) * 1000)
-			await click(R, S.play, 60)
+			await click(I, R, S.play, 60)
 
 			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 5, countPlays, playLoop })
 		}
@@ -71,7 +71,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		}
 		else if (countPlays > playByLoop || pauseCount > 5) {
 			if (player === 'apple') {
-				await click(R, S.pauseBtn)
+				await click(I, R, S.pauseBtn)
 				await wait(rand(5, 3) * 1000)
 			}
 
@@ -86,7 +86,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			})
 
 			await wait(rand(5, 3) * 1000)
-			await click(R, S.play, 60)
+			await click(I, R, S.play, 60)
 
 			if (pauseCount === 0) {
 				++playLoop
