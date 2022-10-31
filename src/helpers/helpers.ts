@@ -49,6 +49,15 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 		x: x + 3,
 		y: y + 3,
 	})
+	
+	await wait(rand(2, 1) * 1000)
+
+	await I.dispatchMouseEvent({
+		type: 'mouseReleased',
+		button: 'left',
+		x: x + 3,
+		y: y + 3,
+	})
 
 	res(wfs)
 })
