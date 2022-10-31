@@ -38,8 +38,8 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 	const e = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].offsetLeft' })
 	const f = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].offsetTop' })
 
-	const x = e.result
-	const y = f
+	const x = e.result.value
+	const y = f.result.value
 
 	console.log('x,x', x, y)
 
