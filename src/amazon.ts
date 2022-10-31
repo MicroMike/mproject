@@ -24,10 +24,10 @@ const go = async () => {
 	await type(R, arg, '#ap_email')
 	await type(R, password, '#ap_password')
 	await type(R, password, '#ap_password_check')
-	await click(R, '#continue')
+	await click(I, R, '#continue')
 
 	await waitForSelector(R, '[url-type="SUBSCRIPTION_BUTTON_URL_OVERRIDE"]', 60 * 1000 * 10)
-	await click(R, '[url-type="SUBSCRIPTION_BUTTON_URL_OVERRIDE"]')
+	await click(I, R, '[url-type="SUBSCRIPTION_BUTTON_URL_OVERRIDE"]')
 
 	await type(R, 'Micro', '[name="ppw-accountHolderName"]')
 	await type(R, card, '[name="addCreditCardNumber"]')
@@ -39,8 +39,8 @@ const go = async () => {
 	await type(R, '75010', '[name="ppw-postalCode"]')
 	await type(R, '0637827364', '[name="ppw-phoneNumber"]')
 
-	await click(R, '[name="ppw-widgetEvent:AddAddressEvent"]')
-	await click(R, '[name="ppw-widgetEvent:UseSuggestedAddressEvent"]')
+	await click(I, R, '[name="ppw-widgetEvent:AddAddressEvent"]')
+	await click(I, R, '[name="ppw-widgetEvent:UseSuggestedAddressEvent"]')
 }
 
 go()
