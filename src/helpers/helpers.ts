@@ -34,6 +34,7 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 	const wfs = R && await waitForSelector(R, selector, time)
 
 	await wait(rand(5, 1) * 1000)
+
 	const e = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].offsetLeft' })
 	const f = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].offsetTop' })
 
@@ -43,8 +44,8 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 	await I.dispatchMouseEvent({
 		type: 'mousePressed',
 		button: 'left',
-		x,
-		y
+		x: x + 3,
+		y: y + 3,
 	})
 
 	res(wfs)
