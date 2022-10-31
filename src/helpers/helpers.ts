@@ -41,6 +41,8 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 	const x = e.result.value
 	const y = f.result.value
 
+	console.log('x,x', x, y)
+
 	await I.dispatchMouseEvent({
 		type: 'mousePressed',
 		button: 'left',
