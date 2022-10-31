@@ -45,8 +45,8 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 
 	const option = {
 		button: 'left',
-		x: x + 5,
-		y: y + 5,
+		x: x,
+		y: y,
 	}
 
 	await I.dispatchMouseEvent({
