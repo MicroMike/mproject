@@ -35,28 +35,30 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 
 	await wait(rand(5, 1) * 1000)
 
-	const e = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].offsetLeft' })
-	const f = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].offsetTop' })
+	const e = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].getBoundingClientRect().left' })
+	const f = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].getBoundingClientRect().top' })
 
 	const x = e.result.value
 	const y = f.result.value
 
-	console.log('x,x', x, y)
+	console.log('x, y', x, y)
 
-	await I.dispatchMouseEvent({
-		type: 'mousePressed',
+	const option = {
 		button: 'left',
 		x: x + 3,
 		y: y + 3,
+	}
+
+	await I.dispatchMouseEvent({
+		...option,
+		type: 'mousePressed',
 	})
-	
+
 	await wait(rand(2, 1) * 1000)
 
 	await I.dispatchMouseEvent({
+		...option,
 		type: 'mouseReleased',
-		button: 'left',
-		x: x + 3,
-		y: y + 3,
 	})
 
 	res(wfs)
