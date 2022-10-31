@@ -45,8 +45,8 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 
 	const option = {
 		button: 'left',
-		x: x + 3,
-		y: y + 3,
+		x: x + 5,
+		y: y + 5,
 	}
 
 	await I.dispatchMouseEvent({
@@ -54,7 +54,7 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 		type: 'mousePressed',
 	})
 
-	await wait(rand(2, 1) * 1000)
+	await wait(rand(2, 1) * 100)
 
 	await I.dispatchMouseEvent({
 		...option,
