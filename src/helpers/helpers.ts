@@ -39,8 +39,8 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 	const e = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].getBoundingClientRect().left' })
 	const f = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].getBoundingClientRect().top' })
 
-	const x = Number(e.result.value)+10
-	const y = Number(f.result.value)+10
+	const x = Number(e.result.value) + 10
+	const y = Number(f.result.value) + 10
 
 	console.log('x, y', x, y)
 
@@ -53,7 +53,7 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 	await I.dispatchMouseEvent({
 		...option,
 		type: 'mousePressed',
-		clickCount:1,
+		clickCount: 1,
 	})
 
 	await wait(rand(2, 1) * 100)
