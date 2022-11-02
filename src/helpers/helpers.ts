@@ -39,15 +39,15 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 	const e = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].getBoundingClientRect().left' })
 	const f = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].getBoundingClientRect().top' })
 
-	const x = e.result.value
-	const y = f.result.value
+	const x = Number(e.result.value)+10
+	const y = Number(f.result.value)+10
 
 	console.log('x, y', x, y)
 
 	const option = {
 		button: 'left',
-		x: x + 10,
-		y: y + 10,
+		x,
+		y,
 	}
 
 	await I.dispatchMouseEvent({
