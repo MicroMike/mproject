@@ -48,20 +48,20 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 		button: 'left',
 		x,
 		y,
+		clickCount: 1,
 	}
 
 	await I.dispatchMouseEvent({
 		...option,
 		type: 'mousePressed',
-		clickCount: 1,
 	})
 
 	await wait(rand(2, 1) * 100)
 
-	// await I.dispatchMouseEvent({
-	// 	...option,
-	// 	type: 'mouseReleased',
-	// })
+	await I.dispatchMouseEvent({
+		...option,
+		type: 'mouseReleased',
+	})
 
 	res(wfs)
 })
