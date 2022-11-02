@@ -102,7 +102,7 @@ const goToPage = async (url: string, P: any, R?: any) => {
 	await wait(rand(5, 3) * 1000)
 
 	if (R) {
-		const expression = 'window.addEventListener("click",({clientX,clientY})=>{document.querySelector("body").insertAdjacentHTML("beforeEnd",`<div style="background:red;position:absolute;top:${clientY}px;left:${clientX}px;width:3px;height:3px;z-index:1000;"></div>`)})'
+		const expression = 'document.querySelector("#detailHeaderButton2").addEventListener("click",({clientX,clientY})=>{document.querySelector("body").insertAdjacentHTML("beforeEnd",`<div style="background:red;position:absolute;top:${clientY}px;left:${clientX}px;width:3px;height:3px;z-index:1000;"></div>`)})'
 		const e = R && await R.evaluate({ expression })
 	}
 }
