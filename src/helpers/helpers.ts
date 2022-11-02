@@ -34,33 +34,33 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 	const wfs = R && await waitForSelector(R, selector, time)
 
 	await wait(rand(5, 1) * 1000)
-	R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].click()' })
+	// R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].click()' })
 
-	// const e = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].getBoundingClientRect().left' })
-	// const f = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].getBoundingClientRect().top' })
+	const e = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].getBoundingClientRect().left' })
+	const f = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].getBoundingClientRect().top' })
 
-	// const x = e.result.value
-	// const y = f.result.value
+	const x = e.result.value
+	const y = f.result.value
 
-	// console.log('x, y', x, y)
+	console.log('x, y', x, y)
 
-	// const option = {
-	// 	button: 'left',
-	// 	x: x + 5,
-	// 	y: y + 5,
-	// }
+	const option = {
+		button: 'left',
+		x: x + 5,
+		y: y + 5,
+	}
 
-	// await I.dispatchMouseEvent({
-	// 	...option,
-	// 	type: 'mousePressed',
-	// })
+	await I.dispatchMouseEvent({
+		...option,
+		type: 'mousePressed',
+	})
 
-	// await wait(rand(2, 1) * 100)
+	await wait(rand(2, 1) * 100)
 
-	// await I.dispatchMouseEvent({
-	// 	...option,
-	// 	type: 'mouseReleased',
-	// })
+	await I.dispatchMouseEvent({
+		...option,
+		type: 'mouseReleased',
+	})
 
 	res(wfs)
 })
