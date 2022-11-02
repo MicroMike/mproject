@@ -34,13 +34,18 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 	const wfs = R && await waitForSelector(R, selector, time)
 
 	await wait(rand(5, 1) * 1000)
-	// R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].click()' })
 
 	const e = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].getBoundingClientRect().left' })
 	const f = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].getBoundingClientRect().top' })
 
 	const x = Number(e.result.value) + 10
 	const y = Number(f.result.value) + 10
+
+	if (!x || isNaN(x)) {
+		R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].click()' })
+		res(wfs)
+		return
+	}
 
 	console.log('x, y', x, y)
 
