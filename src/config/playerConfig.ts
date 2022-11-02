@@ -24,7 +24,7 @@ export const getConfig = (player: TPlayer) => {
 		S.email = '#login-username'
 		S.pass = '#login-password'
 		S.connectBtn = '#login-button'
-		S.play = '[data-testid="play-button"]'
+		S.play = '[data-testid="action-bar-row"] [data-testid="play-button"]'
 		S.timeLine = '[data-testid="playback-position"]'
 		S.shuffleBtn = '[aria-checked="false"][data-testid="control-button-shuffle"]'
 
