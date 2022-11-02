@@ -28,7 +28,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 		const isApple = player === 'apple'
 
 		const alb = album(player as TPlayer)
-		await goToPage(alb, P)
+		await goToPage(alb, P, R)
 
 		if (player === 'apple') {
 			await disableAlert(R)
@@ -158,7 +158,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 			await click(I, R, '#onetrust-accept-btn-handler', 5)
 		}
 
-		await goToPage(alb, P)
+		await goToPage(alb, P, R)
 
 		await wait(rand(5, 3) * 1000)
 

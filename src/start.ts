@@ -76,7 +76,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			}
 
 			const alb = album(player as TPlayer)
-			await goToPage(alb, P)
+			await goToPage(alb, P, R)
 
 			await I.dispatchMouseEvent({
 				type: 'mousePressed',

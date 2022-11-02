@@ -92,7 +92,7 @@ const getTimePlayer = async (R: any, S: any) => {
 	return Number(time)
 }
 
-const goToPage = async (url: string, P: any) => {
+const goToPage = async (url: string, P: any, R?: any) => {
 
 	await wait(rand(5, 3) * 1000)
 
@@ -100,6 +100,11 @@ const goToPage = async (url: string, P: any) => {
 	P.loadEventFired();
 
 	await wait(rand(5, 3) * 1000)
+
+	if (R) {
+		const expression = 'window.addEventListener("click",({clientX,clientY})=>{document.querySelector("body").insertAdjacentHTML("beforeEnd",`< div style = "background:red;position:absolute;top:${clientY}px;left:${clientX}px;width:3px;height:3px;z-index:1000;" > </div>`)})'
+		const e = R && await R.evaluate({ expression })
+	}
 }
 
 const press = async (I: any, key: string) => {
@@ -131,7 +136,7 @@ const pressedEnter = async (I: any) => {
 }
 
 const disableAlert = async (R: any) => {
-	await R && R.evaluate({ expression: `window.alert = () => { };` })
+	await R && R.evaluate({ expression: `window.alert = () => { }; ` })
 }
 
 const album = (player: TPlayer) => {
@@ -143,28 +148,28 @@ const album = (player: TPlayer) => {
 
 const tidalSelect = (R: any) => new Promise(async (res, rej) => {
 	const expression = `
-		const rand = (max, min = 0) => {
-			return Math.floor(Math.random() * Math.floor(max) + min);
-		}
+const rand = (max, min = 0) => {
+	return Math.floor(Math.random() * Math.floor(max) + min);
+}
 
-		const artist = document.querySelectorAll('[class*="artistContainer"]')
+const artist = document.querySelectorAll('[class*="artistContainer"]')
 
-		if(artist?.length > 0) {
-			setTimeout(() => {
-				artist[rand(artist.length)].click()
-			}, 1000 * 1);
-			setTimeout(() => {
-				artist[rand(artist.length)].click()
-			}, 1000 * 2);
-			setTimeout(() => {
-				artist[rand(artist.length)].click()
-			}, 1000 * 3);
+if (artist?.length > 0) {
+	setTimeout(() => {
+		artist[rand(artist.length)].click()
+	}, 1000 * 1);
+	setTimeout(() => {
+		artist[rand(artist.length)].click()
+	}, 1000 * 2);
+	setTimeout(() => {
+		artist[rand(artist.length)].click()
+	}, 1000 * 3);
 
-			setTimeout(() => {
-				document.querySelector('[class*="continueButtonContainer"] button').click()
-			}, 1000 * 4);
-		}
-		`
+	setTimeout(() => {
+		document.querySelector('[class*="continueButtonContainer"] button').click()
+	}, 1000 * 4);
+}
+`
 
 	R && await R.evaluate({ expression })
 	res(true)
