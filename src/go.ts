@@ -53,7 +53,12 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	const exit = async (code = 0) => {
 		console.log('EXIT', code)
 
-		shell.exec(`kill -9 ${process.env[`pid${nb}`]?.split(',').join(' ')}`, { silent: true })
+		// shell.exec(`kill -9 ${process.env[`pid${nb}`]?.split(',').join(' ')}`, { silent: true })
+
+		try {
+			proto.close()
+			chro.kill()
+		} catch (error) { }
 
 		if (/out_error_connect|tidalError|out_log_error/.test(code.toString())) {
 			socketEmit('errorcheck', { account })
@@ -119,17 +124,11 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		proto = protocol
 		pid = chrome.pid
 
-		const list = shell.exec('pidof chrome', { silent: true })
-		const pids = list.stdout.split(' ').map(p => String(Number(p)))
-
-		const all = Array(max).fill('').map((a, index) => (process.env[`pid${index}`] || '')?.split(',')).flat()
-		// console.log('all', all, process.env[`pid${nb}`])
-		const filtredPid = pids.filter(p => !all.includes(p))
-		// console.log('filtredPid', nb, filtredPid.join(','))
-
-		process.env[`pid${nb}`] = filtredPid.join(',')
-
-		// Array(max).fill('').map((a, index) => console.log('process.env', index, process.env[`pid${index}`]))
+		// const list = shell.exec('pidof chrome', { silent: true })
+		// const pids = list.stdout.split(' ').map(p => String(Number(p)))
+		// const all = Array(max).fill('').map((a, index) => (process.env[`pid${index}`] || '')?.split(',')).flat()
+		// const filtredPid = pids.filter(p => !all.includes(p))
+		// process.env[`pid${nb}`] = filtredPid.join(',')
 
 		const returnCode: any = await start({ ...browserProps, S, account, check, player, login, socketEmit }, chrome, protocol)
 
