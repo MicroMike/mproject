@@ -15,7 +15,7 @@ const status = Array(max).fill(false)
 const infiniteLoop = async (i: number) => {
 	// await go(process.argv, String(i))
 	// process.env[`pid${i}`] = ''
-	shell.exec(`node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
+	shell.exec(`tsc && node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
 		shell.exec('git pull')
 		status[i] = false
 	})
