@@ -13,12 +13,12 @@ shell.exec('killall chrome')
 const status = Array(max).fill(false)
 
 const infiniteLoop = async (i: number) => {
-	// await go(process.argv, String(i))
+	await go(process.argv, String(i))
 	// process.env[`pid${i}`] = ''
-	shell.exec(`tsc && node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
-		shell.exec('git pull')
-		status[i] = false
-	})
+	// shell.exec(`tsc && node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
+	shell.exec('git pull')
+	status[i] = false
+	// })
 }
 
 for (let a = 0; a < max; a++) {
