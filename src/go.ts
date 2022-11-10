@@ -84,21 +84,37 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 
 		if (!back && account === '') {
 			streamId = socketId
-			clientSocket.emit('isWaiting', { parentId, streamId, max })
+			try {
+				clientSocket.emit('isWaiting', { parentId, streamId, max })
+			} catch (error) {
+				console.log('socket error isWaiting')
+			}
 		}
 		else if (account && account !== '') {
-			clientSocket.emit('client', { parentId, streamId, account, max, back })
+			try {
+				clientSocket.emit('client', { parentId, streamId, account, max, back })
+			} catch (error) {
+				console.log('socket error client')
+			}
 		}
 	})
 
 	clientSocket.on('loaded', async () => {
 		await wait(5 * 1000)
-		clientSocket.emit('isWaiting', { parentId, streamId, max })
+		try {
+			clientSocket.emit('isWaiting', { parentId, streamId, max })
+		} catch (error) {
+			console.log('socket error isWaiting')
+		}
 	})
 
 	clientSocket.on('canRun', async (a: any) => {
 		account = a
-		!checkLive && clientSocket.emit('client', { parentId, streamId, account, max })
+		try {
+			!checkLive && clientSocket.emit('client', { parentId, streamId, account, max })
+		} catch (error) {
+			console.log('socket error client')
+		}
 	})
 
 	clientSocket.on('mRun', async (props: any) => {
