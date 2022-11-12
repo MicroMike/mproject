@@ -10,8 +10,12 @@ const code = '191'
 
 const go = async () => {
 	const { chrome, protocol, ...browserProps } = await openBrowser(arg, '')
+
+	
 	// @ts-ignore
 	const { N, P, R, D, B, I, T, S, socketEmit, player, login, check } = browserProps
+
+	if (!protocol || !P) { return }
 
 	const password = arg.split('@')[0]
 	const name = password.replace('.', ' ')
