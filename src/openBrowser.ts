@@ -4,20 +4,27 @@ import { wait } from "./helpers/helpers";
 
 export const openBrowser = async (player: string, login: string) => {
 	const launchChrome = chromeConfig(player, login)
-	
+
 	const chrome = await launchChrome()
-	
+
 	const options = {
 		host: '127.0.0.1',
 		port: chrome.port
 	}
-	
+
 	await wait(5 * 1000)
-	
-	const protocol = await CDP(options);
-	
+
+	let protocol
+
+	try {
+		protocol = await CDP(options);
+	} catch (error) {
+		console.log('browser error')
+		protocol = {}
+	}
+
 	const { Network, Page, Runtime, DOM, Input, Browser, Target } = protocol;
-	
+
 	// extract domains
 	const N = Network;
 	const P = Page;

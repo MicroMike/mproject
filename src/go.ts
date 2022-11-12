@@ -140,6 +140,10 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		proto = protocol
 		pid = chrome.pid
 
+		if (!chrome) {
+			exit('error')
+		}
+
 		// const list = shell.exec('pidof chrome', { silent: true })
 		// const pids = list.stdout.split(' ').map(p => String(Number(p)))
 		// const all = Array(max).fill('').map((a, index) => (process.env[`pid${index}`] || '')?.split(',')).flat()
