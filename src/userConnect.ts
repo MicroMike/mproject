@@ -106,8 +106,11 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 				}
 
 				await type(R, pass, S.pass)
-
 				await click(I, R, S.connectBtn)
+
+				if (isAmazon) {
+					await click(I, R, '#ap-account-fixup-phone-skip-link')
+				}
 
 				const outErrorConnect = await waitForSelector(R, S.loginError, 10)
 
