@@ -1,5 +1,5 @@
 import { TPlayer } from "./config/types"
-import { album, click, getTimePlayer, goToPage, rand, takeScreenshot, wait } from "./helpers/helpers"
+import { album, click, get, getTimePlayer, goToPage, rand, takeScreenshot, wait } from "./helpers/helpers"
 import { userConnect } from "./userConnect"
 
 export const start = (props: any, chrome: any, protocol: any) => new Promise(async (res) => {
@@ -35,6 +35,13 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		const time = await getTimePlayer(R, S)
 
 		S.shuffleBtn !== '' && await click(I, R, S.shuffleBtn)
+
+		if (player === 'amazon') {
+			const dialogHeader = await get(R, '#dialogHeader', 'innerText')
+			if (/Partager/.test(dialogHeader)) {
+				out = 'del'
+			}
+		}
 
 		if (time > currTime) {
 			pauseCount = 0
