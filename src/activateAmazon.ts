@@ -26,7 +26,7 @@ const go = async () => {
 	await click(I, R, '#signInButton')
 
 	const amazonReLogBody = await get(R, 'body', 'innerText')
-	const loginRegex = new RegExp(login)
+	const loginRegex = new RegExp(email)
 	const amazonReLog = amazonReLogBody && loginRegex.test(amazonReLogBody)
 
 	if (!amazonReLog) {
