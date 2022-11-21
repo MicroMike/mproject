@@ -1,4 +1,4 @@
-import { click, type, waitForSelector } from "./helpers/helpers"
+import { click, get, type, waitForSelector } from "./helpers/helpers"
 import { openBrowser } from "./openBrowser"
 
 const props = process.argv
@@ -25,7 +25,14 @@ const go = async () => {
 
 	await click(I, R, '#signInButton')
 
-	await type(R, email, '#ap_email')
+	const amazonReLogBody = await get(R, 'body', 'innerText')
+	const loginRegex = new RegExp(login)
+	const amazonReLog = amazonReLogBody && loginRegex.test(amazonReLogBody)
+
+	if (!amazonReLog) {
+		await type(R, email, '#ap_email')
+	}
+
 	await type(R, password, '#ap_password')
 	await click(I, R, '#signInSubmit')
 
