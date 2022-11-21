@@ -144,6 +144,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 
 		if (!protocol) {
 			exit(123)
+			return
 		}
 
 		// const list = shell.exec('pidof chrome', { silent: true })
