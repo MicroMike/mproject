@@ -4,8 +4,8 @@ import { openBrowser } from "./openBrowser"
 const props = process.argv
 const arg = props[2]
 const address = props[3]
-const card = '5354562719087009'
-const code = '191'
+const card = '5354 5627 2150 9230'
+const code = '677'
 const date = '1027'
 
 const go = async () => {
