@@ -36,7 +36,7 @@ const go = async () => {
 	await type(R, password, '#ap_password')
 	await click(I, R, '#signInSubmit')
 
-	const skip = await waitForSelector(R, '#ap-account-fixup-phone-skip-link', 1000 * 5)
+	const skip = await waitForSelector(R, '#ap-account-fixup-phone-skip-link', 5)
 	skip && await click(I, R, '#ap-account-fixup-phone-skip-link')
 
 	// await waitForSelector(R, '[title="AMÉLIORER OFFRE"]', 60 * 1000 * 10)
