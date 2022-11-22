@@ -4,6 +4,7 @@ import { openBrowser } from "./openBrowser"
 const props = process.argv
 const arg = props[2]
 const address = props[3]
+const city = props[4]
 const card = '5354 5627 2150 9230'
 const code = '677'
 const date = '1027'
@@ -52,7 +53,7 @@ const go = async () => {
 
 	await waitForSelector(R, '[name="ppw-line1"]', 60 * 1000 * 10)
 	await type(R, address, '[name="ppw-line1"]')
-	await type(R, 'Paris', '[name="ppw-city"]')
+	await type(R, city, '[name="ppw-city"]')
 	await type(R, '75010', '[name="ppw-postalCode"]')
 	await type(R, '0637827364', '[name="ppw-phoneNumber"]')
 
