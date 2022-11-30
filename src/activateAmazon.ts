@@ -20,10 +20,11 @@ const go = async () => {
 
 	const [email, password] = arg.split(':')
 
-	await P.navigate({ url: 'https://www.amazon.fr/ap/signin?openid.return_to=https%3A%2F%2Fmusic.amazon.fr%2Funlimited%2Fsignup%3Fref_%3Ddmm_acq_mrn_d_br_z_5KYaMwzV-c_c_603803518763_g_101656084518%26notNowRedirectURL%3DL211c2ljL3VubGltaXRlZA%253D%253D&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=amzn_webamp_fr&openid.mode=checkid_setup&language=fr_FR&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&pageId=amzn_cpweb&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0' });
+	await P.navigate({ url: 'https://www.amazon.fr' });
 	// @ts-ignore
 	P.loadEventFired();
 
+	await click(I, R, '#nav-signin-tooltip a')
 	// await click(I, R, '#signInButton')
 
 	const amazonReLogBody = await get(R, 'body', 'innerText')
@@ -55,7 +56,7 @@ const go = async () => {
 	await type(R, address, '[name="ppw-line1"]')
 	await type(R, city, '[name="ppw-city"]')
 	await type(R, '75010', '[name="ppw-postalCode"]')
-	await type(R, '06' + rand(99999999,11111111), '[name="ppw-phoneNumber"]')
+	await type(R, '06' + rand(99999999, 11111111), '[name="ppw-phoneNumber"]')
 
 	await click(I, R, '[name="ppw-widgetEvent:AddAddressEvent"]')
 	await click(I, R, '[name="ppw-widgetEvent:UseSuggestedAddressEvent"]')
