@@ -1,4 +1,4 @@
-import { click, get, type, waitForSelector } from "./helpers/helpers"
+import { click, get, type, waitForSelector, rand } from "./helpers/helpers"
 import { openBrowser } from "./openBrowser"
 
 const props = process.argv
@@ -55,7 +55,7 @@ const go = async () => {
 	await type(R, address, '[name="ppw-line1"]')
 	await type(R, city, '[name="ppw-city"]')
 	await type(R, '75010', '[name="ppw-postalCode"]')
-	await type(R, '0637827364', '[name="ppw-phoneNumber"]')
+	await type(R, '06' + rand(99999999,11111111), '[name="ppw-phoneNumber"]')
 
 	await click(I, R, '[name="ppw-widgetEvent:AddAddressEvent"]')
 	await click(I, R, '[name="ppw-widgetEvent:UseSuggestedAddressEvent"]')
