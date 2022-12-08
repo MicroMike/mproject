@@ -43,6 +43,13 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			}
 		}
 
+		if (player === 'tidal') {
+			const dialogHeader = await get(R, '[data-test="notification"]', 'innerText')
+			if (/quota|exceeded/i.test(dialogHeader)) {
+				out = 'del'
+			}
+		}
+
 		if (time > currTime) {
 			pauseCount = 0
 
