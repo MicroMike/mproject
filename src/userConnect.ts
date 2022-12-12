@@ -108,14 +108,14 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 				await type(R, pass, S.pass)
 				await click(I, R, S.connectBtn)
 
-				if (amazonReLog) {
-					await goToPage(alb, P, R)
-				}
-
 				await wait(rand(5, 3) * 1000)
 
 				if (isAmazon) {
 					await click(I, R, '#ap-account-fixup-phone-skip-link')
+				}
+
+				if (amazonReLog) {
+					await goToPage(alb, P, R)
 				}
 
 				const outErrorConnect = await waitForSelector(R, S.loginError, 10)
