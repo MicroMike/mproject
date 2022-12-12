@@ -79,9 +79,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 				const loginRegex = new RegExp(login)
 				const amazonReLog = amazonReLogBody && loginRegex.test(amazonReLogBody)
 
-				if (amazonReLog) {
-					console.log('amazonReLog')
-				} else {
+				if (!amazonReLog) {
 					await I.dispatchMouseEvent({
 						type: 'mousePressed',
 						button: 'left',
@@ -103,10 +101,16 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 						await takeScreenshot(P, 'out_no_logging', socketEmit, login)
 						throw 'out_no_logging'
 					}
+				} else {
+					await click(I, R, '.cvf-account-switcher-profile-business-name')
 				}
 
 				await type(R, pass, S.pass)
 				await click(I, R, S.connectBtn)
+
+				if (amazonReLog) {
+					await goToPage(alb, P, R)
+				}
 
 				await wait(rand(5, 3) * 1000)
 
