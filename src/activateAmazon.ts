@@ -46,7 +46,7 @@ const go = async () => {
 	// await click(I, R, '[title="AMÉLIORER OFFRE"]')
 	// await click(I, R, '#dialogButton1')
 
-	await click(I, R, '[value="modifier"]')
+	await click(I, R, '.pmts-portal-component [value="modifier"]')
 	await click(I, R, '[data-action="a-expander-toggle"]')
 
 	await type(R, 'Micro', '[name="ppw-accountHolderName"]')
