@@ -33,6 +33,7 @@ const go = async () => {
 
 	if (!amazonReLog) {
 		await type(R, email, '#ap_email')
+		await click(I, R, '#signInSubmit')
 	}
 
 	await type(R, password, '#ap_password')
