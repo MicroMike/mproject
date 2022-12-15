@@ -8,9 +8,9 @@ const max = Number(props[3] || 1)
 const checkAccount = props[4] || 'none'
 
 const l = shell.exec('pidof node', { silent: true })
-const pid = l.stdout.split(' ').map(p => String(Number(p)))[0]
+const nodePids = l.stdout.split(' ').map(p => String(Number(p)))[0]
 
-console.log('pid', pid)
+console.log('pid', nodePids)
 
 shell.exec('rm -rf /root/puppet/puppet/', { async: true })
 shell.exec('killall chrome')
@@ -45,7 +45,7 @@ for (let a = 0; a < max; a++) {
 
 setInterval(() => {
 	const list = shell.exec('pidof node', { silent: true })
-	const pids = list.stdout.split(' ').map(p => String(Number(p))).filter((p) => p !== pid)
+	const pids = list.stdout.split(' ').map(p => String(Number(p))).filter((p) => !nodePids.includes(p))
 
 	shell.exec(`kill -9 ${pids.join(' ')}`, { silent: true })
 }, 1000 * 60 * 10)
