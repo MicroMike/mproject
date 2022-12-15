@@ -7,18 +7,23 @@ const arg = props[2]
 const max = Number(props[3] || 1)
 const checkAccount = props[4] || 'none'
 
+const l = shell.exec('pidof node', { silent: true })
+const pid = l.stdout.split(' ').map(p => String(Number(p)))[0]
+
+console.log('pid', pid)
+
 shell.exec('rm -rf /root/puppet/puppet/', { async: true })
 shell.exec('killall chrome')
 
 const status = Array(max).fill(false)
 
 const infiniteLoop = async (i: number) => {
-	await go(process.argv, String(i))
+	// await go(process.argv, String(i))
 	// process.env[`pid${i}`] = ''
-	// shell.exec(`tsc && node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
-	shell.exec('git pull')
-	status[i] = false
-	// })
+	shell.exec(`tsc && node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
+		shell.exec('git pull')
+		status[i] = false
+	})
 }
 
 for (let a = 0; a < max; a++) {
@@ -37,3 +42,10 @@ for (let a = 0; a < max; a++) {
 		}
 	}, 1000 * 60 * 5)
 }
+
+setInterval(() => {
+	const list = shell.exec('pidof node', { silent: true })
+	const pids = list.stdout.split(' ').map(p => String(Number(p))).filter((p) => p !== pid)
+
+	shell.exec(`kill -9 ${pids.join(' ')}`, { silent: true })
+}, 1000 * 60 * 10)
