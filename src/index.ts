@@ -48,4 +48,5 @@ setInterval(() => {
 	const pids = list.stdout.split(' ').map(p => String(Number(p))).filter((p) => !nodePids.includes(p))
 
 	shell.exec(`kill -9 ${pids.join(' ')}`, { silent: true })
+	shell.exec('killall chrome')
 }, 1000 * 60 * 10)
