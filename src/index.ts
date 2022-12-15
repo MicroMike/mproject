@@ -8,7 +8,7 @@ const max = Number(props[3] || 1)
 const checkAccount = props[4] || 'none'
 
 const l = shell.exec('pidof node', { silent: true })
-const nodePids = l.stdout.split(' ').map(p => String(Number(p)))[0]
+const nodePids = l.stdout.split(' ').map(p => String(Number(p)))
 
 console.log('pid', nodePids)
 
