@@ -38,7 +38,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 
 		if (!isLogged) {
 			// @ts-ignore
-			check && console.log('need log'.green, player, login)
+			check && console.log('need log'.green, player, login, S.gotoLog)
 
 			// if (isAmazon) {
 			// 	await P.navigate({ url: 'https://music.amazon.fr/forceSignIn?useHorizonte=true' });
