@@ -40,10 +40,11 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 			// @ts-ignore
 			check && console.log('need log'.green, player, login)
 
-			if (isAmazon) {
-				await P.navigate({ url: 'https://music.amazon.fr/forceSignIn?useHorizonte=true' });
-				P.loadEventFired();
-			} else if (isNapster) {
+			// if (isAmazon) {
+			// 	await P.navigate({ url: 'https://music.amazon.fr/forceSignIn?useHorizonte=true' });
+			// 	P.loadEventFired();
+			// } else 
+			if (isNapster) {
 				await P.navigate({ url: 'https://web.napster.com/auth/login' });
 				await P.loadEventFired();
 			} else {
