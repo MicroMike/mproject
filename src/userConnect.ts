@@ -138,7 +138,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 		const spotifyLogError = await get(R, 'body', 'innerText')
 
 		if (spotifyLogError && /Incorrect/.test(spotifyLogError)) {
-			console.log('SPOTIFY_LOG_ERROR', spotifyLogError)
+			console.log('SPOTIFY_LOG_ERROR')
 			await takeScreenshot(P, 'out_log_error', socketEmit, login)
 			throw 'out_log_error'
 		}
