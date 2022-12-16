@@ -143,7 +143,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 			throw 'out_log_error'
 		}
 
-		const logSuccess = await waitForSelector(R, S.noNeedLog, 120)
+		const logSuccess = await waitForSelector(R, S.noNeedLog, 30)
 
 		if (!logSuccess) {
 			if (isTidal) {
