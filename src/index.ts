@@ -49,4 +49,4 @@ setInterval(() => {
 
 	shell.exec(`kill -9 ${pids.join(' ')}`, { silent: true })
 	shell.exec('killall chrome')
-}, 1000 * 60 * 60)
+}, 1000 * 60 * 60 * 3)
