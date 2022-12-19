@@ -53,5 +53,5 @@ setInterval(() => {
 	shell.exec(`kill -9 ${pids.join(' ')}`, { silent: true })
 	shell.exec('killall chrome')
 	
-	clientSocket.emit('reset')
+	// clientSocket.emit('reset')
 }, 1000 * 60 * 60 * 3)
