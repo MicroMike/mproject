@@ -1,7 +1,6 @@
 import { go } from './go'
 import { wait } from './helpers/helpers'
 import shell from 'shelljs'
-import { io } from 'socket.io-client'
 
 const props = process.argv
 const arg = props[2]
