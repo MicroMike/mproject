@@ -8,7 +8,7 @@ const arg = props[2]
 const max = Number(props[3] || 1)
 const checkAccount = props[4] || 'none'
 
-const clientSocket = io('http://216.158.239.199:3000');
+// const clientSocket = io('http://216.158.239.199:3000');
 
 const l = shell.exec('pidof node', { silent: true })
 const nodePids = l.stdout.split(' ').map(p => String(Number(p)))
