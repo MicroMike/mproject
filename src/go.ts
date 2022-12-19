@@ -88,7 +88,6 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 			streamId = socketId
 			try {
 				clientSocket.emit('isWaiting', { parentId, streamId, max })
-				console.log('socket error isWaiting')
 			} catch (error) {
 				console.log('socket error isWaiting')
 			}
@@ -96,7 +95,6 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		else if (account && account !== '') {
 			try {
 				clientSocket.emit('client', { parentId, streamId, account, max, back })
-				console.log('socket error client')
 			} catch (error) {
 				console.log('socket error client')
 			}
@@ -107,7 +105,6 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		await wait(5 * 1000)
 		try {
 			clientSocket.emit('isWaiting', { parentId, streamId, max })
-			console.log('socket error isWaiting')
 		} catch (error) {
 			console.log('socket error isWaiting')
 		}
@@ -117,7 +114,6 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		account = a
 		try {
 			!checkLive && clientSocket.emit('client', { parentId, streamId, account, max })
-			console.log('socket error client')
 		} catch (error) {
 			console.log('socket error client')
 		}

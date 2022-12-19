@@ -34,6 +34,10 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 			await disableAlert(R)
 		}
 
+		if (isTidal) {
+			await click(I, R, '#onetrust-accept-btn-handler')
+		}
+
 		const isLogged = !check && await waitForSelector(R, S.noNeedLog, 30)
 
 		if (!isLogged) {
