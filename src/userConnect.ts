@@ -35,7 +35,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 		}
 
 		if (isTidal) {
-			await click(I, R, '#onetrust-accept-btn-handler')
+			await click(I, R, '#onetrust-accept-btn-handler', 5)
 		}
 
 		const isLogged = !check && await waitForSelector(R, S.noNeedLog, 30)
