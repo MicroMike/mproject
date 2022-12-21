@@ -195,7 +195,8 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 
 		if (isTidal) {
 			const delTidal = await get(R, '.ReactModal__Overlay', 'innerText')
-			if (/expired/.test(delTidal)) {
+			const freeTidal = await get(R, 'body', 'innerText')
+			if (/expired/.test(delTidal) || /ad free/.test(freeTidal)) {
 				throw 'del'
 			}
 		}
