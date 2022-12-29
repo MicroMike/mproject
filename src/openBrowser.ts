@@ -2,7 +2,7 @@ import CDP from 'chrome-remote-interface'
 import { chromeConfig } from "./config/chromeConfig";
 import { wait } from "./helpers/helpers";
 
-export const openBrowser = async (player: string, login: string) => {
+export const openBrowser = async (player?: string, login?: string) => {
 	const launchChrome = chromeConfig(player, login)
 
 	const chrome = await launchChrome()

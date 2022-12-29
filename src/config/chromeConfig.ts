@@ -1,6 +1,6 @@
 const chromeLauncher = require('chrome-launcher');
 
-export const chromeConfig = (player: string, login: string) => {
+export const chromeConfig = (player?: string, login?: string) => {
 	return async () => {
 		return await chromeLauncher.launch({
 			chromeFlags: [
@@ -9,7 +9,7 @@ export const chromeConfig = (player: string, login: string) => {
 				'--disable-gpu',
 				'--disable-features=Translate',
 				'--no-sandbox',
-				'--user-data-dir=/root/puppet/puppet/' + player + login,
+				player && login && '--user-data-dir=/root/puppet/puppet/' + player + login,
 				// '--disable-setuid-sandbox',
 				// '--remote-debugging-port=' + port,
 			]

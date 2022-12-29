@@ -91,6 +91,10 @@ const type = (R: any, value: string, selector: string) => new Promise(async (res
 	res(true)
 })
 
+const select = async (R: any, selector: string, value: string) => {
+	const e = R && await R.evaluate({ expression: `document.querySelector('${selector}').value = "${value}"` })
+}
+
 const getTimePlayer = async (R: any, S: any) => {
 	const e = R && await R.evaluate({ expression: `document.querySelector('${S.timeLine}') && document.querySelector('${S.timeLine}').innerText` })
 	const time = e.result.value && S.callback(e.result.value)
@@ -215,4 +219,5 @@ export {
 	type,
 	wait,
 	waitForSelector,
+	select,
 }
