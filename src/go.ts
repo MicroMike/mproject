@@ -20,7 +20,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	if (!nb) { return }
 	// console.log('go ', nb)
 
-	const clientSocket = io('http://216.158.239.199:3000');
+	const clientSocket = io('http://149.102.132.27:3000');
 
 	const check = !!checkAccount || /check/i.test(arg)
 	const checkLive = /checklive/i.test(arg)
