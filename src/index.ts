@@ -23,7 +23,7 @@ const infiniteLoop = async (i: number) => {
 	// await go(process.argv, String(i))
 	// process.env[`pid${i}`] = ''
 	shell.exec(`tsc && node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
-		shell.exec('git reset --hard')
+		// shell.exec('git reset --hard')
 		shell.exec('git pull')
 		status[i] = false
 	})
