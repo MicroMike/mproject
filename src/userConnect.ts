@@ -40,130 +40,137 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 
 		const isLogged = !check && await waitForSelector(R, S.noNeedLog, 30)
 
-		if (!isLogged) {
-			// @ts-ignore
-			check && console.log('need log'.green, player, login, S.gotoLog)
+		const loop = async () => {
+			if (!isLogged) {
+				// @ts-ignore
+				check && console.log('need log'.green, player, login, S.gotoLog)
 
-			// if (isAmazon) {
-			// 	await P.navigate({ url: 'https://music.amazon.fr/forceSignIn?useHorizonte=true' });
-			// 	P.loadEventFired();
-			// } else 
-			if (isNapster) {
-				await P.navigate({ url: 'https://web.napster.com/auth/login' });
-				await P.loadEventFired();
-			} else {
-				await click(I, R, S.gotoLog)
-			}
+				// if (isAmazon) {
+				// 	await P.navigate({ url: 'https://music.amazon.fr/forceSignIn?useHorizonte=true' });
+				// 	P.loadEventFired();
+				// } else 
+				if (isNapster) {
+					await P.navigate({ url: 'https://web.napster.com/auth/login' });
+					await P.loadEventFired();
+				} else {
+					await click(I, R, S.gotoLog)
+				}
 
-			if (isApple) {
-				await wait(rand(5, 3) * 1000)
-				await press(I, 'Tab')
+				if (isApple) {
+					await wait(rand(5, 3) * 1000)
+					await press(I, 'Tab')
 
-				await wait(rand(5, 3) * 1000)
-				await press(I, 'Tab')
+					await wait(rand(5, 3) * 1000)
+					await press(I, 'Tab')
 
-				await wait(rand(5, 3) * 1000)
-				await I.insertText({
-					text: login,
-				})
-
-				await wait(rand(5, 3) * 1000)
-				await pressedEnter(I)
-
-				await wait(rand(5, 3) * 1000)
-				await I.insertText({
-					text: pass,
-				})
-
-				await wait(rand(5, 3) * 1000)
-				await pressedEnter(I)
-			}
-			else {
-				// const amazonReLog = isAmazon && await waitForSelector(R, '#ap_switch_account_link', 5)
-				const amazonReLogBody = isAmazon && await get(R, 'body', 'innerText')
-				const loginRegex = new RegExp(login)
-				const amazonReLog = amazonReLogBody && loginRegex.test(amazonReLogBody)
-
-				if (!amazonReLog) {
-					await I.dispatchMouseEvent({
-						type: 'mousePressed',
-						button: 'left',
-						x: 315,
-						y: 390
+					await wait(rand(5, 3) * 1000)
+					await I.insertText({
+						text: login,
 					})
 
-					await waitForSelector(R, S.email, 30)
-					await type(R, login, S.email)
+					await wait(rand(5, 3) * 1000)
+					await pressedEnter(I)
 
-					isTidal && await click(I, R, S.next)
+					await wait(rand(5, 3) * 1000)
+					await I.insertText({
+						text: pass,
+					})
 
-					const outNoLogging = await waitForSelector(R, S.loginError, 5)
+					await wait(rand(5, 3) * 1000)
+					await pressedEnter(I)
+				}
+				else {
+					// const amazonReLog = isAmazon && await waitForSelector(R, '#ap_switch_account_link', 5)
+					const amazonReLogBody = isAmazon && await get(R, 'body', 'innerText')
+					const loginRegex = new RegExp(login)
+					const amazonReLog = amazonReLogBody && loginRegex.test(amazonReLogBody)
 
-					if (outNoLogging) {
+					if (!amazonReLog) {
+						await waitForSelector(R, S.email, 30)
+						await click(I, R, S.email)
+						await type(R, login, S.email)
+
+						isTidal && await click(I, R, S.next)
+
+						const outNoLogging = await waitForSelector(R, S.loginError, 5)
+
+						if (outNoLogging) {
+							if (isTidal) {
+								throw 'del'
+							}
+							await takeScreenshot(P, 'out_no_logging', socketEmit, login)
+							throw 'out_no_logging'
+						}
+					} else {
+						await click(I, R, '.cvf-account-switcher-profile-business-name')
+					}
+
+					await click(I, R, S.pass)
+					await type(R, pass, S.pass)
+					await click(I, R, S.connectBtn)
+
+					await wait(rand(5, 3) * 1000)
+
+					if (isAmazon) {
+						await click(I, R, '#ap-account-fixup-phone-skip-link')
+					}
+
+					if (amazonReLog) {
+						await goToPage(alb, P, R)
+					}
+
+					const outErrorConnect = await waitForSelector(R, S.loginError, 10)
+
+					if (outErrorConnect) {
 						if (isTidal) {
 							throw 'del'
 						}
-						await takeScreenshot(P, 'out_no_logging', socketEmit, login)
-						throw 'out_no_logging'
+						await takeScreenshot(P, 'out_error_connect', socketEmit, login)
+						throw 'out_error_connect'
 					}
-				} else {
-					await click(I, R, '.cvf-account-switcher-profile-business-name')
+
+					isTidal && await tidalSelect(R)
 				}
+			}
 
-				await type(R, pass, S.pass)
-				await click(I, R, S.connectBtn)
+			await wait(rand(5, 3) * 1000)
 
-				await wait(rand(5, 3) * 1000)
+			const spotifyLogError = await get(R, 'body', 'innerText')
 
-				if (isAmazon) {
-					await click(I, R, '#ap-account-fixup-phone-skip-link')
-				}
-
-				if (amazonReLog) {
-					await goToPage(alb, P, R)
-				}
-
-				const outErrorConnect = await waitForSelector(R, S.loginError, 10)
-
-				if (outErrorConnect) {
-					if (isTidal) {
-						throw 'del'
-					}
-					await takeScreenshot(P, 'out_error_connect', socketEmit, login)
-					throw 'out_error_connect'
-				}
-
-				isTidal && await tidalSelect(R)
+			if (spotifyLogError && /Incorrect/.test(spotifyLogError)) {
+				console.log('SPOTIFY_LOG_ERROR')
+				await takeScreenshot(P, 'out_log_error', socketEmit, login)
+				throw 'out_log_error'
 			}
 		}
 
-		await wait(rand(5, 3) * 1000)
+		await loop()
 
-		const spotifyLogError = await get(R, 'body', 'innerText')
+		let logSuccess = await waitForSelector(R, S.noNeedLog, 30)
 
-		if (spotifyLogError && /Incorrect/.test(spotifyLogError)) {
-			console.log('SPOTIFY_LOG_ERROR')
-			await takeScreenshot(P, 'out_log_error', socketEmit, login)
-			throw 'out_log_error'
+		if (!logSuccess && isTidal) {
+			await takeScreenshot(P, 'tidalError', socketEmit, login)
+			throw 'tidalError'
 		}
-
-		const logSuccess = await waitForSelector(R, S.noNeedLog, 30)
+		
+		if (!logSuccess && isAmazon) {
+			await loop()
+			logSuccess = await waitForSelector(R, S.noNeedLog, 30)
+		}
 
 		if (!logSuccess) {
-			if (isTidal) {
-				await takeScreenshot(P, 'tidalError', socketEmit, login)
-				throw 'tidalError'
-			}
 			await takeScreenshot(P, 'out_log_error', socketEmit, login)
 			throw 'out_log_error'
 		}
 
-		if (!isLogged) {
-			// @ts-ignore
-			console.log(login, 'log Success'.green)
-		} else {
-			// @ts-ignore
-			console.log(login, 'log Success'.green, 'noNeedLog'.yellow)
+		if (logSuccess) {
+			if (!isLogged) {
+				// @ts-ignore
+				console.log(login, 'log Success'.green)
+			} else {
+				// @ts-ignore
+				console.log(login, 'log Success'.green, 'noNeedLog'.yellow)
+			}
 		}
 
 		socketEmit('playerInfos', { time: 'CONNECT', other: true })
