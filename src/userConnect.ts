@@ -38,7 +38,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 			await click(I, R, '#onetrust-accept-btn-handler', 5)
 		}
 
-		const isLogged = !check && await waitForSelector(R, S.noNeedLog, 30)
+		const isLogged = !check && await waitForSelector(R, S.noNeedLog, 10)
 
 		const loop = async (SecondTry = false) => {
 			if (!isLogged) {
@@ -86,7 +86,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 					const amazonReLog = amazonReLogBody && loginRegex.test(amazonReLogBody)
 
 					if (!amazonReLog) {
-						await waitForSelector(R, S.email, 30)
+						await waitForSelector(R, S.email, 10)
 						await click(I, R, S.email)
 						await type(R, login, S.email)
 
@@ -148,7 +148,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 
 		await loop()
 
-		let logSuccess = await waitForSelector(R, S.noNeedLog, 30)
+		let logSuccess = await waitForSelector(R, S.noNeedLog, 10)
 
 		if (!logSuccess && isTidal) {
 			await takeScreenshot(P, 'tidalError', socketEmit, login)
@@ -157,7 +157,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 
 		if (!logSuccess && isAmazon) {
 			await loop(true)
-			logSuccess = await waitForSelector(R, S.noNeedLog, 30)
+			logSuccess = await waitForSelector(R, S.noNeedLog, 10)
 		}
 
 		if (!logSuccess) {
