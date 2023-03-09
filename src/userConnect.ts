@@ -146,7 +146,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 			}
 		}
 
-		// await loop()
+		await loop()
 
 		let logSuccess = await waitForSelector(R, S.noNeedLog, 30)
 
