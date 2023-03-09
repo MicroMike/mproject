@@ -3,7 +3,7 @@ import { album, click, get, getTimePlayer, goToPage, rand, takeScreenshot, wait 
 import { userConnect } from "./userConnect"
 
 export const start = (props: any, chrome: any, protocol: any) => new Promise(async (res) => {
-	const { N, P, R, D, B, I, T, S, socketEmit, player, login, check } = props
+	const { N, P, R, D, B, I, T, S, socketEmit, player, login, check, country } = props
 
 	let error = false
 	let currTime: number
@@ -89,7 +89,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 				await wait(rand(5, 3) * 1000)
 			}
 
-			const alb = album(player as TPlayer)
+			const alb = album(player as TPlayer, country)
 			await goToPage(alb, P, R)
 
 			await I.dispatchMouseEvent({

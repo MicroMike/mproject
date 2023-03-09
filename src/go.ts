@@ -119,7 +119,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		}
 	})
 
-	clientSocket.on('mRun', async (props: any) => {
+	clientSocket.on('mRun', async (country: any) => {
 		const [p, a] = account.split(':')
 		player = p
 		login = a
@@ -153,7 +153,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		// const filtredPid = pids.filter(p => !all.includes(p))
 		// process.env[`pid${nb}`] = filtredPid.join(',')
 
-		const returnCode: any = await start({ ...browserProps, S, account, check, player, login, socketEmit }, chrome, protocol)
+		const returnCode: any = await start({ ...browserProps, S, account, check, player, login, country, socketEmit }, chrome, protocol)
 
 		console.log('returnCode', returnCode)
 

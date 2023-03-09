@@ -17,7 +17,7 @@ import {
 } from './helpers/helpers';
 var colors = require('colors');
 
-export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: any) => new Promise(async (res, rej) => {
+export const userConnect = async ({ P, R, I, S, account, check, socketEmit, country }: any) => new Promise(async (res, rej) => {
 	try {
 		const [player, login, pass] = account.split(':')
 
@@ -27,7 +27,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit }: an
 		const isNapster = player === 'napster'
 		const isApple = player === 'apple'
 
-		const alb = album(player as TPlayer)
+		const alb = album(player as TPlayer, country)
 		await goToPage(alb, P, R)
 
 		if (player === 'apple') {
