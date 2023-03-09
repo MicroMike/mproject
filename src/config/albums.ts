@@ -27,7 +27,7 @@ export const albums = (country?: string) => ({
 		`https://music.amazon.${country}/albums/B07VC9S3JM`,//He Knows She Knows
 		`https://music.amazon.${country}/albums/B07WCHK4JR`,//my-stash
 		`https://music.amazon.${country}/albums/B09PF7R5H1`,// fresh mix
-		`https://music.amazon.${country}/albums/B09WRFW2Y6`,// alvin fay
+		// `https://music.amazon.${country}/albums/B09WRFW2Y6`,// alvin fay
 		`https://music.amazon.${country}/albums/B0BHFGDMKS`,// take it easy
 		// 'https://music.amazon.fr/albums/B09M8JTGVH',//mior good memories
 		// 'https://music.amazon.fr/albums/B09MG4RYBF',//mior lunar
@@ -50,7 +50,7 @@ export const albums = (country?: string) => ({
 		'https://listen.tidal.com/album/102503463',//red beast
 		'https://listen.tidal.com/album/113608807',// He Knows She Knows
 		'https://listen.tidal.com/album/115558312', // my stash
-		'https://listen.tidal.com/album/222894826', // alvin fay
+		// 'https://listen.tidal.com/album/222894826', // alvin fay
 		'https://listen.tidal.com/album/210703692', // fresh mix
 		'https://listen.tidal.com/album/252505614', // ordhn take it easy
 		// 'https://listen.tidal.com/album/205826377',//mior good memories
@@ -74,7 +74,7 @@ export const albums = (country?: string) => ({
 		'https://open.spotify.com/album/0Tt1ldQ8b4zn5LRcM706ll',//red beast
 		'https://open.spotify.com/album/4griwLkxXcEjmW1gIHDFRf',//He Knows She Knows
 		'https://open.spotify.com/album/7IQzrFiKgjNqqdetqxEiIz',//my stash
-		'https://open.spotify.com/album/6c61czb1qlMadW11uq6Lor', // alvin fay
+		// 'https://open.spotify.com/album/6c61czb1qlMadW11uq6Lor', // alvin fay
 		'https://open.spotify.com/album/4szjKFxbsHKpqpxhrm7H6L',// fresh mix
 		'https://open.spotify.com/album/3YZrjrJjUYOmrmFqqv3EMA',// take it easy
 		// 'https://open.spotify.com/album/1VFYQwx6WVZ9eLRLkQEPRH',//mior good memories
