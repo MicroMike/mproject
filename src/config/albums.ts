@@ -1,4 +1,4 @@
-export const albums = (country = 'fr') => ({
+export const albums = (country?: string) => ({
 	napster: [
 		'https://web.napster.com/album/alb.389842349',//marching-smile
 		'https://web.napster.com/album/alb.398248284',//my-stash
@@ -22,13 +22,13 @@ export const albums = (country = 'fr') => ({
 		// 'https://app.napster.com/artist/lapilluledors/album/red-beast',
 	],
 	amazon: [
-		`https://music.amazon.${country}/albums/B07V1W5978`,//marching-smile
-		`https://music.amazon.${country}/albums/B07MTV7JYS`,//red Beast
-		`https://music.amazon.${country}/albums/B07VC9S3JM`,//He Knows She Knows
-		`https://music.amazon.${country}/albums/B07WCHK4JR`,//my-stash
-		`https://music.amazon.${country}/albums/B09PF7R5H1`,// fresh mix
-		`https://music.amazon.${country}/albums/B09WRFW2Y6`,// alvin fay
-		`https://music.amazon.${country}/albums/B0BHFGDMKS`,// take it easy
+		`https://music.amazon.${country || 'fr'}/albums/B07V1W5978`,//marching-smile
+		`https://music.amazon.${country || 'fr'}/albums/B07MTV7JYS`,//red Beast
+		`https://music.amazon.${country || 'fr'}/albums/B07VC9S3JM`,//He Knows She Knows
+		`https://music.amazon.${country || 'fr'}/albums/B07WCHK4JR`,//my-stash
+		`https://music.amazon.${country || 'fr'}/albums/B09PF7R5H1`,// fresh mix
+		`https://music.amazon.${country || 'fr'}/albums/B09WRFW2Y6`,// alvin fay
+		`https://music.amazon.${country || 'fr'}/albums/B0BHFGDMKS`,// take it easy
 		// 'https://music.amazon.fr/albums/B09M8JTGVH',//mior good memories
 		// 'https://music.amazon.fr/albums/B09MG4RYBF',//mior lunar
 		// 'https://music.amazon.fr/albums/B07CZDXC9B',
