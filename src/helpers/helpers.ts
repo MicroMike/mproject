@@ -103,8 +103,6 @@ const getTimePlayer = async (R: any, S: any) => {
 }
 
 const goToPage = async (url: string, P: any, R?: any) => {
-
-	console.log('GOTO', url)
 	await wait(rand(5, 3) * 1000)
 
 	await P.navigate({ url: url });
