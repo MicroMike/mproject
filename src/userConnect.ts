@@ -56,7 +56,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 					if (isSpotify || isTidal) {
 						await click(I, R, '#onetrust-accept-btn-handler', 5)
 					}
-					await click(I, R, S.gotoLog)
+					await click(I, R, S.gotoLog, 30)
 				}
 
 
