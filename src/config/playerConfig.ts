@@ -37,7 +37,7 @@ export const getConfig = (player: TPlayer) => {
 
 	if (player === 'apple') {
 		S.noNeedLog = '.web-navigation__auth-button--sign-out'
-		S.gotoLog = '.web-navigation__auth-button--sign-in'
+		S.gotoLog = '.signin'
 		S.loginError = '.alert.alert-warning'
 		S.email = '#account_name_text_field'
 		S.pass = '#password_text_field'
