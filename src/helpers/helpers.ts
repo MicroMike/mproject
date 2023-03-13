@@ -106,6 +106,8 @@ const getAppleTimePlayer = async (R: any, S: any) => {
 	const e = R && await R.evaluate({ expression: `document.querySelector('${S.timeLine}') && document.querySelector('${S.timeLine}').getAttribute('aria-valuenow')` })
 	const time = e.result.value
 
+	console.log('time', time)
+
 	return Number(time)
 }
 
