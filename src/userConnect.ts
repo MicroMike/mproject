@@ -56,12 +56,33 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 					if (isSpotify || isTidal) {
 						await click(I, R, '#onetrust-accept-btn-handler', 5)
 					}
+					if (isApple) {
+						await wait(rand(5, 3) * 1000)
+						await press(I, 'Tab')
+						await wait(rand(5, 3) * 1000)
+						await press(I, 'Tab')
+						await wait(rand(5, 3) * 1000)
+						await press(I, 'Tab')
+						await wait(rand(5, 3) * 1000)
+						await press(I, 'Tab')
+						await wait(rand(5, 3) * 1000)
+						await press(I, 'Tab')
+						await wait(rand(5, 3) * 1000)
+						await press(I, 'Tab')
+						await wait(rand(5, 3) * 1000)
+						await press(I, 'Tab')
+						await wait(rand(5, 3) * 1000)
+						await press(I, 'Tab')
+
+						await wait(rand(5, 3) * 1000)
+						await pressedEnter(I)
+					}
 					await click(I, R, S.gotoLog, 30)
 				}
 
 
 				if (isApple) {
-					await wait(rand(5, 3) * 1000)
+					await wait(rand(5, 3) * 2000)
 					await press(I, 'Tab')
 
 					await wait(rand(5, 3) * 1000)
