@@ -46,7 +46,7 @@ export const getConfig = (player: TPlayer) => {
 		S.shuffleBtn = '[aria-label="Lecture aléatoire"][aria-disabled="false"]'
 		S.play = '.primary-actions__button--shuffle button.click-action'
 		S.pauseBtn = '.web-chrome-playback-controls__playback-btn[aria-label="Pause"]'
-		S.timeLine = '.playback-progress'
+		S.timeLine = '#playback-progress'
 	}
 
 	if (player === 'amazon') {
