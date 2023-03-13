@@ -44,7 +44,7 @@ export const getConfig = (player: TPlayer) => {
 		S.connectBtn = '#sign-in'
 		// S.play = '.shuffle-button'
 		S.shuffleBtn='[aria-label="Lecture aléatoire"][aria-disabled="false"]'
-		S.play = '.play-button'
+		S.play = '.primary-actions__button--shuffle button.click-action'
 		S.pauseBtn = '.web-chrome-playback-controls__playback-btn[aria-label="Pause"]'
 		S.timeLine = '.web-chrome-playback-lcd__playback-time'
 	}
