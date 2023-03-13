@@ -117,8 +117,6 @@ const goToPage = async (url: string, P: any, R?: any) => {
 }
 
 const press = async (I: any, key: string) => {
-	if (closed) { return }
-
 	await wait(rand(5, 3) * 1000)
 
 	await I.dispatchKeyEvent({
