@@ -47,7 +47,6 @@ export const getConfig = (player: TPlayer) => {
 		S.play = '.primary-actions__button--shuffle button.click-action'
 		S.pauseBtn = '.web-chrome-playback-controls__playback-btn[aria-label="Pause"]'
 		S.timeLine = '.playback-progress'
-		S.callback = (a: any) => a
 	}
 
 	if (player === 'amazon') {

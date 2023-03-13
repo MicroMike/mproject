@@ -104,7 +104,7 @@ const getTimePlayer = async (R: any, S: any) => {
 
 const getAppleTimePlayer = async (R: any, S: any) => {
 	const e = R && await R.evaluate({ expression: `document.querySelector('${S.timeLine}') && document.querySelector('${S.timeLine}').getAttribute('aria-valuenow')` })
-	const time = e.result.value && S.callback(e.result.value)
+	const time = e.result.value
 
 	return Number(time)
 }
