@@ -30,10 +30,6 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 		const alb = album(player as TPlayer, country)
 		await goToPage(alb, P, R)
 
-		if (player === 'apple') {
-			await disableAlert(R)
-		}
-
 		if (isTidal) {
 			await click(I, R, '#onetrust-accept-btn-handler', 5)
 		}
