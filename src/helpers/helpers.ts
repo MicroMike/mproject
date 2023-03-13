@@ -102,6 +102,13 @@ const getTimePlayer = async (R: any, S: any) => {
 	return Number(time)
 }
 
+const getAppleTimePlayer = async (R: any, S: any) => {
+	const e = R && await R.evaluate({ expression: `document.querySelector('${S.timeLine}') && document.querySelector('${S.timeLine}').getAttribute('aria-valuenow')` })
+	const time = e.result.value && S.callback(e.result.value)
+
+	return Number(time)
+}
+
 const goToPage = async (url: string, P: any, R?: any) => {
 	await wait(rand(5, 3) * 1000)
 
@@ -207,6 +214,7 @@ export {
 	disableAlert,
 	get,
 	getTimePlayer,
+	getAppleTimePlayer,
 	goToPage,
 	press,
 	pressedEnter,

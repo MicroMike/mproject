@@ -1,5 +1,5 @@
 import { TPlayer } from "./config/types"
-import { album, click, get, getTimePlayer, goToPage, rand, takeScreenshot, wait } from "./helpers/helpers"
+import { album, click, get, getAppleTimePlayer, getTimePlayer, goToPage, rand, takeScreenshot, wait } from "./helpers/helpers"
 import { userConnect } from "./userConnect"
 
 export const start = (props: any, chrome: any, protocol: any) => new Promise(async (res) => {
@@ -32,7 +32,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			out = true
 		}, 5 * 60 * 1000);
 
-		const time = await getTimePlayer(R, S)
+		const time = await (player !== 'apple' ? getTimePlayer : getAppleTimePlayer)(R, S)
 
 		S.shuffleBtn !== '' && await click(I, R, S.shuffleBtn)
 

@@ -16,7 +16,7 @@ export const getConfig = (player: TPlayer) => {
 		callback: (a: any) => (a.split(':').reduce((a: any, b: any) => a * 60 + Number(b))),
 		nextBtn: '[data-test="next"]'
 	}
-
+	
 	if (player === 'spotify') {
 		S.noNeedLog = '[data-testid="user-widget-link"]'
 		S.gotoLog = '[data-testid="login-button"]'
@@ -27,14 +27,14 @@ export const getConfig = (player: TPlayer) => {
 		S.play = '[data-testid="action-bar-row"] [data-testid="play-button"]'
 		S.timeLine = '[data-testid="playback-position"]'
 		S.shuffleBtn = '[aria-checked="false"][data-testid="control-button-shuffle"]'
-
+		
 		// S.repeatBtn = '[class*="spoticon-repeat"]'
 		// S.repeatBtnOk = '.spoticon-repeat-16.control-button--active'
 		// S.shuffleBtn = '.spoticon-shuffle-16:not(.control-button--active)'
 		// S.nextBtn = '.spoticon-skip-forward-16'
 		// S.usedDom = '.ConnectBar'
 	}
-
+	
 	if (player === 'apple') {
 		S.noNeedLog = '.context-menu-container .user'
 		S.gotoLog = '.signin'
@@ -46,7 +46,7 @@ export const getConfig = (player: TPlayer) => {
 		S.shuffleBtn='[aria-label="Lecture aléatoire"][aria-disabled="false"]'
 		S.play = '.primary-actions__button--shuffle button.click-action'
 		S.pauseBtn = '.web-chrome-playback-controls__playback-btn[aria-label="Pause"]'
-		S.timeLine = '.web-chrome-playback-lcd__playback-time'
+		S.timeLine = '.playback-progress'
 	}
 
 	if (player === 'amazon') {
