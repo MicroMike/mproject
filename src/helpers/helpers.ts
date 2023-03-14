@@ -109,10 +109,13 @@ const getAppleTimePlayer = async (R: any, S: any) => {
 	return Number(time)
 }
 
-const goToPage = async (url: string, P: any, R?: any) => {
+const goToPage = async (url: string, P: any, R: any, I: any) => {
 	await wait(rand(5, 3) * 1000)
 
-	await disableAlert(R)
+	if (/apple/.test(url)) {
+		await wait(rand(5, 3) * 1000)
+		await pressedEnter(I)
+	}
 
 	await P.navigate({ url: url });
 	P.loadEventFired();

@@ -28,7 +28,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 		const isApple = player === 'apple'
 
 		const alb = album(player as TPlayer, country)
-		await goToPage(alb, P, R)
+		await goToPage(alb, P, R, I)
 
 		if (isTidal) {
 			await click(I, R, '#onetrust-accept-btn-handler', 5)
@@ -127,7 +127,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 					}
 
 					if (amazonReLog) {
-						await goToPage(alb, P, R)
+						await goToPage(alb, P, R, I)
 					}
 
 					const outErrorConnect = await waitForSelector(R, S.loginError, 10)
@@ -192,7 +192,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 			await click(I, R, '#onetrust-accept-btn-handler', 5)
 		}
 
-		await goToPage(alb, P, R)
+		await goToPage(alb, P, R, I)
 
 		await wait(rand(5, 3) * 1000)
 
