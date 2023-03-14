@@ -103,7 +103,7 @@ const getTimePlayer = async (R: any, S: any) => {
 }
 
 const getAppleTimePlayer = async (R: any, S: any) => {
-	const e = R && await R.evaluate({ expression: `document.querySelector('${S.timeLine}') && document.querySelector('${S.timeLine}').getAttribute('aria-valuenow')` })
+	const e = R && await R.evaluate({ expression: `document.querySelector("#scrollable-page > div > div > amp-chrome-player > div:nth-child(1) > div > amp-lcd").shadowRoot.querySelector("amp-lcd-progress > div > div > time.lcd-progress__time.lcd-progress__time--elapsed").innerText` })
 	const time = e.result.value
 
 	console.log('time', time)
