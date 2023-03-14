@@ -112,15 +112,15 @@ const getAppleTimePlayer = async (R: any, S: any) => {
 const goToPage = async (url: string, P: any, R: any, I: any) => {
 	await wait(rand(5, 3) * 1000)
 
-	if (/apple/.test(url)) {
-		await wait(rand(5, 3) * 1000)
-		await pressedEnter(I)
-	}
-
 	await P.navigate({ url: url });
 	P.loadEventFired();
 
 	await wait(rand(5, 3) * 1000)
+
+	if (/apple/.test(url)) {
+		await wait(rand(5, 3) * 1000)
+		await pressedEnter(I)
+	}
 
 	if (R) {
 		const expression = 'document.querySelector("#detailHeaderButton2").addEventListener("click",({clientX,clientY})=>{console.log(clientX,clientY);document.querySelector("body").insertAdjacentHTML("beforeEnd",`<div style="background:red;position:absolute;top:${clientY}px;left:${clientX}px;width:3px;height:3px;z-index:1000;"></div>`)})'
