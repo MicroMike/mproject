@@ -26,7 +26,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	const checkLive = /checklive/i.test(arg)
 	const varPath = process.platform === 'darwin' ? '/Users/mike/Dev/puppet/puppet/' : '/root/puppet/puppet/'
 
-	let account = checkAccount || ''
+	let account = ''
 	let parentId = arg
 	let streamId: string
 	let back: boolean
@@ -87,7 +87,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		if (!back && account === '') {
 			streamId = socketId
 			try {
-				clientSocket.emit('isWaiting', { parentId, streamId, max })
+				clientSocket.emit('isWaiting', { parentId, streamId, max, checkAccount })
 			} catch (error) {
 				console.log('socket error isWaiting')
 			}
@@ -104,7 +104,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	clientSocket.on('loaded', async () => {
 		await wait(5 * 1000)
 		try {
-			clientSocket.emit('isWaiting', { parentId, streamId, max })
+			clientSocket.emit('isWaiting', { parentId, streamId, max, checkAccount })
 		} catch (error) {
 			console.log('socket error isWaiting')
 		}
