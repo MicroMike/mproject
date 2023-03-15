@@ -22,7 +22,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 
 	const clientSocket = io('http://149.102.132.27:3000');
 
-	const check = !!checkAccount || /check/i.test(arg)
+	const check = /check/i.test(arg)
 	const checkLive = /checklive/i.test(arg)
 	const varPath = process.platform === 'darwin' ? '/Users/mike/Dev/puppet/puppet/' : '/root/puppet/puppet/'
 
