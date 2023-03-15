@@ -90,6 +90,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			}
 
 			const alb = album(player as TPlayer, country)
+			await click(I, R, S.pauseBtn, 60)
 			await goToPage(alb, P, R, I)
 
 			await I.dispatchMouseEvent({
