@@ -116,7 +116,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 		await wait(5000)
 
-		if (out) {
+		if (out && player === 'apple') {
 			await click(I, R, S.pauseBtn, 60)
 		}
 
