@@ -115,6 +115,11 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		currTime = time
 
 		await wait(5000)
+
+		if (out) {
+			await click(I, R, S.pauseBtn, 60)
+		}
+
 		!out && await inter()
 	}
 
