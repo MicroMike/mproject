@@ -34,7 +34,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 		const time = await (player !== 'apple' ? getTimePlayer : getAppleTimePlayer)(R, S)
 		console.log('time', login, time)
-		S.shuffleBtn !== '' && await click(I, R, S.shuffleBtn)
+		// S.shuffleBtn !== '' && await click(I, R, S.shuffleBtn, 10)
 
 		if (player === 'amazon') {
 			const dialogHeader = await get(R, '#dialogHeader', 'innerText')
