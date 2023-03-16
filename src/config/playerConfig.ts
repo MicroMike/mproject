@@ -43,7 +43,7 @@ export const getConfig = (player: TPlayer) => {
 		S.pass = '#password_text_field'
 		S.connectBtn = '#sign-in'
 		// S.play = '.shuffle-button'
-		S.shuffleBtn = '[aria-label="Lecture aléatoire"][aria-disabled="false"]'
+		// S.shuffleBtn = '[aria-label="Lecture aléatoire"][aria-disabled="false"]'
 		S.play = '.primary-actions__button--shuffle button.click-action'
 		S.pauseBtn = '.playback-play__pause'
 		S.timeLine = '#playback-progress'
