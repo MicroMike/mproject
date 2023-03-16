@@ -90,7 +90,8 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			}
 
 			const alb = album(player as TPlayer, country)
-			await click(I, R, S.pauseBtn, 60)
+			await click(I, R, S.pauseBtn, 15)
+			await wait(5000)
 			await goToPage(alb, P, R, I)
 
 			await I.dispatchMouseEvent({
@@ -118,6 +119,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 		if (out && player === 'apple') {
 			await click(I, R, S.pauseBtn, 10)
+			await wait(2000)
 		}
 
 		!out && await inter()
