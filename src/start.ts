@@ -33,7 +33,6 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		}, 5 * 60 * 1000);
 
 		const time = await (player !== 'apple' ? getTimePlayer : getAppleTimePlayer)(R, S)
-		console.log('time', login, time)
 		// S.shuffleBtn !== '' && await click(I, R, S.shuffleBtn, 10)
 
 		if (player === 'amazon') {
