@@ -9,8 +9,6 @@ export const chromeConfig = (player?: string, login?: string) => {
 				'--disable-gpu',
 				'--disable-features=Translate',
 				'--no-sandbox',
-				'--suppress-message-center-popups',
-				'--block-new-web-contents',
 				player && login && '--user-data-dir=/root/puppet/puppet/' + player + login,
 				// '--disable-setuid-sandbox',
 				// '--remote-debugging-port=' + port,
