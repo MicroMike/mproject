@@ -11,7 +11,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	let countPlays = 0
 	let pauseCount = 0
 	let out: any = false
-	let playByLoop = rand(7, 2)
+	let playByLoop = 2
 	let playLoop = 0
 	let timeout: any
 
@@ -89,7 +89,6 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			}
 
 			const alb = album(player as TPlayer, country)
-			await click(I, R, S.pauseBtn, 15)
 			await wait(5000)
 			await goToPage(alb, P, R, I)
 
