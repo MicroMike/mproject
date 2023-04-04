@@ -29,6 +29,7 @@ export const albums = (country?: string) => ({
 		`https://music.amazon.${country}/albums/B09PF7R5H1`,// fresh mix
 		// `https://music.amazon.${country}/albums/B09WRFW2Y6`,// alvin fay
 		`https://music.amazon.${country}/albums/B0BHFGDMKS`,// take it easy
+		`https://music.amazon.${country}/albums/B0BZQFL22N`,// ashbadger
 		// 'https://music.amazon.fr/albums/B09M8JTGVH',//mior good memories
 		// 'https://music.amazon.fr/albums/B09MG4RYBF',//mior lunar
 		// 'https://music.amazon.fr/albums/B07CZDXC9B',
@@ -77,6 +78,7 @@ export const albums = (country?: string) => ({
 		// 'https://open.spotify.com/album/6c61czb1qlMadW11uq6Lor', // alvin fay
 		'https://open.spotify.com/album/4szjKFxbsHKpqpxhrm7H6L',// fresh mix
 		'https://open.spotify.com/album/3YZrjrJjUYOmrmFqqv3EMA',// take it easy
+		'https://open.spotify.com/album/7AQBjg9oZDT60aTArciBW8',// ashbadger
 		// 'https://open.spotify.com/album/1VFYQwx6WVZ9eLRLkQEPRH',//mior good memories
 		// 'https://open.spotify.com/album/1Coms61c9kWhzH11cZzCrD',//mior lunar
 		// 'https://open.spotify.com/album/3FJdPTLyJVPYMqQQUyb6lr',
@@ -114,6 +116,7 @@ export const albums = (country?: string) => ({
 		`https://music.apple.com/${country}/album/he-knows-she-knows/1472572875`,
 		`https://music.apple.com/${country}/album/fresh-mix-ep/1602522645`,
 		`https://music.apple.com/${country}/album/take-it-easy-ep/1648559520`,
+		`https://music.apple.com/${country}/album/party-mix-vol-1-ep/1679369537`,
 		// 'https://music.apple.com/fr/album/good-memories-single/1596423159',
 		// 'https://music.apple.com/tr/album/lunar-january/1596985047',
 		// 'https://music.apple.com/tr/album/boombeats/1383283815',
