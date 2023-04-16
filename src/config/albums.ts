@@ -22,7 +22,7 @@ export const albums = (country?: string) => ({
 		// 'https://app.napster.com/artist/lapilluledors/album/red-beast',
 	],
 	amazon: [
-		`https://music.amazon.${country}/albums/B07V1W5978`,//marching-smile
+		// `https://music.amazon.${country}/albums/B07V1W5978`,//marching-smile
 		`https://music.amazon.${country}/albums/B07MTV7JYS`,//red Beast
 		`https://music.amazon.${country}/albums/B07VC9S3JM`,//He Knows She Knows
 		`https://music.amazon.${country}/albums/B07WCHK4JR`,//my-stash
@@ -47,7 +47,7 @@ export const albums = (country?: string) => ({
 		// 'https://music.amazon.fr/albums/B07D3PGSR4',
 	],
 	tidal: [
-		'https://listen.tidal.com/album/112888253',//marching-smile
+		// 'https://listen.tidal.com/album/112888253',//marching-smile
 		'https://listen.tidal.com/album/102503463',//red beast
 		'https://listen.tidal.com/album/113608807',// He Knows She Knows
 		'https://listen.tidal.com/album/115558312', // my stash
@@ -71,7 +71,7 @@ export const albums = (country?: string) => ({
 		// 'https://listen.tidal.com/album/107892456',
 	],
 	spotify: [
-		'https://open.spotify.com/album/4EYeIhS1bRq51bui82dGNR',//marching smile
+		// 'https://open.spotify.com/album/4EYeIhS1bRq51bui82dGNR',//marching smile
 		'https://open.spotify.com/album/0Tt1ldQ8b4zn5LRcM706ll',//red beast
 		'https://open.spotify.com/album/4griwLkxXcEjmW1gIHDFRf',//He Knows She Knows
 		'https://open.spotify.com/album/7IQzrFiKgjNqqdetqxEiIz',//my stash
@@ -112,7 +112,7 @@ export const albums = (country?: string) => ({
 	apple: [
 		`https://music.apple.com/${country}/album/red-beast/1449459227`,
 		`https://music.apple.com/${country}/album/my-stash/1476078813`,
-		`https://music.apple.com/${country}/album/marching-smile/1472877269`,
+		// `https://music.apple.com/${country}/album/marching-smile/1472877269`,
 		`https://music.apple.com/${country}/album/he-knows-she-knows/1472572875`,
 		`https://music.apple.com/${country}/album/fresh-mix-ep/1602522645`,
 		`https://music.apple.com/${country}/album/take-it-easy-ep/1648559520`,
