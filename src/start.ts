@@ -36,8 +36,8 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		// S.shuffleBtn !== '' && await click(I, R, S.shuffleBtn, 10)
 
 		if (player === 'amazon') {
-			const dialogHeader = await get(R, '#dialogHeader', 'innerText')
-			if (/Partager/.test(dialogHeader)) {
+			const dialogHeader = await get(R, '#dialog', 'innerText')
+			if (/Share|Partager/.test(dialogHeader)) {
 				out = 'del'
 			}
 		}
