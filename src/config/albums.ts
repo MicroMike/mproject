@@ -23,11 +23,11 @@ export const albums = (country?: string) => ({
 	],
 	amazon: [
 		// `https://music.amazon.${country}/albums/B07V1W5978`,//marching-smile
+		// `https://music.amazon.${country}/albums/B09WRFW2Y6`,// alvin fay
 		`https://music.amazon.${country}/albums/B07MTV7JYS`,//red Beast
 		`https://music.amazon.${country}/albums/B07VC9S3JM`,//He Knows She Knows
 		`https://music.amazon.${country}/albums/B07WCHK4JR`,//my-stash
 		`https://music.amazon.${country}/albums/B09PF7R5H1`,// fresh mix
-		// `https://music.amazon.${country}/albums/B09WRFW2Y6`,// alvin fay
 		`https://music.amazon.${country}/albums/B0BHFGDMKS`,// take it easy
 		`https://music.amazon.${country}/albums/B0BZQFL22N`,// ashbadger
 		// 'https://music.amazon.fr/albums/B09M8JTGVH',//mior good memories
@@ -47,13 +47,14 @@ export const albums = (country?: string) => ({
 		// 'https://music.amazon.fr/albums/B07D3PGSR4',
 	],
 	tidal: [
-		// 'https://listen.tidal.com/album/112888253',//marching-smile
 		'https://listen.tidal.com/album/102503463',//red beast
 		'https://listen.tidal.com/album/113608807',// He Knows She Knows
 		'https://listen.tidal.com/album/115558312', // my stash
-		// 'https://listen.tidal.com/album/222894826', // alvin fay
 		'https://listen.tidal.com/album/210703692', // fresh mix
 		'https://listen.tidal.com/album/252505614', // ordhn take it easy
+		'https://listen.tidal.com/album/285840150', // ashbadger
+		// 'https://listen.tidal.com/album/112888253',//marching-smile
+		// 'https://listen.tidal.com/album/222894826', // alvin fay
 		// 'https://listen.tidal.com/album/205826377',//mior good memories
 		// 'https://listen.tidal.com/album/206322539',//mior lunar
 		// 'https://listen.tidal.com/album/93312939',
@@ -110,9 +111,9 @@ export const albums = (country?: string) => ({
 		'https://www.iheart.com/artist/yonne-32474174/albums/loser-62529736',
 	],
 	apple: [
+		// `https://music.apple.com/${country}/album/marching-smile/1472877269`,
 		`https://music.apple.com/${country}/album/red-beast/1449459227`,
 		`https://music.apple.com/${country}/album/my-stash/1476078813`,
-		// `https://music.apple.com/${country}/album/marching-smile/1472877269`,
 		`https://music.apple.com/${country}/album/he-knows-she-knows/1472572875`,
 		`https://music.apple.com/${country}/album/fresh-mix-ep/1602522645`,
 		`https://music.apple.com/${country}/album/take-it-easy-ep/1648559520`,
@@ -126,6 +127,14 @@ export const albums = (country?: string) => ({
 		// 'https://music.apple.com/tr/album/above-everybody-wind/1469335241',
 		// 'https://music.apple.com/tr/album/blue-gun/1462971089',
 		// 'https://music.apple.com/tr/album/loser/1421807206',
+	],
+	youtube:[
+		'https://music.youtube.com/playlist?list=OLAK5uy_mRQymmHf2WE1VF5rTSrfhi4NeApk5ve8k', // red beast
+		'https://music.youtube.com/playlist?list=OLAK5uy_n2vh4Z_2con4v5n_zRI5-B_2x_yGQzjb4', // He Knows She Knows
+		'https://music.youtube.com/playlist?list=OLAK5uy_ncO3_KViomsWKfWvhbwafOU2uA-xLhOYY', // my stash
+		'https://music.youtube.com/playlist?list=OLAK5uy_nXWitqEOdlkDZHj3i11N_vb6zjPLd-Ofg', // fresh mix
+		'https://music.youtube.com/playlist?list=OLAK5uy_lJNbLVhAKyWd-NnerMMuiobEWsSXuN0pw', // take it easy
+		'https://music.youtube.com/playlist?list=OLAK5uy_l_qZepk2ZTkXQl7ifquJOJzftlhXpLuJc', // ashbadger
 	]
 })
 
