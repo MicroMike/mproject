@@ -15,21 +15,18 @@ export const getSession = (player: string, login: string) => new Promise((res, r
 	// 	shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Session\\ Storage" /root/puppet/puppet/${folder}/Default/`,{silent:true})
 	// 	shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Local\\ Storage" /root/puppet/puppet/${folder}/Default/`,{silent:true})
 	// }
+
 	if (isYoutube) {
 		shell.exec(`mkdir -p /root/puppet/puppet/${folder}`, { silent: true })
 		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default" /root/puppet/puppet/${folder}/`, { silent: true })
-		res(true)
-		return
+	} else {
+		shell.exec(`mkdir -p /root/puppet/puppet/${folder}/Default`, { silent: true })
+		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Session\\ Storage" /root/puppet/puppet/${folder}/Default/`, { silent: true })
+		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Local\\ Storage" /root/puppet/puppet/${folder}/Default/`, { silent: true })
+		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Login\\ Data\\ For\\ Account" /root/puppet/puppet/${folder}/Default/`, { silent: true })
+		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Login\\ Data" /root/puppet/puppet/${folder}/Default/`, { silent: true })
+		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Cookies" /root/puppet/puppet/${folder}/Default/`, { silent: true })
 	}
-
-	// if (player === 'amazon' || player === 'spotify') {
-	shell.exec(`mkdir -p /root/puppet/puppet/${folder}/Default`, { silent: true })
-	shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Session\\ Storage" /root/puppet/puppet/${folder}/Default/`, { silent: true })
-	shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Local\\ Storage" /root/puppet/puppet/${folder}/Default/`, { silent: true })
-	shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Login\\ Data\\ For\\ Account" /root/puppet/puppet/${folder}/Default/`, { silent: true })
-	shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Login\\ Data" /root/puppet/puppet/${folder}/Default/`, { silent: true })
-	shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Cookies" /root/puppet/puppet/${folder}/Default/`, { silent: true })
-	// }
 
 	// @ts-ignore
 	console.log('END getSession'.green, player, login)
@@ -53,18 +50,14 @@ export const copyBack = (player: string, login: string) => new Promise((res, rej
 	if (isYoutube) {
 		shell.exec(`ssh root@${serverIp} mkdir -p /root/puppet/${folder}`, { silent: true })
 		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default root@${serverIp}:"/root/puppet/${folder}"`, { silent: true })
-		res(true)
-		return
+	} else {
+		shell.exec(`ssh root@${serverIp} mkdir -p /root/puppet/${folder}/Default`, { silent: true })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Session\\ Storage root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Local\\ Storage root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Login\\ Data\\ For\\ Account root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Login\\ Data root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Cookies root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
 	}
-
-	// if (player === 'amazon' || player === 'spotify') {
-	shell.exec(`ssh root@${serverIp} mkdir -p /root/puppet/${folder}/Default`, { silent: true })
-	shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Session\\ Storage root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
-	shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Local\\ Storage root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
-	shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Login\\ Data\\ For\\ Account root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
-	shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Login\\ Data root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
-	shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Cookies root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
-	// }
 
 	// @ts-ignore
 	console.log('END copyBack'.green, player, login)
