@@ -36,9 +36,6 @@ export const getSession = (player: string, login: string) => new Promise((res, r
 
 		res(true)
 	}
-
-	// @ts-ignore
-	console.log('END getSession'.green, player, login)
 })
 
 export const copyBack = (player: string, login: string) => new Promise((res, rej) => {
@@ -74,6 +71,4 @@ export const copyBack = (player: string, login: string) => new Promise((res, rej
 
 		res(true)
 	}
-
-
 })
