@@ -26,6 +26,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 		const isAmazon = player === 'amazon'
 		const isNapster = player === 'napster'
 		const isApple = player === 'apple'
+		const isYoutube = player === 'youtube'
 
 		const alb = album(player as TPlayer, country)
 		await goToPage(alb, P, R, I)
@@ -86,6 +87,31 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 					await I.insertText({
 						text: pass,
 					})
+
+					await wait(rand(5, 3) * 1000)
+					await pressedEnter(I)
+				}
+
+				if (isYoutube) {
+					await wait(rand(5, 3) * 1000)
+					await I.insertText({
+						text: login,
+					})
+
+					await press(I, 'Tab')
+					await press(I, 'Tab')
+					await press(I, 'Tab')
+
+					await wait(rand(5, 3) * 1000)
+					await pressedEnter(I)
+
+					await wait(rand(5, 3) * 1000)
+					await I.insertText({
+						text: pass,
+					})
+
+					await press(I, 'Tab')
+					await press(I, 'Tab')
 
 					await wait(rand(5, 3) * 1000)
 					await pressedEnter(I)
@@ -203,9 +229,16 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 			y: 390
 		})
 
-		await wait(rand(5, 3) * 1000)
-		await click(I, R, S.play)
-		await wait(rand(5, 3) * 1000)
+		if (isYoutube) {
+			await click(I, R, '#button-shape')
+			await wait(rand(5, 3) * 1000)
+			await click(I, R, '.iron-selected')
+		} else {
+			await wait(rand(5, 3) * 1000)
+			await click(I, R, S.play)
+			await wait(rand(5, 3) * 1000)
+		}
+
 
 		socketEmit('playerInfos', { time: 'PLAY', ok: true })
 

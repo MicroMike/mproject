@@ -1,1 +1,1 @@
-export type TPlayer = 'napster' | 'amazon' | 'tidal' | 'spotify' | 'heart' | 'apple'
+export type TPlayer = 'napster' | 'amazon' | 'tidal' | 'spotify' | 'heart' | 'apple' | 'youtube'

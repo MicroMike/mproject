@@ -63,6 +63,20 @@ export const getConfig = (player: TPlayer) => {
 		// usedDom = '.concurrentStreamsPopover'
 	}
 
+	if (player === 'youtube') {
+		S.noNeedLog = '.settings-button'
+		S.gotoLog = '.sign-in-link'
+		S.loginError = '.upsellButton'
+		S.email = '#identifierId'
+		S.pass = '#ap_password'
+		S.connectBtn = '#signInSubmit'
+		S.play = '.watch-button'
+		S.timeLine = '#transport > :last-child > :last-child span'
+
+		// remember = '[name="rememberMe"]'
+		// usedDom = '.concurrentStreamsPopover'
+	}
+
 	if (player === 'napster') {
 		// url = 'https://app.napster.com/login/'
 		// S.gotoLog = '#nav-login-btn'
