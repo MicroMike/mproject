@@ -125,6 +125,19 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 
 					await wait(rand(5, 3) * 1000)
 					await pressedEnter(I)
+
+					await press(I, 'Tab')
+					await press(I, 'Tab')
+					await press(I, 'Tab')
+					await press(I, 'Tab')
+					await press(I, 'Tab')
+
+					await I.insertText({
+						text: 'yokem92@mail.fr',
+					})
+
+					await wait(rand(5, 3) * 1000)
+					await pressedEnter(I)
 				}
 				else {
 					// const amazonReLog = isAmazon && await waitForSelector(R, '#ap_switch_account_link', 5)
