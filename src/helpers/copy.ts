@@ -18,11 +18,7 @@ export const getSession = (player: string, login: string) => new Promise((res, r
 
 	if (isYoutube) {
 		// shell.exec(`mkdir -p /root/puppet/puppet/${folder}`, { silent: true })
-		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}" /root/puppet/puppet/${folder}`, { silent: true }, () => {
-			// @ts-ignore
-			console.log('END getSession'.green, player, login)
-			res(true)
-		})
+		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/" /root/puppet/puppet/${folder}`, { silent: false })
 	} else {
 		shell.exec(`mkdir -p /root/puppet/puppet/${folder}/Default`, { silent: true })
 		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Session\\ Storage" /root/puppet/puppet/${folder}/Default/`, { silent: true })
@@ -30,12 +26,12 @@ export const getSession = (player: string, login: string) => new Promise((res, r
 		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Login\\ Data\\ For\\ Account" /root/puppet/puppet/${folder}/Default/`, { silent: true })
 		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Login\\ Data" /root/puppet/puppet/${folder}/Default/`, { silent: true })
 		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Cookies" /root/puppet/puppet/${folder}/Default/`, { silent: true })
-
-		// @ts-ignore
-		console.log('END getSession'.green, player, login)
-
-		res(true)
 	}
+
+	// @ts-ignore
+	console.log('END getSession'.green, player, login)
+
+	res(true)
 })
 
 export const copyBack = (player: string, login: string) => new Promise((res, rej) => {
@@ -53,11 +49,7 @@ export const copyBack = (player: string, login: string) => new Promise((res, rej
 
 	if (isYoutube) {
 		// shell.exec(`ssh root@${serverIp} mkdir -p /root/puppet/${folder}`, { silent: true })
-		shell.exec(`scp -r /root/puppet/puppet/${folder} root@${serverIp}:"/root/puppet"`, { silent: true }, () => {
-			// @ts-ignore
-			console.log('END copyBack'.green, player, login)
-			res(true)
-		})
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/ root@${serverIp}:"/root/puppet/"`, { silent: false })
 	} else {
 		shell.exec(`ssh root@${serverIp} mkdir -p /root/puppet/${folder}/Default`, { silent: true })
 		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Session\\ Storage root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
@@ -65,10 +57,10 @@ export const copyBack = (player: string, login: string) => new Promise((res, rej
 		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Login\\ Data\\ For\\ Account root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
 		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Login\\ Data root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
 		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Cookies root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
-
-		// @ts-ignore
-		console.log('END copyBack'.green, player, login)
-
-		res(true)
 	}
+
+	// @ts-ignore
+	console.log('END copyBack'.green, player, login)
+
+	res(true)
 })
