@@ -17,7 +17,7 @@ export const getSession = (player: string, login: string) => new Promise((res, r
 	// }
 
 	if (isYoutube) {
-		// shell.exec(`mkdir -p /root/puppet/puppet/${folder}`, { silent: true })
+		shell.exec(`mkdir -p /root/puppet/puppet/${folder}`, { silent: true })
 		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/" /root/puppet/puppet/${folder}`, { silent: false })
 	} else {
 		shell.exec(`mkdir -p /root/puppet/puppet/${folder}/Default`, { silent: true })
