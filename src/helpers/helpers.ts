@@ -96,7 +96,7 @@ const select = async (R: any, selector: string, value: string) => {
 }
 
 const getTimePlayer = async (R: any, S: any) => {
-	const e = R && await R.evaluate({ expression: `document.querySelector('${S.timeLine}') && document.querySelector('${S.timeLine}').innerText` })
+	const e = R && await R.evaluate({ expression: `document.querySelector('${S.timeLine}') && document.querySelector('${S.timeLine}').innerText.trim()` })
 	const time = e.result.value && S.callback(e.result.value)
 
 	return Number(time)
