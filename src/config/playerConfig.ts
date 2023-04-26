@@ -71,7 +71,8 @@ export const getConfig = (player: TPlayer) => {
 		S.pass = '#ap_password'
 		S.connectBtn = '#signInSubmit'
 		S.play = '.watch-button'
-		S.timeLine = '#transport > :last-child > :last-child span'
+		S.timeLine = '.time-info'
+		S.callback = (a: any) => (a.split(' /')[0].split(':').reduce((a: any, b: any) => a * 60 + Number(b)))
 
 		// remember = '[name="rememberMe"]'
 		// usedDom = '.concurrentStreamsPopover'
