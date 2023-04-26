@@ -49,7 +49,7 @@ export const copyBack = (player: string, login: string) => new Promise((res, rej
 
 	if (isYoutube) {
 		shell.exec(`ssh root@${serverIp} mkdir -p /root/puppet/${folder}`, { silent: true })
-		shell.exec(`scp -r /root/puppet/puppet/${folder}/ root@${serverIp}:"/root/puppet/${folder}"`, { silent: false })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/ root@${serverIp}:"/root/puppet/"`, { silent: false })
 	} else {
 		shell.exec(`ssh root@${serverIp} mkdir -p /root/puppet/${folder}/Default`, { silent: true })
 		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Session\\ Storage root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
