@@ -83,7 +83,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			out = 'freeze'
 		}
 		else if (countPlays > playByLoop || pauseCount > 5) {
-			if (player === 'apple') {
+			if (/apple|youtube/.test(player)) {
 				await click(I, R, S.pauseBtn)
 				await wait(rand(5, 3) * 1000)
 			}
@@ -114,7 +114,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 		await wait(5000)
 
-		if (out && player === 'apple') {
+		if (out && /apple|youtube/.test(player)) {
 			await click(I, R, S.pauseBtn, 10)
 			await wait(2000)
 		}
