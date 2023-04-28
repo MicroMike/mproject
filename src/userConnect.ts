@@ -126,23 +126,27 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 					await wait(rand(5, 3) * 1000)
 					await pressedEnter(I)
 
-					await press(I, 'Tab')
-					await press(I, 'Tab')
-					await press(I, 'Tab')
-					await press(I, 'Tab')
-					await press(I, 'Tab')
+					let logSuccess = await waitForSelector(R, S.noNeedLog, 30)
+
+					if (!logSuccess) {
+						await press(I, 'Tab')
+						await press(I, 'Tab')
+						await press(I, 'Tab')
+						await press(I, 'Tab')
+						await press(I, 'Tab')
 
 
-					await wait(rand(5, 3) * 1000)
-					await pressedEnter(I)
+						await wait(rand(5, 3) * 1000)
+						await pressedEnter(I)
 
-					await wait(rand(5, 3) * 1000)
-					await I.insertText({
-						text: 'yokem92@mail.fr',
-					})
+						await wait(rand(5, 3) * 1000)
+						await I.insertText({
+							text: 'yokem92@mail.fr',
+						})
 
-					await wait(rand(5, 3) * 1000)
-					await pressedEnter(I)
+						await wait(rand(5, 3) * 1000)
+						await pressedEnter(I)
+					}
 				}
 				else {
 					// const amazonReLog = isAmazon && await waitForSelector(R, '#ap_switch_account_link', 5)
