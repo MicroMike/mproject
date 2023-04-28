@@ -67,15 +67,20 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 						await pressedEnter(I)
 					}
 					if (isYoutube) {
-						await press(I, 'Tab')
-						await press(I, 'Tab')
-						await press(I, 'Tab')
-						await press(I, 'Tab')
-						await press(I, 'Tab')
+						let canLog = await waitForSelector(R, S.gotoLog, 15)
 
-						await wait(rand(5, 3) * 1000)
-						await pressedEnter(I)
+						if (!canLog) {
+							await press(I, 'Tab')
+							await press(I, 'Tab')
+							await press(I, 'Tab')
+							await press(I, 'Tab')
+							await press(I, 'Tab')
+
+							await wait(rand(5, 3) * 1000)
+							await pressedEnter(I)
+						}
 					}
+
 					await click(I, R, S.gotoLog, 30)
 				}
 
