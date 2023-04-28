@@ -136,6 +136,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 					await wait(rand(5, 3) * 1000)
 					await pressedEnter(I)
 
+					await wait(rand(5, 3) * 1000)
 					await I.insertText({
 						text: 'yokem92@mail.fr',
 					})
