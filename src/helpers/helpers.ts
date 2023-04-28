@@ -123,7 +123,7 @@ const goToPage = async (url: string, P: any, R: any, I: any) => {
 	// }
 
 	if (R) {
-		const expression = 'document.querySelector("#detailHeaderButton2").addEventListener("click",({clientX,clientY})=>{console.log(clientX,clientY);document.querySelector("body").insertAdjacentHTML("beforeEnd",`<div style="background:red;position:absolute;top:${clientY}px;left:${clientX}px;width:3px;height:3px;z-index:1000;"></div>`)})'
+		const expression = 'window.onbeforeunload = null;'
 		const e = R && await R.evaluate({ expression })
 	}
 }
