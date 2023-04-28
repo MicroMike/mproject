@@ -16,6 +16,7 @@ export const chromeConfig = (player?: string, login?: string) => {
 				// '--disable-gpu',
 				'--disable-features=Translate',
 				'--no-sandbox',
+				'--disable-prompt-on-repost',
 				// `--user-agent=${uAgents[rand(uAgents.length - 1)]}`,
 				player && login && '--user-data-dir=/root/puppet/puppet/' + player + login,
 				// '--disable-setuid-sandbox',
