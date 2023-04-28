@@ -13,7 +13,7 @@ export const chromeConfig = (player?: string, login?: string) => {
 			chromeFlags: [
 				'--chromePath=/bin/google-chrome-stable',
 				'--no-first-run',
-				'--disable-gpu',
+				// '--disable-gpu',
 				'--disable-features=Translate',
 				'--no-sandbox',
 				// `--user-agent=${uAgents[rand(uAgents.length - 1)]}`,
