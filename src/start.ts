@@ -105,8 +105,8 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 		await wait(5000)
 
-		if (out && /apple|youtube/.test(player)) {
-			await click(I, R, S.pauseBtn, 10)
+		if (out) {
+			await click(I, R, S.pauseBtn, 10, false)
 			await wait(2000)
 		}
 
