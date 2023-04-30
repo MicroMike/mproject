@@ -82,7 +82,6 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	})
 
 	clientSocket.on('activate', async (socketId: any) => {
-		console.log('activate', player, account)
 		back = !!streamId
 
 		if (!back && account === '') {
@@ -103,7 +102,6 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	})
 
 	clientSocket.on('loaded', async () => {
-		console.log('loaded', player, account)
 		await wait(5 * 1000)
 		try {
 			clientSocket.emit('isWaiting', { parentId, streamId, max, checkAccount })
@@ -113,7 +111,6 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	})
 
 	clientSocket.on('canRun', async (a: any) => {
-		console.log('canRun', player, account)
 		account = a
 		try {
 			!checkLive && clientSocket.emit('client', { parentId, streamId, account, max })
@@ -123,7 +120,6 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	})
 
 	clientSocket.on('mRun', async (country: any) => {
-		console.log('mRun', player, account)
 		const [p, a] = account.split(':')
 		player = p
 		login = a
@@ -165,7 +161,6 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 	})
 
 	clientSocket.on('forceOut', async (props: any) => {
-		console.log('forceOut', player, account)
 		// shell.exec(`kill -9 ${pid}`, { silent: true })
 		exit(200)
 	})
