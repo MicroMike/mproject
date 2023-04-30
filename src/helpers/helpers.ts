@@ -68,6 +68,8 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 		type: 'mouseReleased',
 	})
 
+	console.log('click', selector)
+
 	res(wfs)
 })
 
