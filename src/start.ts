@@ -1,5 +1,5 @@
 import { TPlayer } from "./config/types"
-import { album, click, get, getAppleTimePlayer, getTimePlayer, goToPage, rand, takeScreenshot, wait } from "./helpers/helpers"
+import { album, click, get, getAppleTimePlayer, getTimePlayer, goToPage, pressedSpace, rand, takeScreenshot, wait } from "./helpers/helpers"
 import { userConnect } from "./userConnect"
 
 export const start = (props: any, chrome: any, protocol: any) => new Promise(async (res) => {
@@ -80,7 +80,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			out = 'freeze'
 		}
 		else if (countPlays > playByLoop || pauseCount > 5) {
-			await click(I, R, S.pauseBtn, 10, false)
+			await pressedSpace(I)
 			await wait(rand(5, 3) * 1000)
 
 			const alb = album(player as TPlayer, country)
@@ -103,7 +103,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		await wait(5000)
 
 		if (out) {
-			await click(I, R, S.pauseBtn, 10, false)
+			await pressedSpace(I)
 			await wait(2000)
 		}
 

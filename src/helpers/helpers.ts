@@ -68,19 +68,6 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 		type: 'mouseReleased',
 	})
 
-	console.log('click', selector)
-	await R.evaluate({
-		expression: `document.querySelector('body').insertAdjacentHTML('beforeend','<div style="
-									top: ${y}px;
-									left: ${x}px;
-									position: absolute;
-									background-color: red;
-									width: 2px;
-									height: 2px;
-									z-index:1000;
-									"></div>')
-								` })
-
 	res(wfs)
 })
 
@@ -167,6 +154,14 @@ const pressedEnter = async (I: any) => {
 	await I.dispatchKeyEvent({ "type": "keyUp", "windowsVirtualKeyCode": 13, "unmodifiedText": "\r", "text": "\r" })
 }
 
+const pressedSpace = async (I: any) => {
+	await I.dispatchKeyEvent({ "type": "rawKeyDown", "windowsVirtualKeyCode": 32, "unmodifiedText": "\r", "text": "\r" })
+	await wait(rand(500, 100))
+	await I.dispatchKeyEvent({ "type": "char", "windowsVirtualKeyCode": 32, "unmodifiedText": "\r", "text": "\r" })
+	await wait(rand(500, 100))
+	await I.dispatchKeyEvent({ "type": "keyUp", "windowsVirtualKeyCode": 32, "unmodifiedText": "\r", "text": "\r" })
+}
+
 const disableAlert = async (R: any) => {
 	await R && R.evaluate({ expression: `window.alert = () => { }; ` })
 }
@@ -236,6 +231,7 @@ export {
 	goToPage,
 	press,
 	pressedEnter,
+	pressedSpace,
 	rand,
 	takeScreenshot,
 	tidalSelect,
