@@ -69,6 +69,16 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 	})
 
 	console.log('click', selector)
+	await R.evaluate({
+		expression: `document.querySelector('body').insertAdjacentHTML('beforeend','<div style="
+									top: ${y}px;
+									left: ${x}px;
+									position: absolute;
+									background-color: red;
+									width: 2px;
+									height: 2px;
+									"></div>')
+								` })
 
 	res(wfs)
 })
