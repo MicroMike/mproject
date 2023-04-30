@@ -68,17 +68,8 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 					}
 					if (isYoutube) {
 						const canLog = await waitForSelector(R, S.gotoLog, 15)
-						const text = await get(R, 'body', 'innerText')
-						const isSign = /Signed out/i.test(text)
 
-						console.log('text', text)
-						if (isSign) {
-							console.log('isSign')
-							await press(I, 'Tab')
-
-							await wait(rand(5, 3) * 1000)
-							await pressedEnter(I)
-						} else if (!canLog) {
+						if (!canLog) {
 							await press(I, 'Tab')
 							await press(I, 'Tab')
 							await press(I, 'Tab')
@@ -118,16 +109,28 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 
 				if (isYoutube) {
 					await wait(rand(5, 3) * 1000)
-					await I.insertText({
-						text: login,
-					})
 
-					await press(I, 'Tab')
-					await press(I, 'Tab')
-					await press(I, 'Tab')
+					const text = await get(R, 'body', 'innerText')
+					const isSign = /Signed out/i.test(text)
 
-					await wait(rand(5, 3) * 1000)
-					await pressedEnter(I)
+					if (isSign) {
+						await press(I, 'Tab')
+
+						await wait(rand(5, 3) * 1000)
+						await pressedEnter(I)
+					} else {
+						await I.insertText({
+							text: login,
+						})
+
+						await press(I, 'Tab')
+						await press(I, 'Tab')
+						await press(I, 'Tab')
+
+						await wait(rand(5, 3) * 1000)
+						await pressedEnter(I)
+					}
+
 
 					await wait(rand(5, 3) * 1000)
 					await I.insertText({
