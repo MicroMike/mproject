@@ -20,6 +20,7 @@ export const chromeConfig = (player?: string, login?: string) => {
 				'--deny-permission-prompts',
 				'--noerrdialogs',
 				'--restore-last-session',
+				'--hide-crash-restore-bubble',
 				// `--user-agent=${uAgents[rand(uAgents.length - 1)]}`,
 				player && login && '--user-data-dir=/root/puppet/puppet/' + player + login,
 				// '--disable-setuid-sandbox',
