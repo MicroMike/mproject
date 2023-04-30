@@ -82,7 +82,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			await takeScreenshot(P, 'freeze', socketEmit, login)
 			out = 'freeze'
 		}
-		else if (countPlays > playByLoop || pauseCount > 5) {
+		else if (true || countPlays > playByLoop || pauseCount > 5) {
 			if (/apple|youtube/.test(player)) {
 				await click(I, R, S.pauseBtn)
 				await wait(rand(5, 3) * 1000)
@@ -90,13 +90,6 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 			const alb = album(player as TPlayer, country)
 			await goToPage(alb, P, R, I)
-
-			await I.dispatchMouseEvent({
-				type: 'mousePressed',
-				button: 'left',
-				x: 315,
-				y: 390
-			})
 
 			await wait(rand(5, 3) * 1000)
 			await click(I, R, S.play, 60)
