@@ -65,13 +65,6 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		} else {
 			++pauseCount
 
-			await I.dispatchMouseEvent({
-				type: 'mousePressed',
-				button: 'left',
-				x: 315,
-				y: 390
-			})
-
 			await wait(rand(5, 3) * 1000)
 			await click(I, R, S.play, 60)
 
