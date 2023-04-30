@@ -77,6 +77,7 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 									background-color: red;
 									width: 2px;
 									height: 2px;
+									z-index:1000;
 									"></div>')
 								` })
 
