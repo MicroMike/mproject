@@ -71,7 +71,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		socketEmit('over')
 
 		code !== 500 && res(code)
-		process.exit()
+		// process.exit()
 	}
 
 	process.on('SIGINT', async () => {
@@ -162,7 +162,9 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 
 	clientSocket.on('forceOut', async (props: any) => {
 		// shell.exec(`kill -9 ${pid}`, { silent: true })
-		exit(200)
+		await exit(200)
+		shell.exec('killall chrome')
+		process.exit()
 	})
 })
 
