@@ -16,6 +16,7 @@ export const getConfig = (player: TPlayer) => {
 		callback: (a: any) => (a.split(':').reduce((a: any, b: any) => a * 60 + Number(b))),
 		nextBtn: '[data-test="next"]',
 		urlCo: '',
+		gotoLogG: '',
 	}
 
 	if (player === 'tidal') {
@@ -24,7 +25,8 @@ export const getConfig = (player: TPlayer) => {
 
 	if (player === 'spotify') {
 		S.noNeedLog = '#account-settings-link'
-		S.gotoLog = '[data-testid="google-login"]'
+		S.gotoLog = '[data-testid="login-button"]'
+		S.gotoLogG = '[data-testid="google-login"]'
 		S.loginError = '.alert.alert-warning'
 		S.email = '#login-username'
 		S.pass = '#login-password'
@@ -32,7 +34,7 @@ export const getConfig = (player: TPlayer) => {
 		S.play = '[data-testid="action-bar-row"] [data-testid="play-button"]'
 		S.timeLine = '[data-testid="playback-position"]'
 		S.shuffleBtn = '[aria-checked="false"][data-testid="control-button-shuffle"]'
-		S.urlCo = 'https://accounts.spotify.com/fr/login'
+		S.urlCo = 'https://open.spotify.com/'
 		// S.repeatBtn = '[class*="spoticon-repeat"]'
 		// S.repeatBtnOk = '.spoticon-repeat-16.control-button--active'
 		// S.shuffleBtn = '.spoticon-shuffle-16:not(.control-button--active)'

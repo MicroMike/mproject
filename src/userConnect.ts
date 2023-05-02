@@ -24,6 +24,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 		const isGmail = /gmail/i.test(account)
 		const isTidal = player === 'tidal'
 		const isSpotify = player === 'spotify'
+		const isSpotifyG = isSpotify && isGmail
 		const isAmazon = player === 'amazon'
 		const isNapster = player === 'napster'
 		const isApple = player === 'apple'
@@ -83,6 +84,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 					}
 
 					await click(I, R, S.gotoLog, 10, false)
+					isSpotifyG && await click(I, R, S.gotoLogG, 10, false)
 				}
 
 
@@ -108,7 +110,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 					await pressedEnter(I)
 				}
 
-				if (isYoutube || (isSpotify && isGmail)) {
+				if (isYoutube || isSpotifyG) {
 					await wait(rand(5, 3) * 1000)
 
 					const text = await get(R, 'body', 'innerText')
