@@ -21,6 +21,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 	try {
 		const [player, login, pass] = account.split(':')
 
+		const isGmail = /gmail/i.test(account)
 		const isTidal = player === 'tidal'
 		const isSpotify = player === 'spotify'
 		const isAmazon = player === 'amazon'
@@ -29,7 +30,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 		const isYoutube = player === 'youtube'
 
 		const alb = album(player as TPlayer, country)
-		await goToPage(alb, P, R, I)
+		await goToPage(S.urlCo || alb, P, R, I)
 
 		if (isTidal) {
 			await click(I, R, '#onetrust-accept-btn-handler', 5)
@@ -81,7 +82,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 						}
 					}
 
-					await click(I, R, S.gotoLog, 30)
+					await click(I, R, S.gotoLog, 10, false)
 				}
 
 
@@ -107,7 +108,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 					await pressedEnter(I)
 				}
 
-				if (isYoutube) {
+				if (isYoutube || (isSpotify && isGmail)) {
 					await wait(rand(5, 3) * 1000)
 
 					const text = await get(R, 'body', 'innerText')
