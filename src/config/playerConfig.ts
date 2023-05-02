@@ -24,7 +24,7 @@ export const getConfig = (player: TPlayer) => {
 	}
 
 	if (player === 'spotify') {
-		S.noNeedLog = '#account-settings-link'
+		S.noNeedLog = '[data-testid="user-widget-avatar"]'
 		S.gotoLog = '[data-testid="login-button"]'
 		S.gotoLogG = '[data-testid="google-login"]'
 		S.loginError = '.alert.alert-warning'
