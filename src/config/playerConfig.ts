@@ -24,7 +24,7 @@ export const getConfig = (player: TPlayer) => {
 
 	if (player === 'spotify') {
 		S.noNeedLog = '[data-testid="user-widget-link"]'
-		S.gotoLog = '[data-testid="login-button"]'
+		S.gotoLog = '[data-testid="google-login"]'
 		S.loginError = '.alert.alert-warning'
 		S.email = '#login-username'
 		S.pass = '#login-password'
@@ -32,7 +32,7 @@ export const getConfig = (player: TPlayer) => {
 		S.play = '[data-testid="action-bar-row"] [data-testid="play-button"]'
 		S.timeLine = '[data-testid="playback-position"]'
 		S.shuffleBtn = '[aria-checked="false"][data-testid="control-button-shuffle"]'
-		S.urlCo = 'https://accounts.google.com/v3/signin/identifier?dsh=S-2113571280%3A1683052535225871&access_type=offline&client_id=1046568431490-ij1gi5shcp2gtorls09frkc56d4mjbe2.apps.googleusercontent.com&o2v=2&redirect_uri=https%3A%2F%2Faccounts.spotify.com%2Flogin%2Fgoogle%2Fredirect&response_type=code&scope=profile+email+openid&service=lso&state=AQCALm%2BbKr%2BcrBr7l9J2TzkeHHkE34eQC6nDttPKSJ1bhQIOD%2B3ldusyMcw%2BS%2BOF43uWXmq9ooNt%2BNHs9Go1TZO%2BuAo7%2BMITIyYs4FWvj4CDH5LoW4LRoz82MeejElIOxk%2BO6X9XQXenhwr4FFrilf63wtd8zWz1ADar2FxLySxIUkH%2FcYUxYaORNaWz5Rhk4ynnK2o61nU4OD0UHfiNJKgMzog5wSH5CEpqmawGU0i17TxGmbPCGs6chLwq%2FRBwyZuRRdWW0G6oQeV1xQ1PafJgZyCud7n4wcshPbzQ55J05wBcekFIft7mx9x2SDDGoWyBVp%2FjqVyb850Fe4vCfYZCdEFK&flowName=GeneralOAuthFlow&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hANEa21D-X_qvHjhFDQLbDYvzwatGY4qN7p9Di_m4t0juY4a2vq24bIbE593b-cFQEBIK4MKfgYhmw2HVnNt49qEc8y5jbWn9Ue3wHWtar7fvpRKGEYsfZZ55cX_5q3lLjhAjEsWefN-vHorox0j_BVq5kxGOZ5UHm6YnHHqD4vIHgR-7Uimc-RupqunVP5XUrMjPRXu_s-Ly7nBz5BBpN6kWklwXuLfTY6bmit7EyNX_HXRuYL9vXRTyrGl8BvDLqhwiXm16CdhonDF8IehamHZ6rkpDWlCT9wx3OBOYvRBlVZd9dFnT9e2BJn7mXCcoOE1bfBnfmuByTJWc0BKnA01buTWN6GDCYI8KtOkJRPF6ImrLwhiMFJX_3Wp7hfGatnJHHzpZzg1tcHH1OOx9fmAcBGB4zC7cq_gxzZZLwnJnG5kc6RpCh-4FtGqGoobeQKZJc0Rkliph7fhZ5d2ig0zRonJ0j4C_7KW4NTNt937uCVBWCM%26as%3DS-2113571280%253A1683052535225871%26client_id%3D1046568431490-ij1gi5shcp2gtorls09frkc56d4mjbe2.apps.googleusercontent.com%23&app_domain=https%3A%2F%2Faccounts.spotify.com&rart=ANgoxceI9FXGa1PsI46X5hmevf1ETfJDarnOFkfXPFQFN6CLFTiPCWFAzrrmQP4fFaend-ij_8-EjuWcQ2jR8sHMiJNmqGuxNw'
+		S.urlCo = 'https://accounts.spotify.com/fr/login'
 		// S.repeatBtn = '[class*="spoticon-repeat"]'
 		// S.repeatBtnOk = '.spoticon-repeat-16.control-button--active'
 		// S.shuffleBtn = '.spoticon-shuffle-16:not(.control-button--active)'
