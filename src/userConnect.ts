@@ -124,9 +124,10 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 							text: login,
 						})
 
-						// await press(I, 'Tab')
-						// await press(I, 'Tab')
-						// await press(I, 'Tab')
+						await press(I, 'Tab')
+						await press(I, 'Tab')
+						await press(I, 'Tab')
+						isSpotify && await press(I, 'Tab')
 
 						await wait(rand(5, 3) * 1000)
 						await pressedEnter(I)
@@ -138,8 +139,9 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 						text: pass,
 					})
 
-					// await press(I, 'Tab')
-					// await press(I, 'Tab')
+					await press(I, 'Tab')
+					await press(I, 'Tab')
+					isSpotify && await press(I, 'Tab')
 
 					await wait(rand(5, 3) * 1000)
 					await pressedEnter(I)
