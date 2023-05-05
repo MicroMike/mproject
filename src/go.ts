@@ -58,17 +58,19 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		try {
 			proto.close()
 			chro.kill()
+		} catch (e) { }
+
+		try {
+			if (/out_error_connect|tidalError|out_log_error/.test(code.toString())) {
+				socketEmit('errorcheck', { account })
+			} if (code.toString() === 'del') {
+				socketEmit('del', { account })
+			} else {
+				socketEmit('checkok', { account })
+			}
+
+			socketEmit('over')
 		} catch (error) { }
-
-		if (/out_error_connect|tidalError|out_log_error/.test(code.toString())) {
-			socketEmit('errorcheck', { account })
-		} if (code.toString() === 'del') {
-			socketEmit('del', { account })
-		} else {
-			socketEmit('checkok', { account })
-		}
-
-		socketEmit('over')
 
 		code !== 500 && res(code)
 		// process.exit()
