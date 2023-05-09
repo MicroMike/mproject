@@ -240,7 +240,9 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 			}
 		}
 
-		await loop()
+		try {
+			await loop()
+		} catch (error) { console.log('loop error') }
 
 		let logSuccess = await waitForSelector(R, S.noNeedLog, 30)
 

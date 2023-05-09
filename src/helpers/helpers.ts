@@ -112,20 +112,12 @@ const getAppleTimePlayer = async (R: any, S: any) => {
 const goToPage = async (url: string, P: any, R: any, I: any) => {
 	await wait(rand(5, 3) * 1000)
 
-	await P.navigate({ url: url });
-	P.loadEventFired();
+	try {
+		await P.navigate({ url: url });
+		P.loadEventFired();
+	} catch (error) { console.log('navigate error') }
 
 	await wait(rand(5, 3) * 1000)
-
-	// if (/apple/.test(url)) {
-	// 	await wait(rand(5, 3) * 1000)
-	// 	await pressedEnter(I)
-	// }
-
-	if (R) {
-		const expression = 'window.onbeforeunload = null;'
-		const e = R && await R.evaluate({ expression })
-	}
 }
 
 const press = async (I: any, key: string) => {
