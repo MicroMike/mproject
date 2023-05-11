@@ -149,8 +149,6 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 					await wait(rand(5, 3) * 1000)
 					await pressedEnter(I)
 
-					isSpotify && await goToPage(alb, P, R, I)
-
 					let logSuccess = await waitForSelector(R, S.noNeedLog, 30)
 
 					if (!logSuccess) {
@@ -171,6 +169,8 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 
 						await wait(rand(5, 3) * 1000)
 						await pressedEnter(I)
+
+						isSpotify && await goToPage(alb, P, R, I)
 					}
 				}
 				else {
