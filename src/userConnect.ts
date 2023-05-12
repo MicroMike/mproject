@@ -33,6 +33,13 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 		const alb = album(player as TPlayer, country)
 		await goToPage(alb, P, R, I)
 
+		if (isSpotifyG) {
+			await click(I, R, '[data-testid="login-button"]')
+			await click(I, R, '[data-testid="google-login"]')
+
+			await click(I, R, '#onetrust-accept-btn-handler', 5)
+		}
+
 		if (isTidal) {
 			await click(I, R, '#onetrust-accept-btn-handler', 5)
 		}
