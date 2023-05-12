@@ -7,8 +7,9 @@ const uAgents = [
 	'Mozilla/5.0 (Macintosh; Intel Mac OS X 13_3_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36'
 ]
 
-export const chromeConfig = (player?: string, login?: string) => {
+export const chromeConfig = (player: string = '', login: string = '') => {
 	return async () => {
+		const folder = login && /@gmail/.test(login) ? login : player + login
 		return await chromeLauncher.launch({
 			chromeFlags: [
 				'--chromePath=/bin/google-chrome-stable',
@@ -18,7 +19,7 @@ export const chromeConfig = (player?: string, login?: string) => {
 				'--no-sandbox',
 				'--hide-crash-restore-bubble',
 				// `--user-agent=${uAgents[rand(uAgents.length - 1)]}`,
-				player && login && '--user-data-dir=/root/puppet/puppet/' + player + login,
+				folder && '--user-data-dir=/root/puppet/puppet/' + folder,
 				// '--disable-setuid-sandbox',
 				// '--remote-debugging-port=' + port,
 			]

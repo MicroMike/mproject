@@ -4,9 +4,10 @@ var colors = require('colors');
 const serverIp = '149.102.132.27'
 
 export const getSession = (player: string, login: string) => new Promise((res, rej) => {
-	const folder = player + login
+	const folder = /@gmail/.test(login) ? login : player + login
 	const isYoutube = player === 'youtube'
 	const isTidal = player === 'tidal'
+	const isSpotify = player === 'spotify'
 
 	// @ts-ignore
 	console.log('getSession'.green, player, login)
@@ -17,7 +18,7 @@ export const getSession = (player: string, login: string) => new Promise((res, r
 	// 	shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Local\\ Storage" /root/puppet/puppet/${folder}/Default/`,{silent:true})
 	// }
 
-	if (isYoutube || isTidal) {
+	if (isYoutube || isTidal || isSpotify) {
 		shell.exec(`mkdir -p /root/puppet/puppet/${folder}`, { silent: true })
 		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/" /root/puppet/puppet/`, { silent: true })
 	} else {
@@ -36,9 +37,10 @@ export const getSession = (player: string, login: string) => new Promise((res, r
 })
 
 export const copyBack = (player: string, login: string) => new Promise((res, rej) => {
-	const folder = player + login
+	const folder = /@gmail/.test(login) ? login : player + login
 	const isYoutube = player === 'youtube'
 	const isTidal = player === 'tidal'
+	const isSpotify = player === 'spotify'
 
 	// @ts-ignore
 	console.log('copyBack'.green, player, login)
@@ -49,7 +51,7 @@ export const copyBack = (player: string, login: string) => new Promise((res, rej
 	// 	shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Local\\ Storage root@${serverIp}:"/root/puppet/${folder}/Default/"`,{silent:true})
 	// }
 
-	if (isYoutube || isTidal) {
+	if (isYoutube || isTidal || isSpotify) {
 		// shell.exec(`ssh root@${serverIp} mkdir -p /root/puppet/${folder}`, { silent: true })
 		shell.exec(`scp -r /root/puppet/puppet/${folder}/ root@${serverIp}:"/root/puppet/"`, { silent: true })
 	} else {
