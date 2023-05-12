@@ -34,7 +34,7 @@ export const getConfig = (player: TPlayer) => {
 		S.play = '[data-testid="action-bar-row"] [data-testid="play-button"]'
 		S.timeLine = '[data-testid="playback-position"]'
 		S.shuffleBtn = '[aria-checked="false"][data-testid="control-button-shuffle"]'
-		S.urlCo = 'https://open.spotify.com/'
+		S.urlCo = 'https://gmail.com'
 		// S.repeatBtn = '[class*="spoticon-repeat"]'
 		// S.repeatBtnOk = '.spoticon-repeat-16.control-button--active'
 		// S.shuffleBtn = '.spoticon-shuffle-16:not(.control-button--active)'
@@ -80,6 +80,7 @@ export const getConfig = (player: TPlayer) => {
 		S.play = '.watch-button'
 		S.pauseBtn = '#play-pause-button'
 		S.timeLine = '.time-info'
+		S.urlCo = 'https://gmail.com'
 		S.callback = (a: any) => (a.split(' /')[0].split(':').reduce((a: any, b: any) => a * 60 + Number(b)))
 
 		// remember = '[name="rememberMe"]'
