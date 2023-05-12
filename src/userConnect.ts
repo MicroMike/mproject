@@ -21,7 +21,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 	try {
 		const [player, login, pass] = account.split(':')
 
-		const isGmail = /gmail/i.test(account)
+		const isGmail = /@gmail/i.test(account)
 		const isTidal = player === 'tidal'
 		const isSpotify = player === 'spotify'
 		const isSpotifyG = isSpotify && isGmail
@@ -52,7 +52,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 					await P.navigate({ url: 'https://web.napster.com/auth/login' });
 					await P.loadEventFired();
 				} else {
-					if (isSpotify || isTidal) {
+					if (isTidal) {
 						await click(I, R, '#onetrust-accept-btn-handler', 5)
 					}
 					if (isApple) {
@@ -68,23 +68,23 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 						await wait(rand(5, 3) * 1000)
 						await pressedEnter(I)
 					}
-					if (isYoutube) {
-						const canLog = await waitForSelector(R, S.gotoLog, 15)
+					// if (isSpotifyG || isYoutube) {
+					// 	const canLog = await waitForSelector(R, S.gotoLog, 15)
 
-						if (!canLog) {
-							await press(I, 'Tab')
-							await press(I, 'Tab')
-							await press(I, 'Tab')
-							await press(I, 'Tab')
-							await press(I, 'Tab')
+					// 	if (!canLog) {
+					// 		await press(I, 'Tab')
+					// 		await press(I, 'Tab')
+					// 		await press(I, 'Tab')
+					// 		await press(I, 'Tab')
+					// 		await press(I, 'Tab')
 
-							await wait(rand(5, 3) * 1000)
-							await pressedEnter(I)
-						}
-					}
+					// 		await wait(rand(5, 3) * 1000)
+					// 		await pressedEnter(I)
+					// 	}
+					// }
 
-					await click(I, R, S.gotoLog, 10, false)
-					isSpotifyG && await click(I, R, S.gotoLogG, 10, false)
+					// await click(I, R, S.gotoLog, 10, false)
+					// isSpotifyG && await click(I, R, S.gotoLogG, 10, false)
 				}
 
 
@@ -129,7 +129,6 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 						await press(I, 'Tab')
 						await press(I, 'Tab')
 						await press(I, 'Tab')
-						isSpotify && await press(I, 'Tab')
 
 						await wait(rand(5, 3) * 1000)
 						await pressedEnter(I)
@@ -143,11 +142,11 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 
 					await press(I, 'Tab')
 					await press(I, 'Tab')
-					isSpotify && await press(I, 'Tab')
-					isSpotify && await press(I, 'Tab')
 
 					await wait(rand(5, 3) * 1000)
 					await pressedEnter(I)
+
+					await goToPage(alb, P, R, I)
 
 					let logSuccess = await waitForSelector(R, S.noNeedLog, 30)
 
