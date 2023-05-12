@@ -31,7 +31,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 		const isYoutube = player === 'youtube'
 
 		const alb = album(player as TPlayer, country)
-		await goToPage(S.urlCo || alb, P, R, I)
+		await goToPage(alb, P, R, I)
 
 		if (isTidal) {
 			await click(I, R, '#onetrust-accept-btn-handler', 5)
@@ -111,6 +111,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 				}
 
 				if (isYoutube || isSpotifyG) {
+					await goToPage(S.urlCo, P, R, I)
 					await wait(rand(5, 3) * 1000)
 
 					const text = await get(R, 'body', 'innerText')
