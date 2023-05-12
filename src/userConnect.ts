@@ -147,6 +147,14 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 					await pressedEnter(I)
 
 					await goToPage(alb, P, R, I)
+					await wait(rand(5, 3) * 1000)
+
+					if (isSpotifyG) {
+						await click(I, R, '[data-testid="login-button"]')
+						await click(I, R, '[data-testid="google-login"]')
+
+						await click(I, R, '#onetrust-accept-btn-handler', 5)
+					}
 
 					let logSuccess = await waitForSelector(R, S.noNeedLog, 30)
 
