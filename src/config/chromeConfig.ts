@@ -9,7 +9,7 @@ const uAgents = [
 
 export const chromeConfig = (player: string = '', login: string = '') => {
 	return async () => {
-		const folder = login && /@gmail/.test(login) ? login : player + login
+		// const folder = login && /@gmail/.test(login) ? login : player + login
 		return await chromeLauncher.launch({
 			chromeFlags: [
 				'--chromePath=/bin/google-chrome-stable',
@@ -19,7 +19,7 @@ export const chromeConfig = (player: string = '', login: string = '') => {
 				'--no-sandbox',
 				'--hide-crash-restore-bubble',
 				// `--user-agent=${uAgents[rand(uAgents.length - 1)]}`,
-				folder && '--user-data-dir=/root/puppet/puppet/' + folder,
+				player && login && '--user-data-dir=/root/puppet/puppet/' + player + login,
 				// '--disable-setuid-sandbox',
 				// '--remote-debugging-port=' + port,
 			]
