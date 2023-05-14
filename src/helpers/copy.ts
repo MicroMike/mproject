@@ -4,7 +4,8 @@ var colors = require('colors');
 const serverIp = '149.102.132.27'
 
 export const getSession = (player: string, login: string) => new Promise((res, rej) => {
-	const folder = /@gmail/.test(login) ? login : player + login
+	const remoteFolder = /@gmail/.test(login) ? login : player + login
+	const folder = player + login
 	const isYoutube = player === 'youtube'
 	const isTidal = player === 'tidal'
 	const isSpotify = player === 'spotify'
@@ -20,7 +21,7 @@ export const getSession = (player: string, login: string) => new Promise((res, r
 
 	if (isYoutube || isTidal || isSpotify) {
 		shell.exec(`mkdir -p /root/puppet/puppet/${folder}`, { silent: true })
-		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/" /root/puppet/puppet/`, { silent: true })
+		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${remoteFolder}/*" /root/puppet/puppet/${folder}/`, { silent: true })
 	} else {
 		shell.exec(`mkdir -p /root/puppet/puppet/${folder}/Default`, { silent: true })
 		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Session\\ Storage" /root/puppet/puppet/${folder}/Default/`, { silent: true })
@@ -37,7 +38,8 @@ export const getSession = (player: string, login: string) => new Promise((res, r
 })
 
 export const copyBack = (player: string, login: string) => new Promise((res, rej) => {
-	const folder = /@gmail/.test(login) ? login : player + login
+	const remoteFolder = /@gmail/.test(login) ? login : player + login
+	const folder = player + login
 	const isYoutube = player === 'youtube'
 	const isTidal = player === 'tidal'
 	const isSpotify = player === 'spotify'
@@ -53,7 +55,7 @@ export const copyBack = (player: string, login: string) => new Promise((res, rej
 
 	if (isYoutube || isTidal || isSpotify) {
 		// shell.exec(`ssh root@${serverIp} mkdir -p /root/puppet/${folder}`, { silent: true })
-		shell.exec(`scp -r /root/puppet/puppet/${folder}/ root@${serverIp}:"/root/puppet/"`, { silent: true })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/* root@${serverIp}:"/root/puppet/${remoteFolder}"`, { silent: true })
 	} else {
 		shell.exec(`ssh root@${serverIp} mkdir -p /root/puppet/${folder}/Default`, { silent: true })
 		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Session\\ Storage root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })

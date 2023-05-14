@@ -33,12 +33,12 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 		const alb = album(player as TPlayer, country)
 		await goToPage(alb, P, R, I)
 
-		if (isSpotifyG) {
-			await click(I, R, '[data-testid="login-button"]')
-			await click(I, R, '[data-testid="google-login"]')
+		// if (isSpotifyG) {
+		// 	await click(I, R, '[data-testid="login-button"]')
+		// 	await click(I, R, '[data-testid="google-login"]')
 
-			await click(I, R, '#onetrust-accept-btn-handler', 5)
-		}
+		// 	await click(I, R, '#onetrust-accept-btn-handler', 5)
+		// }
 
 		if (isTidal) {
 			await click(I, R, '#onetrust-accept-btn-handler', 5)
@@ -164,29 +164,29 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 						await click(I, R, '#onetrust-accept-btn-handler', 5)
 					}
 
-					let logSuccess = await waitForSelector(R, S.noNeedLog, 30)
+					// let logSuccess = await waitForSelector(R, S.noNeedLog, 10)
 
-					if (!logSuccess) {
-						await press(I, 'Tab')
-						await press(I, 'Tab')
-						await press(I, 'Tab')
-						!isSpotify && await press(I, 'Tab')
-						!isSpotify && await press(I, 'Tab')
+					// if (!logSuccess) {
+					// 	await press(I, 'Tab')
+					// 	await press(I, 'Tab')
+					// 	await press(I, 'Tab')
+					// 	!isSpotify && await press(I, 'Tab')
+					// 	!isSpotify && await press(I, 'Tab')
 
 
-						await wait(rand(5, 3) * 1000)
-						await pressedEnter(I)
+					// 	await wait(rand(5, 3) * 1000)
+					// 	await pressedEnter(I)
 
-						await wait(rand(5, 3) * 1000)
-						await I.insertText({
-							text: 'yokem92@mail.fr',
-						})
+					// 	await wait(rand(5, 3) * 1000)
+					// 	await I.insertText({
+					// 		text: 'yokem92@mail.fr',
+					// 	})
 
-						await wait(rand(5, 3) * 1000)
-						await pressedEnter(I)
+					// 	await wait(rand(5, 3) * 1000)
+					// 	await pressedEnter(I)
 
-						isSpotify && await goToPage(alb, P, R, I)
-					}
+					// 	isSpotify && await goToPage(alb, P, R, I)
+					// }
 				}
 				else {
 					// const amazonReLog = isAmazon && await waitForSelector(R, '#ap_switch_account_link', 5)
@@ -259,17 +259,12 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 			await loop()
 		} catch (error) { console.log('loop error') }
 
-		let logSuccess = await waitForSelector(R, S.noNeedLog, 30)
+		let logSuccess = await waitForSelector(R, S.noNeedLog, 10)
 
 		if (!logSuccess && isTidal) {
 			await takeScreenshot(P, 'tidalError', socketEmit, login)
 			throw 'tidalError'
 		}
-
-		// if (!logSuccess && isAmazon) {
-		// 	await loop(true)
-		// 	logSuccess = await waitForSelector(R, S.noNeedLog, 10)
-		// }
 
 		if (!logSuccess) {
 			await takeScreenshot(P, 'out_log_error', socketEmit, login)
