@@ -48,7 +48,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 
 		console.log('isLogged', isLogged)
 
-		const loop = async (SecondTry = false) => {
+		try {
 			if (!isLogged) {
 				// @ts-ignore
 				check && console.log('need log'.green, player, login, S.gotoLog)
@@ -236,7 +236,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 						if (isTidal) {
 							throw 'del'
 						}
-						if (!isAmazon || SecondTry) {
+						if (!isAmazon) {
 							await takeScreenshot(P, 'out_error_connect', socketEmit, login)
 							throw 'out_error_connect'
 						}
@@ -255,10 +255,6 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 				await takeScreenshot(P, 'out_log_error', socketEmit, login)
 				throw 'out_log_error'
 			}
-		}
-
-		try {
-			await loop()
 		} catch (error) { console.log('loop error') }
 
 		let logSuccess = await waitForSelector(R, S.noNeedLog, 10)
