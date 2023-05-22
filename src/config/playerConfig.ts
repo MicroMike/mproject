@@ -3,7 +3,7 @@ import { TPlayer } from "./types"
 export const getConfig = (player: TPlayer) => {
 	const S = {
 		noNeedLog: '[class*="badgeContainer"]',
-		gotoLog: '#login-button',
+		gotoLog: '#signInButton',
 		loginError: '.box-error',
 		email: '#email',
 		pass: '#password',
