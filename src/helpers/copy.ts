@@ -31,6 +31,7 @@ export const getSession = (player: string, login: string) => new Promise((res, r
 		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${remoteFolder}/Default/Cookies" /root/puppet/puppet/${folder}/Default/`, { silent: true })
 		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${remoteFolder}/Default/Accounts" /root/puppet/puppet/${folder}/Default/`, { silent: true })
 		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${remoteFolder}/Default/Sessions" /root/puppet/puppet/${folder}/Default/`, { silent: true })
+		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${remoteFolder}/Default/*.*" /root/puppet/puppet/${folder}/Default/`, { silent: true })
 	// }
 
 	// @ts-ignore
@@ -67,6 +68,7 @@ export const copyBack = (player: string, login: string) => new Promise((res, rej
 		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Cookies root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
 		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Accounts root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
 		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Sessions root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/*.* root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
 	// }
 
 	// @ts-ignore
