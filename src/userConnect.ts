@@ -75,20 +75,20 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 						await wait(rand(5, 3) * 1000)
 						await pressedEnter(I)
 					}
-					// if (isSpotifyG || isYoutube) {
-					// 	const canLog = await waitForSelector(R, S.gotoLog, 15)
+					if (isSpotifyG || isYoutube) {
+						const canLog = await waitForSelector(R, S.gotoLog, 15)
 
-					// 	if (!canLog) {
-					// 		await press(I, 'Tab')
-					// 		await press(I, 'Tab')
-					// 		await press(I, 'Tab')
-					// 		await press(I, 'Tab')
-					// 		await press(I, 'Tab')
+						if (!canLog) {
+							await press(I, 'Tab')
+							await press(I, 'Tab')
+							await press(I, 'Tab')
+							await press(I, 'Tab')
+							await press(I, 'Tab')
 
-					// 		await wait(rand(5, 3) * 1000)
-					// 		await pressedEnter(I)
-					// 	}
-					// }
+							await wait(rand(5, 3) * 1000)
+							await pressedEnter(I)
+						}
+					}
 
 					// await click(I, R, S.gotoLog, 10, false)
 					// isSpotifyG && await click(I, R, S.gotoLogG, 10, false)
