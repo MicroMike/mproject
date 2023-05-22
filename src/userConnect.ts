@@ -46,8 +46,6 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 
 		const isLogged = !check && await waitForSelector(R, S.noNeedLog, 10)
 
-		console.log('isLogged', isLogged)
-
 		try {
 			if (!isLogged) {
 				// @ts-ignore
@@ -191,6 +189,8 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 					// }
 				}
 				else {
+					await click(I, R, S.gotoLog, 10, false)
+
 					// const amazonReLog = isAmazon && await waitForSelector(R, '#ap_switch_account_link', 5)
 					const amazonReLogBody = isAmazon && await get(R, 'body', 'innerText')
 					const loginRegex = new RegExp(login)
