@@ -46,8 +46,6 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 
 		const isLogged = !check && await waitForSelector(R, S.noNeedLog, 10)
 
-		console.log('isLogged', isLogged)
-
 		const loop = async (SecondTry = false) => {
 			if (!isLogged) {
 				// @ts-ignore
