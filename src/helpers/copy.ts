@@ -4,8 +4,8 @@ var colors = require('colors');
 const serverIp = '149.102.132.27'
 
 export const getSession = (player: string, login: string) => new Promise((res, rej) => {
-	const remoteFolder = /@gmail/.test(login) ? login : player + login
 	const folder = player + login
+	const remoteFolder = /@gmail/.test(login) ? login : folder
 	const isYoutube = player === 'youtube'
 	const isTidal = player === 'tidal'
 	const isSpotify = player === 'spotify'
@@ -41,8 +41,8 @@ export const getSession = (player: string, login: string) => new Promise((res, r
 })
 
 export const copyBack = (player: string, login: string) => new Promise((res, rej) => {
-	const remoteFolder = /@gmail/.test(login) ? login : player + login
 	const folder = player + login
+	const remoteFolder = /@gmail/.test(login) ? login : folder
 	const isYoutube = player === 'youtube'
 	const isTidal = player === 'tidal'
 	const isSpotify = player === 'spotify'
@@ -61,14 +61,14 @@ export const copyBack = (player: string, login: string) => new Promise((res, rej
 	// 	shell.exec(`scp -r /root/puppet/puppet/${folder}/* root@${serverIp}:"/root/puppet/${remoteFolder}"`, { silent: true })
 	// } else {
 		shell.exec(`ssh root@${serverIp} mkdir -p /root/puppet/${remoteFolder}/Default`, { silent: true })
-		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Session\\ Storage root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
-		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Local\\ Storage root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
-		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Login\\ Data\\ For\\ Account root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
-		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Login\\ Data root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
-		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Cookies root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
-		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Accounts root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
-		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Sessions root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
-		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/*.* root@${serverIp}:"/root/puppet/${folder}/Default/"`, { silent: true })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Session\\ Storage root@${serverIp}:"/root/puppet/${remoteFolder}/Default/"`, { silent: true })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Local\\ Storage root@${serverIp}:"/root/puppet/${remoteFolder}/Default/"`, { silent: true })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Login\\ Data\\ For\\ Account root@${serverIp}:"/root/puppet/${remoteFolder}/Default/"`, { silent: true })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Login\\ Data root@${serverIp}:"/root/puppet/${remoteFolder}/Default/"`, { silent: true })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Cookies root@${serverIp}:"/root/puppet/${remoteFolder}/Default/"`, { silent: true })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Accounts root@${serverIp}:"/root/puppet/${remoteFolder}/Default/"`, { silent: true })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Sessions root@${serverIp}:"/root/puppet/${remoteFolder}/Default/"`, { silent: true })
+		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/*.* root@${serverIp}:"/root/puppet/${remoteFolder}/Default/"`, { silent: true })
 	// }
 
 	// @ts-ignore
