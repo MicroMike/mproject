@@ -66,9 +66,7 @@ const go = async () => {
 	await click(I, R, S.signUp)
 	await click(I, R, '#onetrust-accept-btn-handler', 5)
 
-	await press(I, 'Tab')
-	await press(I, 'Tab')
-	await press(I, 'Enter')
+	await click(I, R, S.signEmail)
 
 	if (player === 'spotify') {
 		await type(R, rand(25, 1).toString(), '#day')
