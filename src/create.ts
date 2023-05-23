@@ -27,14 +27,14 @@ const go = async () => {
 	// @ts-ignore
 	P.loadEventFired();
 
-	await press(I, 'Tab')
-	await press(I, 'Tab')
-	await press(I, 'Tab')
-	await press(I, 'Tab')
-	await press(I, 'Tab')
+	// await press(I, 'Tab')
+	// await press(I, 'Tab')
+	// await press(I, 'Tab')
+	// await press(I, 'Tab')
+	// await press(I, 'Tab')
 
-	await wait(rand(5, 3) * 1000)
-	await pressedEnter(I)
+	// await wait(rand(5, 3) * 1000)
+	// await pressedEnter(I)
 
 	await I.insertText({
 		text: login,
