@@ -66,6 +66,8 @@ const go = async () => {
 	await click(I, R, S.signUp)
 	await click(I, R, '#onetrust-accept-btn-handler', 5)
 
+	await click(I, R, 'body')
+
 	await press(I, 'Tab')
 	await press(I, 'Tab')
 	await wait(rand(5, 3) * 1000)
