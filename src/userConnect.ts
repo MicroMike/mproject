@@ -122,7 +122,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 					await wait(rand(5, 3) * 1000)
 
 					const text = await get(R, 'body', 'innerText')
-					const isSign = /Signed out/i.test(text)
+					const isSign = /Signed out|Déconnecté/i.test(text)
 
 					if (isSign) {
 						await press(I, 'Tab')
