@@ -2,7 +2,7 @@ import { openBrowser } from "./openBrowser"
 import shell from 'shelljs'
 import { getConfig } from './config/playerConfig'
 import { TPlayer } from "./config/types";
-import { press, wait, rand, pressedEnter, album, goToPage, click, type } from "./helpers/helpers";
+import { press, wait, rand, pressedEnter, album, goToPage, click, type, pressedSpace } from "./helpers/helpers";
 const request = require('ajax-request');
 
 const props = process.argv
@@ -66,12 +66,10 @@ const go = async () => {
 	await click(I, R, S.signUp)
 	await click(I, R, '#onetrust-accept-btn-handler', 5)
 
-	await click(I, R, 'body')
-
 	await press(I, 'Tab')
 	await press(I, 'Tab')
 	await wait(rand(5, 3) * 1000)
-	await pressedEnter(I)
+	await pressedSpace(I)
 
 	if (player === 'spotify') {
 		await type(R, rand(25, 1).toString(), '#day')
