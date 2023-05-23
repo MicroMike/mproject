@@ -2,7 +2,7 @@ import { openBrowser } from "./openBrowser"
 import shell from 'shelljs'
 import { getConfig } from './config/playerConfig'
 import { TPlayer } from "./config/types";
-import { press, wait, rand, pressedEnter, album, goToPage, click } from "./helpers/helpers";
+import { press, wait, rand, pressedEnter, album, goToPage, click, type } from "./helpers/helpers";
 const request = require('ajax-request');
 
 const props = process.argv
@@ -66,7 +66,38 @@ const go = async () => {
 
 	await click(I, R, S.signUp)
 	await click(I, R, '#onetrust-accept-btn-handler', 5)
+	await wait(rand(5, 3) * 1000)
 	await click(I, R, S.signEmail)
+
+	if (player === 'spotify') {
+		await type(R, rand(25, 1).toString(), '#day')
+
+		await press(I, 'Tab')
+		await press(I, 'ArrowDown')
+		await press(I, 'ArrowDown')
+		await press(I, 'ArrowDown')
+		
+		await press(I, 'Tab')
+		await I.insertText({
+			text: '1992',
+		})
+		
+		await press(I, 'Tab')
+		await press(I, 'ArrowUp')
+
+		await press(I, 'Tab')
+		await press(I, 'Tab')
+		await press(I, 'Tab')
+		
+		await pressedEnter(I)
+		
+		await press(I, 'Tab')
+		await press(I, 'Tab')
+		await press(I, 'Tab')
+		await press(I, 'Tab')
+		
+		await pressedEnter(I)
+	}
 }
 
 go()
