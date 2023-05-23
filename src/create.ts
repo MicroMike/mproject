@@ -70,6 +70,7 @@ const go = async () => {
 
 	if (player === 'spotify') {
 		await type(R, rand(25, 1).toString(), '#day')
+		await click(I, R, '#day')
 
 		await press(I, 'Tab')
 		await press(I, 'ArrowDown')
