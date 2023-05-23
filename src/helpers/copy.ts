@@ -31,8 +31,8 @@ export const getSession = (player: string, login: string) => new Promise((res, r
 		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${remoteFolder}/Default/Cookies" /root/puppet/puppet/${folder}/Default/`, { silent: true })
 		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${remoteFolder}/Default/Accounts" /root/puppet/puppet/${folder}/Default/`, { silent: true })
 		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${remoteFolder}/Default/Sessions" /root/puppet/puppet/${folder}/Default/`, { silent: true })
-		shell.exec(`scp root@${serverIp}:"/root/puppet/${remoteFolder}/Default/*" /root/puppet/puppet/${folder}/Default/`, { silent: false })
-		shell.exec(`scp root@${serverIp}:"/root/puppet/${remoteFolder}/*" /root/puppet/puppet/${folder}/`, { silent: false })
+		shell.exec(`scp root@${serverIp}:"/root/puppet/${remoteFolder}/Default/*" /root/puppet/puppet/${folder}/Default/`, { silent: true })
+		shell.exec(`scp root@${serverIp}:"/root/puppet/${remoteFolder}/*" /root/puppet/puppet/${folder}/`, { silent: true })
 	// }
 
 	// @ts-ignore
@@ -69,8 +69,8 @@ export const copyBack = (player: string, login: string) => new Promise((res, rej
 		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Cookies root@${serverIp}:"/root/puppet/${remoteFolder}/Default/"`, { silent: true })
 		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Accounts root@${serverIp}:"/root/puppet/${remoteFolder}/Default/"`, { silent: true })
 		shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Sessions root@${serverIp}:"/root/puppet/${remoteFolder}/Default/"`, { silent: true })
-		shell.exec(`scp /root/puppet/puppet/${folder}/Default/* root@${serverIp}:"/root/puppet/${remoteFolder}/Default/"`, { silent: false })
-		shell.exec(`scp /root/puppet/puppet/${folder}/* root@${serverIp}:"/root/puppet/${remoteFolder}/"`, { silent: false })
+		shell.exec(`scp /root/puppet/puppet/${folder}/Default/* root@${serverIp}:"/root/puppet/${remoteFolder}/Default/"`, { silent: true })
+		shell.exec(`scp /root/puppet/puppet/${folder}/* root@${serverIp}:"/root/puppet/${remoteFolder}/"`, { silent: true })
 	// }
 
 	// @ts-ignore
