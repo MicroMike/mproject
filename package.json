@@ -5,6 +5,7 @@
 	"scripts": {
 		"inst": "rm -rf node_modules/ && rm package-lock.json && npm i",
 		"start": "git pull --rebase && tsc && node build/index.js",
+		"create": "git pull --rebase && tsc && node build/create.js",
 		"amazon": "tsc && node build/amazon.js",
 		"activamazon": "tsc && node build/activateAmazon.js"
 	},

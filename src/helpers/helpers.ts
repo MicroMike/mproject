@@ -158,7 +158,7 @@ const disableAlert = async (R: any) => {
 	await R && R.evaluate({ expression: `window.alert = () => { }; ` })
 }
 
-const album = (player: TPlayer, country: string) => {
+const album = (player: TPlayer, country?: string) => {
 	const als = albums(country)[player]
 	const albumUrl = als[rand(als.length - 1)]
 

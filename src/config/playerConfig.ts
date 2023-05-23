@@ -17,6 +17,7 @@ export const getConfig = (player: TPlayer) => {
 		nextBtn: '[data-test="next"]',
 		urlCo: '',
 		gotoLogG: '',
+		signUp: '',
 	}
 
 	if (player === 'tidal') {
@@ -35,6 +36,7 @@ export const getConfig = (player: TPlayer) => {
 		S.timeLine = '[data-testid="playback-position"]'
 		S.shuffleBtn = '[aria-checked="false"][data-testid="control-button-shuffle"]'
 		S.urlCo = 'https://gmail.com'
+		S.signUp = '[data-encore-id="buttonTertiary"]'
 		// S.repeatBtn = '[class*="spoticon-repeat"]'
 		// S.repeatBtnOk = '.spoticon-repeat-16.control-button--active'
 		// S.shuffleBtn = '.spoticon-shuffle-16:not(.control-button--active)'

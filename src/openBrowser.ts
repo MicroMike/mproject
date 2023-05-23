@@ -23,7 +23,7 @@ export const openBrowser = async (player?: string, login?: string) => {
 		protocol = {}
 	}
 
-	const { Network, Page, Runtime, DOM, Input, Browser, Target } = protocol;
+	const { Network, Page, Runtime, DOM, Input, Browser, Target } = protocol as CDP.Client;
 
 	// extract domains
 	const N = Network;
