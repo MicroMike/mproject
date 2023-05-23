@@ -65,6 +65,8 @@ const go = async () => {
 	await goToPage(alb, P, R, I)
 
 	await click(I, R, S.signUp)
+	await click(I, R, '#onetrust-accept-btn-handler', 5)
+	await click(I, R, S.signEmail)
 }
 
 go()
