@@ -11,11 +11,12 @@ const address = props[3]
 const city = props[4]
 
 const go = async () => {
+	shell.exec('rm -rf /root/puppet/puppet/', { async: true })
+
 	const [player, login, pass] = arg.split(':')
 	const { chrome, protocol, ...browserProps } = await openBrowser(player, login)
 	const S = getConfig(player as TPlayer)
 
-	shell.exec('rm -rf /root/puppet/puppet/', { async: true })
 
 	// @ts-ignore
 	const { N, P, R, D, B, I, T, socketEmit } = browserProps
