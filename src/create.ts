@@ -14,6 +14,9 @@ const go = async () => {
 	shell.exec('rm -rf /root/puppet/puppet/', { async: true })
 
 	const [player, login, pass] = arg.split(':')
+	console.log('player',player)
+	console.log('login',login)
+	console.log('pass',pass)
 	const { chrome, protocol, ...browserProps } = await openBrowser(player, login)
 	const S = getConfig(player as TPlayer)
 
