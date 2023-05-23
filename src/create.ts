@@ -15,6 +15,8 @@ const go = async () => {
 	const { chrome, protocol, ...browserProps } = await openBrowser(player, login)
 	const S = getConfig(player as TPlayer)
 
+	shell.exec('rm -rf /root/puppet/puppet/', { async: true })
+
 	// @ts-ignore
 	const { N, P, R, D, B, I, T, socketEmit } = browserProps
 
