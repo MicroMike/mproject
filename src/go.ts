@@ -127,7 +127,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		login = a
 
 		try {
-			shell.exec('rm -rf ' + varPath + player + login, { silent: false })
+			// shell.exec('rm -rf ' + varPath + player + login, { silent: false })
 			!check && await getSession(player, login)
 			await wait(5 * 1000)
 		} catch (e) {

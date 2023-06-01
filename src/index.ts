@@ -50,6 +50,7 @@ setInterval(() => {
 	const list = shell.exec('pidof node', { silent: true })
 	const pids = list.stdout.split(' ').map(p => String(Number(p))).filter((p) => !nodePids.includes(p))
 
+	shell.exec('rm -rf /root/puppet/puppet/', { async: true })
 	shell.exec(`kill -9 ${pids.join(' ')}`, { silent: true })
 	shell.exec('killall chrome')
 	
