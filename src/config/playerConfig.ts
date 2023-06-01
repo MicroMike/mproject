@@ -19,6 +19,7 @@ export const getConfig = (player: TPlayer) => {
 		gotoLogG: '',
 		signUp: '',
 		signEmail: '',
+		signSubmit: '',
 	}
 
 	if (player === 'tidal') {
@@ -39,6 +40,7 @@ export const getConfig = (player: TPlayer) => {
 		S.urlCo = 'https://gmail.com'
 		S.signUp = '[data-encore-id="buttonTertiary"]'
 		S.signEmail = 'div[class^="GoogleSignup"] a'
+		S.signSubmit = 'div[class^="SignupButton"] button'
 		// S.repeatBtn = '[class*="spoticon-repeat"]'
 		// S.repeatBtnOk = '.spoticon-repeat-16.control-button--active'
 		// S.shuffleBtn = '.spoticon-shuffle-16:not(.control-button--active)'

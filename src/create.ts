@@ -2,16 +2,15 @@ import { openBrowser } from "./openBrowser"
 import shell from 'shelljs'
 import { getConfig } from './config/playerConfig'
 import { TPlayer } from "./config/types";
-import { press, wait, rand, pressedEnter, album, goToPage, click, type, pressedSpace } from "./helpers/helpers";
+import { press, wait, rand, pressedEnter, album, goToPage, click, type, pressedSpace, pressedKey } from "./helpers/helpers";
 const request = require('ajax-request');
 
 const props = process.argv
 const arg = props[2]
-const address = props[3]
-const city = props[4]
+const code = props[3]
 
 const go = async () => {
-	shell.exec('rm -rf /root/puppet/puppet/', { async: true })
+	shell.exec('rm -rf /Users/mike/puppet/puppet/', { async: true })
 
 	const [player, login, pass] = arg.split(':')
 	const { chrome, protocol, ...browserProps } = await openBrowser(player, login)
@@ -67,19 +66,18 @@ const go = async () => {
 	await click(I, R, '#onetrust-accept-btn-handler', 5)
 
 	await click(I, R, S.signEmail)
+	const months = ['j', 'f', 'm', 'a', 's', 'o', 'n', 'd']
 
 	if (player === 'spotify') {
 		await type(R, rand(25, 1).toString(), '#day')
 		await click(I, R, '#day')
 
 		await press(I, 'Tab')
-		await press(I, 'ArrowDown')
-		await press(I, 'ArrowDown')
-		await press(I, 'ArrowDown')
+		await pressedKey(I, months[rand(months.length-1, 0)].charCodeAt(0))
 
 		await press(I, 'Tab')
 		await I.insertText({
-			text: '1992',
+			text: '199' + rand(9, 0),
 		})
 
 		await press(I, 'Tab')
@@ -91,12 +89,22 @@ const go = async () => {
 
 		await pressedEnter(I)
 
-		await press(I, 'Tab')
-		await press(I, 'Tab')
-		await press(I, 'Tab')
-		await press(I, 'Tab')
+		await click(I, R, S.signSubmit)
 
+		await wait(rand(5, 3) * 1000)
+		await goToPage(`https://www.spotify.com/fr/family/join/confirm/${code}/`, P, R, I)
+		await wait(rand(5, 3) * 1000)
+		await goToPage(`https://www.spotify.com/fr/family/join/address/${code}/`, P, R, I)
+		await wait(rand(5, 3) * 1000)
+
+		await type(R, '37 rue du coq saint marceau', '#address')
+		await click(I, R, '#address')
 		await pressedEnter(I)
+		await pressedEnter(I)
+		await wait(rand(5, 3) * 1000)
+
+		await goToPage(`http://149.102.132.27:3000/addAccount?${arg}`, P, R, I)
+		await wait(rand(5, 3) * 1000)
 	}
 }
 
