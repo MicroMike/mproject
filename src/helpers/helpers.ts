@@ -126,7 +126,7 @@ const press = async (I: any, key: string) => {
 	await I.dispatchKeyEvent({
 		type: 'keyDown',
 		key: key,
-		code: key,
+		code: key.length === 1 ? 'Key' + key.toUpperCase() : key,
 	})
 
 	await wait(rand(500, 100))
@@ -134,7 +134,7 @@ const press = async (I: any, key: string) => {
 	await I.dispatchKeyEvent({
 		type: 'keyUp',
 		key: key,
-		code: key,
+		code: key.length === 1 ? 'Key' + key.toUpperCase() : key,
 	})
 }
 
@@ -144,6 +144,14 @@ const pressedEnter = async (I: any) => {
 	await I.dispatchKeyEvent({ "type": "char", "windowsVirtualKeyCode": 13, "unmodifiedText": "\r", "text": "\r" })
 	await wait(rand(500, 100))
 	await I.dispatchKeyEvent({ "type": "keyUp", "windowsVirtualKeyCode": 13, "unmodifiedText": "\r", "text": "\r" })
+}
+
+const pressedKey = async (I: any, key: number) => {
+	await I.dispatchKeyEvent({ "type": "rawKeyDown", "windowsVirtualKeyCode": key, "unmodifiedText": String.fromCharCode(key), "text": String.fromCharCode(key) })
+	await wait(rand(500, 100))
+	await I.dispatchKeyEvent({ "type": "char", "windowsVirtualKeyCode": key, "unmodifiedText": String.fromCharCode(key), "text": String.fromCharCode(key) })
+	await wait(rand(500, 100))
+	await I.dispatchKeyEvent({ "type": "keyUp", "windowsVirtualKeyCode": key, "unmodifiedText": String.fromCharCode(key), "text": String.fromCharCode(key) })
 }
 
 const pressedSpace = async (I: any) => {
@@ -231,4 +239,5 @@ export {
 	wait,
 	waitForSelector,
 	select,
+	pressedKey,
 }
