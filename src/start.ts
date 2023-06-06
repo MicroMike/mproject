@@ -40,6 +40,11 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			if (/Share|Partager/.test(dialogHeader)) {
 				out = 'del'
 			}
+
+			const bodyHtml = await get(R, 'body', 'innerText')
+			if (/Try Amazon/.test(bodyHtml)) {
+				out = 'pause'
+			}
 		}
 
 		if (player === 'tidal') {
