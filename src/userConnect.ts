@@ -61,6 +61,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 				} else {
 					if (isTidal) {
 						await click(I, R, '#onetrust-accept-btn-handler', 5)
+						await wait(3000)
 					}
 					if (isApple) {
 						await press(I, 'Tab')
