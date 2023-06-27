@@ -119,7 +119,11 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 				}
 
 				if (isYoutube || isSpotifyG) {
-					await goToPage(S.urlCo, P, R, I)
+					if (isYoutube) {
+						await click(I, R, S.gotoLog, 15)
+					} else {
+						await goToPage(S.urlCo, P, R, I)
+					}
 					await wait(rand(5, 3) * 1000)
 
 					const text = await get(R, 'body', 'innerText')
