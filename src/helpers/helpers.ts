@@ -83,6 +83,8 @@ const clickOnText = (I: any, R: any, selector: string, text: string, time?: numb
 		const x = Number(e.result.value) + 10
 		const y = Number(f.result.value) + 10
 
+		console.log('clickOnText', text, x, y)
+
 		if (!x || isNaN(x) || !y || isNaN(y)) {
 			res(false)
 			return

@@ -81,7 +81,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 						const canLog = await waitForSelector(R, S.gotoLog, 15)
 
 						if (!canLog) {
-							await clickOnText(I, R, 'span', 'Se connecter')
+							await clickOnText(I, R, 'span', 'Sign in|Se connecter')
 							// await press(I, 'Tab')
 							// await press(I, 'Tab')
 							// await press(I, 'Tab')
