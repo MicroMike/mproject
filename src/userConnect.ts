@@ -82,14 +82,6 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 
 						if (!canLog) {
 							await clickOnText(I, R, 'span', 'Sign in|Se connecter')
-							// await press(I, 'Tab')
-							// await press(I, 'Tab')
-							// await press(I, 'Tab')
-							// await press(I, 'Tab')
-							// await press(I, 'Tab')
-
-							// await wait(rand(5, 3) * 1000)
-							// await pressedEnter(I)
 						}
 					}
 
@@ -141,12 +133,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 							text: login,
 						})
 
-						await press(I, 'Tab')
-						await press(I, 'Tab')
-						await press(I, 'Tab')
-
-						await wait(rand(5, 3) * 1000)
-						await pressedEnter(I)
+						await clickOnText(I, R, 'span', 'Next')
 					}
 
 
@@ -155,13 +142,12 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 						text: pass,
 					})
 
-					await press(I, 'Tab')
-					await press(I, 'Tab')
+					await clickOnText(I, R, 'span', 'Next')
 
 					await wait(rand(5, 3) * 1000)
-					await pressedEnter(I)
 
 					await goToPage(alb, P, R, I)
+
 					await wait(rand(5, 3) * 1000)
 
 					if (isSpotifyG) {
@@ -170,30 +156,6 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 
 						await click(I, R, '#onetrust-accept-btn-handler', 5)
 					}
-
-					// let logSuccess = await waitForSelector(R, S.noNeedLog, 10)
-
-					// if (!logSuccess) {
-					// 	await press(I, 'Tab')
-					// 	await press(I, 'Tab')
-					// 	await press(I, 'Tab')
-					// 	!isSpotify && await press(I, 'Tab')
-					// 	!isSpotify && await press(I, 'Tab')
-
-
-					// 	await wait(rand(5, 3) * 1000)
-					// 	await pressedEnter(I)
-
-					// 	await wait(rand(5, 3) * 1000)
-					// 	await I.insertText({
-					// 		text: 'yokem92@mail.fr',
-					// 	})
-
-					// 	await wait(rand(5, 3) * 1000)
-					// 	await pressedEnter(I)
-
-					// 	isSpotify && await goToPage(alb, P, R, I)
-					// }
 				}
 				else {
 					await click(I, R, S.gotoLog, 10, false)
