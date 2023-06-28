@@ -71,6 +71,52 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 	res(wfs)
 })
 
+const clickOnText = (I: any, R: any, selector: string, text: string, time?: number, exitOnError = true) => new Promise(async (res, rej) => {
+	// const wfs = R && await waitForSelector(R, selector, time)
+	try {
+		await wait(rand(5, 2) * 1000)
+		//	Object.values(document.querySelectorAll('span')).filter((e)=>/Se connecter/g.test(e.innerHTML))[0]
+
+		const e = R && await R.evaluate({ expression: `Object.values(document.querySelectorAll('${selector}')).filter((e)=>/${text}/g.test(e.innerHTML))[0].getBoundingClientRect().left` })
+		const f = R && await R.evaluate({ expression: `Object.values(document.querySelectorAll('${selector}')).filter((e)=>/${text}/g.test(e.innerHTML))[0].getBoundingClientRect().top` })
+
+		const x = Number(e.result.value) + 10
+		const y = Number(f.result.value) + 10
+
+		if (!x || isNaN(x) || !y || isNaN(y)) {
+			res(false)
+			return
+		}
+
+		// console.log('x, y', x, y)
+
+		const option = {
+			button: 'left',
+			x,
+			y,
+			clickCount: 1,
+		}
+
+		await I.dispatchMouseEvent({
+			...option,
+			type: 'mousePressed',
+		})
+
+		await wait(rand(2, 1) * 100)
+
+		await I.dispatchMouseEvent({
+			...option,
+			type: 'mouseReleased',
+		})
+
+		res(true)
+	}
+	catch (e) {
+		console.log('clickOnText', e)
+		res(false)
+	}
+})
+
 const type = (R: any, value: string, selector: string) => new Promise(async (res, rej) => {
 	await waitForSelector(R, selector)
 
@@ -224,6 +270,7 @@ const takeScreenshot = async (P: any, e: string, socketEmit: any, login: string)
 export {
 	album,
 	click,
+	clickOnText,
 	disableAlert,
 	get,
 	getTimePlayer,
