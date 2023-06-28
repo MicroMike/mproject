@@ -14,6 +14,7 @@ import {
 	tidalSelect,
 	get,
 	takeScreenshot,
+	clickOnText,
 } from './helpers/helpers';
 var colors = require('colors');
 
@@ -80,14 +81,15 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 						const canLog = await waitForSelector(R, S.gotoLog, 15)
 
 						if (!canLog) {
-							await press(I, 'Tab')
-							await press(I, 'Tab')
-							await press(I, 'Tab')
-							await press(I, 'Tab')
-							await press(I, 'Tab')
+							await clickOnText(I, R, 'span', 'Se connecter')
+							// await press(I, 'Tab')
+							// await press(I, 'Tab')
+							// await press(I, 'Tab')
+							// await press(I, 'Tab')
+							// await press(I, 'Tab')
 
-							await wait(rand(5, 3) * 1000)
-							await pressedEnter(I)
+							// await wait(rand(5, 3) * 1000)
+							// await pressedEnter(I)
 						}
 					}
 
