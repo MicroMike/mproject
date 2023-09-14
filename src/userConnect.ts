@@ -45,6 +45,10 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 			await click(I, R, '#onetrust-accept-btn-handler', 5)
 		}
 
+		if (isAmazon) {
+			await click(I, R, '#dialogButton1', 5)
+		}
+
 		const isLogged = !check && await waitForSelector(R, S.noNeedLog, 10)
 
 		try {
@@ -133,16 +137,16 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 							text: login,
 						})
 
-						await clickOnText(I, R, 'span', 'Next')
+						await clickOnText(I, R, 'span', 'Next|Suivant')
 					}
 
-
 					await wait(rand(5, 3) * 1000)
+
 					await I.insertText({
 						text: pass,
 					})
 
-					await clickOnText(I, R, 'span', 'Next')
+					await clickOnText(I, R, 'span', 'Next|Suivant')
 
 					await wait(rand(5, 3) * 1000)
 
