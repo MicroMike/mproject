@@ -195,6 +195,13 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 
 					await wait(rand(5, 3) * 1000)
 
+					const amazonRobot = await get(R, 'body', 'innerText')
+
+					if (/robot./i.test(amazonRobot)) {
+						await wait(10 * 1000)
+					}
+
+
 					if (isAmazon) {
 						await click(I, R, '#ap-account-fixup-phone-skip-link')
 					}
