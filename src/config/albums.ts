@@ -1,7 +1,7 @@
 export const albums = (country?: string) => ({
 	napster: [
 		'https://web.napster.com/album/alb.389842349',//marching-smile
-		'https://web.napster.com/album/alb.398248284',//my-stash
+		// 'https://web.napster.com/album/alb.398248284',//my-stash
 		'https://web.napster.com/album/alb.390623666',//He Knows She Knows
 		'https://web.napster.com/album/alb.656819496',// alvin fay
 		// 'https://web.napster.com/album/alb.626894074',//mior good memories
@@ -26,7 +26,7 @@ export const albums = (country?: string) => ({
 		// `https://music.amazon.${country}/albums/B09WRFW2Y6`,// alvin fay
 		`https://music.amazon.${country}/albums/B07MTV7JYS`,//red Beast
 		`https://music.amazon.${country}/albums/B07VC9S3JM`,//He Knows She Knows
-		`https://music.amazon.${country}/albums/B07WCHK4JR`,//my-stash
+		// `https://music.amazon.${country}/albums/B07WCHK4JR`,//my-stash
 		`https://music.amazon.${country}/albums/B09PF7R5H1`,// fresh mix
 		`https://music.amazon.${country}/albums/B0BHFGDMKS`,// take it easy
 		`https://music.amazon.${country}/albums/B0BZQFL22N`,// ashbadger
@@ -49,7 +49,7 @@ export const albums = (country?: string) => ({
 	tidal: [
 		'https://listen.tidal.com/album/102503463',//red beast
 		'https://listen.tidal.com/album/113608807',// He Knows She Knows
-		'https://listen.tidal.com/album/115558312', // my stash
+		// 'https://listen.tidal.com/album/115558312', // my stash
 		'https://listen.tidal.com/album/210703692', // fresh mix
 		'https://listen.tidal.com/album/252505614', // ordhn take it easy
 		'https://listen.tidal.com/album/285840150', // ashbadger
@@ -75,7 +75,7 @@ export const albums = (country?: string) => ({
 		// 'https://open.spotify.com/album/4EYeIhS1bRq51bui82dGNR',//marching smile
 		'https://open.spotify.com/album/0Tt1ldQ8b4zn5LRcM706ll',//red beast
 		'https://open.spotify.com/album/4griwLkxXcEjmW1gIHDFRf',//He Knows She Knows
-		'https://open.spotify.com/album/7IQzrFiKgjNqqdetqxEiIz',//my stash
+		// 'https://open.spotify.com/album/7IQzrFiKgjNqqdetqxEiIz',//my stash
 		// 'https://open.spotify.com/album/6c61czb1qlMadW11uq6Lor', // alvin fay
 		'https://open.spotify.com/album/4szjKFxbsHKpqpxhrm7H6L',// fresh mix
 		'https://open.spotify.com/album/3YZrjrJjUYOmrmFqqv3EMA',// take it easy
@@ -107,13 +107,13 @@ export const albums = (country?: string) => ({
 		'https://www.iheart.com/artist/lenitap-33087636/albums/above-everybody-wind-75190189',
 		'https://www.iheart.com/artist/erati-33145722/albums/he-knows-she-knows-76470160',
 		'https://www.iheart.com/artist/benriam-33203186/albums/the-gift-give-77322266',
-		'https://www.iheart.com/artist/john-millson-33246171/albums/my-stash-77992029',
+		// 'https://www.iheart.com/artist/john-millson-33246171/albums/my-stash-77992029',
 		'https://www.iheart.com/artist/yonne-32474174/albums/loser-62529736',
 	],
 	apple: [
 		// `https://music.apple.com/${country}/album/marching-smile/1472877269`,
 		`https://music.apple.com/${country}/album/red-beast/1449459227`,
-		`https://music.apple.com/${country}/album/my-stash/1476078813`,
+		// `https://music.apple.com/${country}/album/my-stash/1476078813`,
 		`https://music.apple.com/${country}/album/he-knows-she-knows/1472572875`,
 		`https://music.apple.com/${country}/album/fresh-mix-ep/1602522645`,
 		`https://music.apple.com/${country}/album/take-it-easy-ep/1648559520`,
@@ -128,16 +128,12 @@ export const albums = (country?: string) => ({
 		// 'https://music.apple.com/tr/album/blue-gun/1462971089',
 		// 'https://music.apple.com/tr/album/loser/1421807206',
 	],
-	youtube:[
+	youtube: [
 		'https://music.youtube.com/playlist?list=OLAK5uy_mRQymmHf2WE1VF5rTSrfhi4NeApk5ve8k', // red beast
 		'https://music.youtube.com/playlist?list=OLAK5uy_n2vh4Z_2con4v5n_zRI5-B_2x_yGQzjb4', // He Knows She Knows
-		'https://music.youtube.com/playlist?list=OLAK5uy_ncO3_KViomsWKfWvhbwafOU2uA-xLhOYY', // my stash
+		// 'https://music.youtube.com/playlist?list=OLAK5uy_ncO3_KViomsWKfWvhbwafOU2uA-xLhOYY', // my stash
 		'https://music.youtube.com/playlist?list=OLAK5uy_nXWitqEOdlkDZHj3i11N_vb6zjPLd-Ofg', // fresh mix
 		'https://music.youtube.com/playlist?list=OLAK5uy_lJNbLVhAKyWd-NnerMMuiobEWsSXuN0pw', // take it easy
 		'https://music.youtube.com/playlist?list=OLAK5uy_l_qZepk2ZTkXQl7ifquJOJzftlhXpLuJc', // ashbadger
 	]
 })
-
-// Red Beast
-// He Knows She Knows
-// My stash
