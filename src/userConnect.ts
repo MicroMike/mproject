@@ -203,7 +203,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 
 
 					if (isAmazon) {
-						await click(I, R, '#ap-account-fixup-phone-skip-link')
+						await click(I, R, '#ap-account-fixup-phone-skip-link', 10)
 					}
 
 					if (amazonReLog) {
