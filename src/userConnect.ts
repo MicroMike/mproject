@@ -175,6 +175,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 						await type(R, login, S.email)
 
 						isTidal && await click(I, R, S.next)
+						isAmazon && await click(I, R, '#continue', 5)
 
 						const outNoLogging = await waitForSelector(R, S.loginError, 5)
 
