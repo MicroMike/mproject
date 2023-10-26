@@ -6,6 +6,7 @@ const props = process.argv
 const arg = props[2]
 const max = Number(props[3] || 1)
 const checkAccount = props[4] || 'none'
+const checkAccounts = checkAccount.split('|')
 
 // const clientSocket = io('http://216.158.239.199:3000');
 
@@ -22,7 +23,7 @@ const status = Array(max).fill(false)
 const infiniteLoop = async (i: number) => {
 	// await go(process.argv, String(i))
 	// process.env[`pid${i}`] = ''
-	shell.exec(`tsc && node build/go.js ${arg} ${max} ${checkAccount} ${i}`, async () => {
+	shell.exec(`tsc && node build/go.js ${arg} ${max} ${checkAccounts[i] || checkAccount} ${i}`, async () => {
 		// shell.exec('git reset --hard')
 		shell.exec('git pull --rebase')
 		status[i] = false
@@ -53,6 +54,6 @@ setInterval(() => {
 	shell.exec('rm -rf /root/puppet/puppet/', { async: true })
 	shell.exec(`kill -9 ${pids.join(' ')}`, { silent: true })
 	shell.exec('killall chrome')
-	
+
 	// clientSocket.emit('reset')
 }, 1000 * 60 * 60 * 6)
