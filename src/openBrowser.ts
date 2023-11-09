@@ -34,5 +34,12 @@ export const openBrowser = async (player?: string, login?: string) => {
 	const I = Input;
 	const T = Target;
 
+	const targets = await T.getTargets()
+	targets.targetInfos.forEach((target, idx) => {
+		if (idx > 0) {
+			Target.closeTarget({ targetId: target.targetId })
+		}
+	});
+
 	return { chrome, protocol, N, P, R, D, B, I, T }
 }
