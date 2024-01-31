@@ -69,7 +69,7 @@ export const getConfig = (player: TPlayer) => {
 		S.email = '#ap_email'
 		S.pass = '#ap_password'
 		S.connectBtn = '#signInSubmit'
-		S.play = '#detailHeaderButton2'
+		S.play = '#detailHeaderButton1'
 		S.timeLine = '#transport > :last-child > :last-child span'
 
 		// remember = '[name="rememberMe"]'

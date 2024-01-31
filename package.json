@@ -4,8 +4,8 @@
 	"main": "index.js",
 	"scripts": {
 		"inst": "rm -rf node_modules/ && rm package-lock.json && npm i",
-		"start": "git pull --rebase && tsc && node build/index.js",
-		"create": "git pull --rebase && tsc && node build/create.js",
+		"start": "git pull && tsc && node build/index.js",
+		"create": "tsc && node build/create.js",
 		"amazon": "tsc && node build/amazon.js",
 		"activamazon": "tsc && node build/activateAmazon.js"
 	},
@@ -22,6 +22,7 @@
 		"fs": "0.0.1-security",
 		"fs-extra": "^7.0.1",
 		"image-to-base64": "^2.0.1",
+		"lodash": "^4.17.21",
 		"node-tesseract-ocr": "^2.2.1",
 		"shelljs": "^0.8.5",
 		"socket.io-client": "^4.5.1"
@@ -29,6 +30,7 @@
 	"description": "",
 	"devDependencies": {
 		"@types/chrome-remote-interface": "^0.31.4",
+		"@types/lodash": "^4.14.202",
 		"@types/shelljs": "^0.8.11",
 		"@types/uuid": "^8.3.4",
 		"tslint": "^6.1.3",

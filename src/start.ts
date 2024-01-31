@@ -1,6 +1,8 @@
-import { TPlayer } from "./config/types"
-import { album, click, get, getAppleTimePlayer, getTimePlayer, goToPage, pressedSpace, rand, takeScreenshot, wait } from "./helpers/helpers"
+import { shuffle } from 'lodash'
+import { nbTracks } from "./config/albums"
+import { click, get, getAlbums, getAppleTimePlayer, getTimePlayer, goToPage, pressedSpace, rand, takeScreenshot, wait } from "./helpers/helpers"
 import { userConnect } from "./userConnect"
+const request = require('ajax-request');
 
 export const start = (props: any, chrome: any, protocol: any) => new Promise(async (res) => {
 	const { N, P, R, D, B, I, T, S, socketEmit, player, login, check, country } = props
@@ -11,9 +13,11 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	let countPlays = 0
 	let pauseCount = 0
 	let out: any = false
-	let playByLoop = rand(7, 2)
 	let playLoop = 0
 	let timeout: any
+	let alb: string
+	let playByLoop: number
+	let album: any
 
 	const userCallback: any = await userConnect(props)
 		.catch((e) => error = e.error)
@@ -24,6 +28,15 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		res(isError())
 		return
 	}
+
+	const albums = shuffle(getAlbums(player, country).map((alb, idx) => ({ alb, nb: nbTracks[idx] })))
+
+	album = albums.shift() || {}
+
+	alb = album.alb || ''
+	playByLoop = album.nb || 0
+
+	alb && await goToPage(alb, P, R, I)
 
 	const inter = async () => {
 		clearTimeout(timeout)
@@ -60,7 +73,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			if (!next && time > 30) {
 				next = true
 				++countPlays
-				socketEmit('plays', { next: false, currentAlbum: userCallback.alb, countPlays })
+				socketEmit('plays', { next: false, currentAlbum: alb, countPlays })
 			} else {
 				socketEmit('playerInfos', { time, ok: true, countPlays })
 			}
@@ -78,27 +91,38 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 5, countPlays, playLoop })
 		}
 
-		if (pauseCount > 10) {
+		if (!albums.length || check) {
+			const d = new Date()
+			const time = d.getTime()
+			const delay = rand(120, 60) * 60 * 1000
+
+			const newTime = time + delay
+
+			request(encodeURIComponent(`http://149.102.132.27:3000/update?${player}:${login}/expire/${newTime}`), () => { })
+
+			out = 'logout'
+		} else if (pauseCount > 10) {
 			await takeScreenshot(P, 'freeze', socketEmit, login)
 			out = 'freeze'
 		}
-		else if (countPlays > playByLoop || pauseCount > 5) {
+		else if (countPlays === playByLoop || pauseCount > 5) {
 			await pressedSpace(I)
 			await wait(rand(5, 3) * 1000)
 
-			const alb = album(player as TPlayer, country)
-			await goToPage(alb, P, R, I)
+			album = albums.shift() || {}
+
+			alb = album.alb || ''
+			playByLoop = album.nb || 0
+
+			alb && await goToPage(alb, P, R, I)
 
 			await wait(rand(5, 3) * 1000)
 			await click(I, R, S.play, 60)
 
 			if (pauseCount === 0) {
-				++playLoop
 				countPlays = 0
 				socketEmit('playerInfos', { time: 'PLAY', ok: true })
 			}
-		} else if (playLoop === 5 || check) {
-			out = 'logout'
 		}
 
 		currTime = time

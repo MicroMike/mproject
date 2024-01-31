@@ -184,6 +184,8 @@ const press = async (I: any, key: string) => {
 		key: key,
 		code: key.length === 1 ? 'Key' + key.toUpperCase() : key,
 	})
+
+	await wait(rand(500, 100))
 }
 
 const pressedEnter = async (I: any) => {
@@ -219,6 +221,10 @@ const album = (player: TPlayer, country?: string) => {
 	const albumUrl = als[rand(als.length - 1)]
 
 	return albumUrl
+}
+
+const getAlbums = (player: TPlayer, country?: string) => {
+	return albums(country)[player]
 }
 
 const tidalSelect = (R: any) => new Promise(async (res, rej) => {
@@ -271,6 +277,7 @@ const takeScreenshot = async (P: any, e: string, socketEmit: any, login: string)
 
 export {
 	album,
+	getAlbums,
 	click,
 	clickOnText,
 	disableAlert,

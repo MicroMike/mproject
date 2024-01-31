@@ -22,14 +22,14 @@ export const albums = (country?: string) => ({
 		// 'https://app.napster.com/artist/lapilluledors/album/red-beast',
 	],
 	amazon: [
-		// `https://music.amazon.${country}/albums/B07V1W5978`,//marching-smile
-		// `https://music.amazon.${country}/albums/B09WRFW2Y6`,// alvin fay
 		`https://music.amazon.${country}/albums/B07MTV7JYS`,//red Beast
 		`https://music.amazon.${country}/albums/B07VC9S3JM`,//He Knows She Knows
-		// `https://music.amazon.${country}/albums/B07WCHK4JR`,//my-stash
 		`https://music.amazon.${country}/albums/B09PF7R5H1`,// fresh mix
 		`https://music.amazon.${country}/albums/B0BHFGDMKS`,// take it easy
 		`https://music.amazon.${country}/albums/B0BZQFL22N`,// ashbadger
+		// `https://music.amazon.${country}/albums/B07V1W5978`,//marching-smile
+		// `https://music.amazon.${country}/albums/B09WRFW2Y6`,// alvin fay
+		// `https://music.amazon.${country}/albums/B07WCHK4JR`,//my-stash
 		// 'https://music.amazon.fr/albums/B09M8JTGVH',//mior good memories
 		// 'https://music.amazon.fr/albums/B09MG4RYBF',//mior lunar
 		// 'https://music.amazon.fr/albums/B07CZDXC9B',
@@ -49,10 +49,10 @@ export const albums = (country?: string) => ({
 	tidal: [
 		'https://listen.tidal.com/album/102503463',//red beast
 		'https://listen.tidal.com/album/113608807',// He Knows She Knows
-		// 'https://listen.tidal.com/album/115558312', // my stash
 		'https://listen.tidal.com/album/210703692', // fresh mix
 		'https://listen.tidal.com/album/252505614', // ordhn take it easy
 		'https://listen.tidal.com/album/285840150', // ashbadger
+		// 'https://listen.tidal.com/album/115558312', // my stash
 		// 'https://listen.tidal.com/album/112888253',//marching-smile
 		// 'https://listen.tidal.com/album/222894826', // alvin fay
 		// 'https://listen.tidal.com/album/205826377',//mior good memories
@@ -72,14 +72,14 @@ export const albums = (country?: string) => ({
 		// 'https://listen.tidal.com/album/107892456',
 	],
 	spotify: [
+		'https://open.spotify.com/intl-fr/album/0Tt1ldQ8b4zn5LRcM706ll',//red beast
+		'https://open.spotify.com/intl-fr/album/4griwLkxXcEjmW1gIHDFRf',//He Knows She Knows
+		'https://open.spotify.com/intl-fr/album/4szjKFxbsHKpqpxhrm7H6L',// fresh mix
+		'https://open.spotify.com/intl-fr/album/3YZrjrJjUYOmrmFqqv3EMA',// take it easy
+		'https://open.spotify.com/intl-fr/album/7AQBjg9oZDT60aTArciBW8',// ashbadger
 		// 'https://open.spotify.com/album/4EYeIhS1bRq51bui82dGNR',//marching smile
-		'https://open.spotify.com/album/0Tt1ldQ8b4zn5LRcM706ll',//red beast
-		'https://open.spotify.com/album/4griwLkxXcEjmW1gIHDFRf',//He Knows She Knows
 		// 'https://open.spotify.com/album/7IQzrFiKgjNqqdetqxEiIz',//my stash
 		// 'https://open.spotify.com/album/6c61czb1qlMadW11uq6Lor', // alvin fay
-		'https://open.spotify.com/album/4szjKFxbsHKpqpxhrm7H6L',// fresh mix
-		'https://open.spotify.com/album/3YZrjrJjUYOmrmFqqv3EMA',// take it easy
-		'https://open.spotify.com/album/7AQBjg9oZDT60aTArciBW8',// ashbadger
 		// 'https://open.spotify.com/album/1VFYQwx6WVZ9eLRLkQEPRH',//mior good memories
 		// 'https://open.spotify.com/album/1Coms61c9kWhzH11cZzCrD',//mior lunar
 		// 'https://open.spotify.com/album/3FJdPTLyJVPYMqQQUyb6lr',
@@ -137,3 +137,11 @@ export const albums = (country?: string) => ({
 		'https://music.youtube.com/playlist?list=OLAK5uy_l_qZepk2ZTkXQl7ifquJOJzftlhXpLuJc', // ashbadger
 	]
 })
+
+export const nbTracks = [
+	13,
+	7,
+	5,
+	5,
+	5,
+]
