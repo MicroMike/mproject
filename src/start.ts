@@ -97,7 +97,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			const delay = rand(120, 60) * 60 * 1000
 
 			const newTime = time + delay
-
+			console.log(`http://149.102.132.27:3000/update?${player}:${login}/expire/${newTime}`)
 			request(encodeURIComponent(`http://149.102.132.27:3000/update?${player}:${login}/expire/${newTime}`), () => { })
 
 			out = 'logout'
