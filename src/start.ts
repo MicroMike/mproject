@@ -34,7 +34,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	album = albums.shift() || {}
 
 	alb = album.alb || ''
-	playByLoop = 1 // album.nb || 0
+	playByLoop = album.nb || 0
 
 	alb && await goToPage(alb, P, R, I)
 
@@ -112,7 +112,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			album = albums.shift() || {}
 
 			alb = album.alb || ''
-			playByLoop = 1 // album.nb || 0
+			playByLoop = album.nb || 0
 
 			alb && await goToPage(alb, P, R, I)
 
