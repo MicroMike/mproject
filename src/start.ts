@@ -30,11 +30,12 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	}
 
 	const albums = shuffle(getAlbums(player, country).map((alb, idx) => ({ alb, nb: nbTracks[idx] })))
+	const initLength = albums.length
 
 	album = albums.shift() || {}
 
 	alb = album.alb || ''
-	playByLoop = rand(album.nb * 2, Math.ceil(album.nb / 2)) || 0
+	playByLoop = rand(album.nb) || 0
 
 	alb && await goToPage(alb, P, R, I)
 
@@ -91,7 +92,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 5, countPlays, playLoop })
 		}
 
-		if (!albums.length || check) {
+		if (albums.length < Math.ceil(initLength / 2) || check) {
 			const d = new Date()
 			const time = d.getTime()
 			const delay = rand(120, 60) * 60 * 1000
@@ -112,7 +113,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			album = albums.shift() || {}
 
 			alb = album.alb || ''
-			playByLoop = rand(album.nb * 2, Math.ceil(album.nb / 2)) || 0
+			playByLoop = rand(album.nb) || 0
 
 			alb && await goToPage(alb, P, R, I)
 
