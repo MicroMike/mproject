@@ -92,7 +92,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 5, countPlays, playLoop })
 		}
 
-		if (albums.length < Math.ceil(initLength / 2) || check) {
+		if (!albums.length || check) {
 			const d = new Date()
 			const time = d.getTime()
 			const delay = rand(120, 60) * 60 * 1000
