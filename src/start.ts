@@ -93,14 +93,6 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		}
 
 		if (albums.length < Math.ceil(initLength / 2) || check) {
-			const d = new Date()
-			const time = d.getTime()
-			const delay = rand(120, 60) * 60 * 1000
-
-			const newTime = time + delay
-
-			await goToPage(`http://149.102.132.27:3000/update?${player}:${login}/expire/${newTime}`, P, R, I)
-
 			out = 'logout'
 		} else if (pauseCount > 10) {
 			await takeScreenshot(P, 'freeze', socketEmit, login)
