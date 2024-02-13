@@ -7,7 +7,7 @@ export const getConfig = (player: TPlayer) => {
 		loginError: '.box-error',
 		email: '#email',
 		pass: '#password',
-		next: '.btn-client-primary',
+		next: '[ui-test-id="check-user-continue-button"]',
 		connectBtn: '.btn-success.btn-client-primary',
 		play: '[data-test="shuffle-all"]',
 		pauseBtn: '',
