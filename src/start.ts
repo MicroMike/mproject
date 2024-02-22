@@ -1,8 +1,25 @@
 import { shuffle } from 'lodash'
 import { nbTracks } from "./config/albums"
-import { click, clickOnText, get, getAlbums, getAppleTimePlayer, getTimePlayer, goToPage, press, pressedEnter, pressedSpace, rand, takeScreenshot, wait } from "./helpers/helpers"
+import { click, get, getAlbums, getAppleTimePlayer, getTimePlayer, goToPage, press, pressedEnter, pressedSpace, rand, takeScreenshot, wait } from "./helpers/helpers"
 import { userConnect } from "./userConnect"
-const request = require('ajax-request');
+
+const pandoraPlay = async (I: any, R: any, S: any) => {
+	await click(I, R, S.play, 60)
+
+	const isPandoraAd = await get(R, 'body', 'innerText')
+
+	if (/Watch Ad/.test(isPandoraAd)) {
+		console.log('need ad click')
+		await press(I, 'Tab')
+		await press(I, 'Tab')
+
+		await wait(rand(5, 3) * 1000)
+		await pressedEnter(I)
+
+		await wait(17 * 1000)
+		await click(I, R, S.play, 60)
+	}
+}
 
 export const start = (props: any, chrome: any, protocol: any) => new Promise(async (res) => {
 	const { N, P, R, D, B, I, T, S, socketEmit, player, login, check, country } = props
@@ -18,6 +35,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	let alb: string
 	let playByLoop: number
 	let album: any
+	const isPandora = player === 'pandora'
 
 	const userCallback: any = await userConnect(props)
 		.catch((e) => error = e.error)
@@ -86,18 +104,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 			if (pauseCount > 1) {
 				await wait(rand(5, 3) * 1000)
-				await click(I, R, S.play, 60)
-
-				const isPandoraAd = await get(R, 'body', 'innerText')
-
-				if (player === 'pandora' && /Watch Ad/.test(isPandoraAd)) {
-					console.log('need ad click')
-					await press(I, 'Tab')
-					await press(I, 'Tab')
-
-					await wait(rand(5, 3) * 1000)
-					await pressedEnter(I)
-				}
+				!isPandora ? await click(I, R, S.play, 60) : await pandoraPlay(I, R, S)
 			}
 
 			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 5, countPlays, playLoop })
@@ -121,18 +128,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			alb && await goToPage(alb, P, R, I)
 
 			await wait(rand(5, 3) * 1000)
-			await click(I, R, S.play, 60)
-
-			const isPandoraAd = await get(R, 'body', 'innerText')
-
-			if (player === 'pandora' && /Watch Ad/.test(isPandoraAd)) {
-				console.log('need ad click')
-				await press(I, 'Tab')
-				await press(I, 'Tab')
-
-				await wait(rand(5, 3) * 1000)
-				await pressedEnter(I)
-			}
+			!isPandora ? await click(I, R, S.play, 60) : await pandoraPlay(I, R, S)
 
 			if (pauseCount === 0) {
 				countPlays = 0
