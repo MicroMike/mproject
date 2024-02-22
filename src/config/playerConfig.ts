@@ -20,10 +20,20 @@ export const getConfig = (player: TPlayer) => {
 		signUp: '',
 		signEmail: '',
 		signSubmit: '',
+		notExist: '',
+		goToSub: '',
 	}
 
 	if (player === 'tidal') {
 		S.urlCo = 'https://listen.tidal.com'
+	}
+
+	if (player === 'pandora') {
+		S.email = '[name="email"]'
+		S.pass = '[name="password"]'
+		S.connectBtn = '[name="login"]'
+		S.notExist = "#email-password.Form--serverError"
+		S.goToSub = '.AuthLayout__link'
 	}
 
 	if (player === 'spotify') {
@@ -107,3 +117,5 @@ export const getConfig = (player: TPlayer) => {
 
 	return S
 }
+
+export type TS = ReturnType<typeof getConfig>

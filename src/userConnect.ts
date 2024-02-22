@@ -1,3 +1,4 @@
+import { TS } from './config/playerConfig';
 import { TPlayer } from './config/types';
 import { copyBack } from './helpers/copy';
 import {
@@ -18,7 +19,7 @@ import {
 } from './helpers/helpers';
 var colors = require('colors');
 
-export const userConnect = async ({ P, R, I, S, account, check, socketEmit, country }: any) => new Promise(async (res, rej) => {
+export const userConnect = async ({ P, R, I, S, account, check, socketEmit, country }: Record<any, any> & { S: TS }) => new Promise(async (res, rej) => {
 	try {
 		const [player, login, pass] = account.split(':')
 
@@ -30,6 +31,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 		const isNapster = player === 'napster'
 		const isApple = player === 'apple'
 		const isYoutube = player === 'youtube'
+		const isPandora = player === 'pandora'
 
 		const alb = album(player as TPlayer, country)
 		await goToPage(alb, P, R, I)
@@ -202,7 +204,6 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 						await wait(10 * 1000)
 					}
 
-
 					if (isAmazon) {
 						await click(I, R, '#ap-account-fixup-phone-skip-link', 10)
 					}
@@ -211,16 +212,37 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 						await goToPage(alb, P, R, I)
 					}
 
-					const outErrorConnect = await waitForSelector(R, S.loginError, 10)
+					const pandoraNoExist = await get(R, S.notExist, 'innerText')
+
+					if (pandoraNoExist) {
+						await click(I, R, S.goToSub)
+
+						await click(I, R, S.email)
+						await type(R, login, S.email)
+
+						await click(I, R, S.pass)
+						await type(R, pass, S.pass)
+
+						await click(I, R, '[name="birthYear"]')
+						await type(R, rand(2000, 1992).toString(), '[name="birthYear"]')
+
+						await click(I, R, '[name="zipCode"]')
+						await type(R, '90017', '[name="zipCode"]')
+
+						await click(I, R, '[value="NONBINARY"]')
+
+						await click(I, R, '.FormButtonSubmit button')
+					}
+
+					const outErrorConnect = !isAmazon && !isPandora && await waitForSelector(R, S.loginError, 10)
 
 					if (outErrorConnect) {
 						if (isTidal) {
 							throw 'del'
 						}
-						if (!isAmazon) {
-							await takeScreenshot(P, 'out_error_connect', socketEmit, login)
-							throw 'out_error_connect'
-						}
+
+						await takeScreenshot(P, 'out_error_connect', socketEmit, login)
+						throw 'out_error_connect'
 					}
 
 					isTidal && await tidalSelect(R)

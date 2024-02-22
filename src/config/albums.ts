@@ -135,12 +135,25 @@ export const albums = (country?: string) => ({
 		'https://music.youtube.com/playlist?list=OLAK5uy_nXWitqEOdlkDZHj3i11N_vb6zjPLd-Ofg', // fresh mix
 		'https://music.youtube.com/playlist?list=OLAK5uy_lJNbLVhAKyWd-NnerMMuiobEWsSXuN0pw', // take it easy
 		'https://music.youtube.com/playlist?list=OLAK5uy_l_qZepk2ZTkXQl7ifquJOJzftlhXpLuJc', // ashbadger
+	],
+	pandora: [
+		'https://www.pandora.com/artist/ordhn/ARmlp7pdJ2wz4w2', // take it easy
+		'https://www.pandora.com/artist/ordhn/ARmlp7pdJ2wz4w2', // take it easy
+		'https://www.pandora.com/artist/ordhn/ARmlp7pdJ2wz4w2', // take it easy
+		'https://www.pandora.com/artist/ordhn/ARmlp7pdJ2wz4w2', // take it easy
+		'https://www.pandora.com/artist/ordhn/ARmlp7pdJ2wz4w2', // take it easy
+		// 'https://music.youtube.com/playlist?list=OLAK5uy_mRQymmHf2WE1VF5rTSrfhi4NeApk5ve8k', // red beast
+		// 'https://music.youtube.com/playlist?list=OLAK5uy_n2vh4Z_2con4v5n_zRI5-B_2x_yGQzjb4', // He Knows She Knows
+		// 'https://music.youtube.com/playlist?list=OLAK5uy_ncO3_KViomsWKfWvhbwafOU2uA-xLhOYY', // my stash
+		// 'https://music.youtube.com/playlist?list=OLAK5uy_nXWitqEOdlkDZHj3i11N_vb6zjPLd-Ofg', // fresh mix
+		// 'https://music.youtube.com/playlist?list=OLAK5uy_l_qZepk2ZTkXQl7ifquJOJzftlhXpLuJc', // ashbadger
 	]
 })
 
 export const nbTracks = [
 	13,
 	7,
+	5,
 	5,
 	5,
 	5,
