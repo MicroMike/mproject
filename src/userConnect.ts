@@ -43,7 +43,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 		// 	await click(I, R, '#onetrust-accept-btn-handler', 5)
 		// }
 
-		if (isTidal) {
+		if (isTidal || isPandora) {
 			await click(I, R, '#onetrust-accept-btn-handler', 5)
 		}
 
