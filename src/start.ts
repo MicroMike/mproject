@@ -1,6 +1,6 @@
 import { shuffle } from 'lodash'
 import { nbTracks } from "./config/albums"
-import { click, get, getAlbums, getAppleTimePlayer, getTimePlayer, goToPage, pressedSpace, rand, takeScreenshot, wait } from "./helpers/helpers"
+import { click, clickOnText, get, getAlbums, getAppleTimePlayer, getTimePlayer, goToPage, pressedSpace, rand, takeScreenshot, wait } from "./helpers/helpers"
 import { userConnect } from "./userConnect"
 const request = require('ajax-request');
 
@@ -87,6 +87,15 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			if (pauseCount > 1) {
 				await wait(rand(5, 3) * 1000)
 				await click(I, R, S.play, 60)
+
+				const isPandoraAd = await get(R, 'body', 'innerText')
+
+				if (player === 'pandora' && /Watch Ad/.test(isPandoraAd)) {
+					await clickOnText(I, R, 'button', 'Watch Ad')
+					await wait(1000 * 17)
+					await clickOnText(I, R, 'button', 'Start My Reward')
+					await click(I, R, S.play)
+				}
 			}
 
 			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 5, countPlays, playLoop })
@@ -111,6 +120,15 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 			await wait(rand(5, 3) * 1000)
 			await click(I, R, S.play, 60)
+
+			const isPandoraAd = await get(R, 'body', 'innerText')
+
+			if (player === 'pandora' && /Watch Ad/.test(isPandoraAd)) {
+				await clickOnText(I, R, 'button', 'Watch Ad')
+				await wait(1000 * 17)
+				await clickOnText(I, R, 'button', 'Start My Reward')
+				await click(I, R, S.play)
+			}
 
 			if (pauseCount === 0) {
 				countPlays = 0

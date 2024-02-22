@@ -36,6 +36,7 @@ export const getConfig = (player: TPlayer) => {
 		S.connectBtn = '[name="login"]'
 		S.notExist = "#email-password.Form--serverError"
 		S.goToSub = '[href="/account/register"]'
+		S.play = '.ButtonRow__button--play'
 	}
 
 	if (player === 'spotify') {

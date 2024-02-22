@@ -306,6 +306,16 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 		} else {
 			await wait(rand(5, 3) * 1000)
 			await click(I, R, S.play)
+
+			const isPandoraAd = await get(R, 'body', 'innerText')
+
+			if (isPandora && /Watch Ad/.test(isPandoraAd)) {
+				await clickOnText(I, R, 'button', 'Watch Ad')
+				await wait(1000 * 17)
+				await clickOnText(I, R, 'button', 'Start My Reward')
+				await click(I, R, S.play)
+			}
+
 			await wait(rand(5, 3) * 1000)
 		}
 
