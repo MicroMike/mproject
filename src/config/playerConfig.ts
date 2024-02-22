@@ -29,6 +29,8 @@ export const getConfig = (player: TPlayer) => {
 	}
 
 	if (player === 'pandora') {
+		S.gotoLog = '[href="/account/sign-in"]'
+		S.noNeedLog = '[data-qa="header_profile_image"]'
 		S.email = '[name="email"]'
 		S.pass = '[name="password"]'
 		S.connectBtn = '[name="login"]'
