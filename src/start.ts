@@ -21,6 +21,8 @@ const pandoraPlay = async (I: any, R: any, S: any) => {
 	}
 }
 
+const getPlayByLoop = (album: { alb: string; nb: number; }) => rand(album.nb * 2 > 10 ? 10 : album.nb * 2, Math.ceil(album.nb / 2)) || 0
+
 export const start = (props: any, chrome: any, protocol: any) => new Promise(async (res) => {
 	const { N, P, R, D, B, I, T, S, socketEmit, player, login, check, country } = props
 
@@ -48,12 +50,12 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	}
 
 	const albums = shuffle(getAlbums(player, country).map((alb, idx) => ({ alb, nb: nbTracks[idx] })))
-	const initLength = albums.length
+	// const initLength = albums.length
 
 	album = albums.shift() || {}
+	playByLoop = getPlayByLoop(album)
 
 	alb = album.alb || ''
-	playByLoop = rand(album.nb * 2, Math.ceil(album.nb / 2)) || 0
 
 	alb && await goToPage(alb, P, R, I)
 
@@ -110,9 +112,11 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 5, countPlays, playLoop })
 		}
 
-		if (albums.length < Math.ceil(initLength / 2) || check) {
+
+		if (check) {
 			out = 'logout'
-		} else if (pauseCount > 10) {
+		}
+		else if (pauseCount > 10) {
 			await takeScreenshot(P, 'freeze', socketEmit, login)
 			out = 'freeze'
 		}
@@ -120,10 +124,15 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			await pressedSpace(I)
 			await wait(rand(5, 3) * 1000)
 
+			if (albums.length === 0) {
+				out = 'logout'
+				return
+			}
+
 			album = albums.shift() || {}
 
 			alb = album.alb || ''
-			playByLoop = rand(album.nb * 2, Math.ceil(album.nb / 2)) || 0
+			playByLoop = getPlayByLoop(album)
 
 			alb && await goToPage(alb, P, R, I)
 
