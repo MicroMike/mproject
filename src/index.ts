@@ -47,13 +47,13 @@ for (let a = 0; a < max; a++) {
 	}, 1000 * 60 * 5)
 }
 
-setInterval(() => {
-	const list = shell.exec('pidof node', { silent: true })
-	const pids = list.stdout.split(' ').map(p => String(Number(p))).filter((p) => !nodePids.includes(p))
+// setInterval(() => {
+// 	const list = shell.exec('pidof node', { silent: true })
+// 	const pids = list.stdout.split(' ').map(p => String(Number(p))).filter((p) => !nodePids.includes(p))
 
-	shell.exec('rm -rf /root/puppet/puppet/', { async: true })
-	shell.exec(`kill -9 ${pids.join(' ')}`, { silent: true })
-	shell.exec('killall chrome')
+// 	shell.exec('rm -rf /root/puppet/puppet/', { async: true })
+// 	shell.exec(`kill -9 ${pids.join(' ')}`, { silent: true })
+// 	shell.exec('killall chrome')
 
-	// clientSocket.emit('reset')
-}, 1000 * 60 * 60 * 6)
+// 	// clientSocket.emit('reset')
+// }, 1000 * 60 * 60 * 6)
