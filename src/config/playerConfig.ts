@@ -22,10 +22,12 @@ export const getConfig = (player: TPlayer) => {
 		signSubmit: '',
 		notExist: '',
 		goToSub: '',
+		like: ''
 	}
 
 	if (player === 'tidal') {
 		S.urlCo = 'https://listen.tidal.com'
+		S.like = '[data-track--button-id="favorite"][aria-checked="false"]'
 	}
 
 	if (player === 'pandora') {
@@ -40,7 +42,7 @@ export const getConfig = (player: TPlayer) => {
 	}
 
 	if (player === 'spotify') {
-		S.noNeedLog = '[data-testid="user-widget-avatar"]'
+		S.noNeedLog = '[data-testid="user-widget-link"]'
 		S.gotoLog = '[data-testid="login-button"]'
 		S.gotoLogG = '[data-testid="google-login"]'
 		S.loginError = '.alert.alert-warning'
