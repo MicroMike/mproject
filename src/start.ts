@@ -94,8 +94,10 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			if (!next && time > 30) {
 				next = true
 				++countPlays
+				console.log('plays', login)
 				socketEmit('plays', { next: false, currentAlbum: alb, countPlays })
 			} else {
+				console.log('playerInfos', login)
 				socketEmit('playerInfos', { time, ok: true, countPlays })
 			}
 		} else if (time < currTime) {
