@@ -99,7 +99,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 				S.like && await click(I, R, S.like, 60)
 				socketEmit('plays', { next: false, currentAlbum: alb, countPlays })
 			} else {
-				console.log('playerInfos', login)
+				// console.log('playerInfos', login)
 				socketEmit('playerInfos', { time, ok: true, countPlays })
 			}
 		} else if (time < currTime) {
