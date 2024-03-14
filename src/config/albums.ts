@@ -1,9 +1,10 @@
 export const albums = (country?: string) => ({
 	napster: [
-		'https://web.napster.com/album/alb.389842349',//marching-smile
-		// 'https://web.napster.com/album/alb.398248284',//my-stash
 		'https://web.napster.com/album/alb.390623666',//He Knows She Knows
-		'https://web.napster.com/album/alb.656819496',// alvin fay
+		'https://web.napster.com/album/alb.706846102', // take it easy
+		// 'https://web.napster.com/album/alb.389842349',//marching-smile
+		// 'https://web.napster.com/album/alb.398248284',//my-stash
+		// 'https://web.napster.com/album/alb.656819496',// alvin fay
 		// 'https://web.napster.com/album/alb.626894074',//mior good memories
 		// 'https://app.napster.com/artist/benriam/album/the-gift-give', // benriam
 		// 'https://app.napster.com/artist/lenitap/album/above-everybody-wind', //hanke
@@ -22,6 +23,7 @@ export const albums = (country?: string) => ({
 		// 'https://app.napster.com/artist/lapilluledors/album/red-beast',
 	],
 	amazon: [
+		`https://music.amazon.${country}/albums/B0CVNNGP4H`,// elements djmke
 		`https://music.amazon.${country}/albums/B07MTV7JYS`,//red Beast
 		`https://music.amazon.${country}/albums/B07VC9S3JM`,//He Knows She Knows
 		`https://music.amazon.${country}/albums/B09PF7R5H1`,// fresh mix
@@ -47,6 +49,7 @@ export const albums = (country?: string) => ({
 		// 'https://music.amazon.fr/albums/B07D3PGSR4',
 	],
 	tidal: [
+		'https://listen.tidal.com/album/345514451',// elements djmke
 		'https://listen.tidal.com/album/102503463',//red beast
 		'https://listen.tidal.com/album/113608807',// He Knows She Knows
 		'https://listen.tidal.com/album/210703692', // fresh mix
@@ -72,6 +75,7 @@ export const albums = (country?: string) => ({
 		// 'https://listen.tidal.com/album/107892456',
 	],
 	spotify: [
+		'https://open.spotify.com/intl-fr/album/1CWvkrqiSMsSQutfirOUu2',// elements djmke
 		'https://open.spotify.com/intl-fr/album/0Tt1ldQ8b4zn5LRcM706ll',//red beast
 		'https://open.spotify.com/intl-fr/album/4griwLkxXcEjmW1gIHDFRf',//He Knows She Knows
 		'https://open.spotify.com/intl-fr/album/4szjKFxbsHKpqpxhrm7H6L',// fresh mix
@@ -158,3 +162,10 @@ export const nbTracks = [
 	5,
 	5,
 ]
+
+export const artists = {
+	'amazon': [
+		'https://music.amazon.fr/artists/B0CVNN95TT/djmke',
+		'https://music.amazon.fr/artists/B07VF87DDT/erati'
+	]
+}
