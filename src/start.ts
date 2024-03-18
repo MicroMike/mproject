@@ -21,8 +21,8 @@ const pandoraPlay = async (I: any, R: any, S: any) => {
 	}
 }
 
-// const getPlayByLoop = (album: { alb: string; nb: number; }) => rand(album.nb * 2 > 10 ? 10 : album.nb * 2, Math.ceil(album.nb / 2)) || 0
-const getPlayByLoop = (album: { alb: string; nb: number; }) => rand(2, 1) || 0
+const getPlayByLoop = (album: { alb: string; nb: number; }) => rand(album.nb > 10 ? 10 : album.nb, Math.ceil(album.nb / 2)) || 0
+// const getPlayByLoop = (album: { alb: string; nb: number; }) => rand(2, 1) || 0
 
 export const start = (props: any, chrome: any, protocol: any) => new Promise(async (res) => {
 	const { N, P, R, D, B, I, T, S, socketEmit, player, login, check, country } = props
