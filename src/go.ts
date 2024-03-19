@@ -63,13 +63,9 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 		try {
 			if (/out_error_connect|tidalError|out_log_error/.test(code.toString())) {
 				socketEmit('errorcheck', { account })
-			}
-
-			if (/pause/.test(code.toString())) {
+			} else if (/pause/.test(code.toString())) {
 				socketEmit('pause', account)
-			}
-
-			if (code.toString() === 'del') {
+			} else if (code.toString() === 'del') {
 				socketEmit('del', { account })
 			} else {
 				socketEmit('checkok', { account })
