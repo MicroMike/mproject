@@ -22,7 +22,7 @@ export const getConfig = (player: TPlayer) => {
 		signSubmit: '',
 		notExist: '',
 		goToSub: '',
-		like: ''
+		like: '',
 	}
 
 	if (player === 'tidal') {
@@ -39,6 +39,7 @@ export const getConfig = (player: TPlayer) => {
 		S.notExist = "#email-password.Form--serverError"
 		S.goToSub = '[href="/account/register"]'
 		S.play = '.ButtonRow__button--play'
+		S.timeLine = 'span[data-qa="elapsed_time"]'
 	}
 
 	if (player === 'spotify') {
