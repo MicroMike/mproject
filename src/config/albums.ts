@@ -141,11 +141,9 @@ export const albums = (country?: string) => ({
 		'https://music.youtube.com/playlist?list=OLAK5uy_l_qZepk2ZTkXQl7ifquJOJzftlhXpLuJc', // ashbadger
 	],
 	pandora: [
-		'https://www.pandora.com/artist/ordhn/ARmlp7pdJ2wz4w2', // take it easy
-		'https://www.pandora.com/artist/ordhn/ARmlp7pdJ2wz4w2', // take it easy
-		'https://www.pandora.com/artist/ordhn/ARmlp7pdJ2wz4w2', // take it easy
-		'https://www.pandora.com/artist/ordhn/ARmlp7pdJ2wz4w2', // take it easy
-		'https://www.pandora.com/artist/ordhn/ARmlp7pdJ2wz4w2', // take it easy
+		'https://www.pandora.com/artist/djmke/elements/ALJlgcvrb5KPmh9', // djmke elements
+		'https://www.pandora.com/artist/ordhn/take-it-easy/ALxzm2hklwk3fX9', // ordhn takeit easy
+		'https://www.pandora.com/artist/ashbadger/party-mix-vol-1/ALvb3pdKbxrwbj9', // ashbadger party-mix-vol-1
 		// 'https://music.youtube.com/playlist?list=OLAK5uy_mRQymmHf2WE1VF5rTSrfhi4NeApk5ve8k', // red beast
 		// 'https://music.youtube.com/playlist?list=OLAK5uy_n2vh4Z_2con4v5n_zRI5-B_2x_yGQzjb4', // He Knows She Knows
 		// 'https://music.youtube.com/playlist?list=OLAK5uy_ncO3_KViomsWKfWvhbwafOU2uA-xLhOYY', // my stash
@@ -167,5 +165,9 @@ export const artists = {
 	'amazon': [
 		'https://music.amazon.fr/artists/B0CVNN95TT/djmke',
 		'https://music.amazon.fr/artists/B07VF87DDT/erati'
+	],
+	'tidal': [
+		'https://listen.tidal.com/artist/45739131',
+		'https://listen.tidal.com/artist/16333012',
 	]
 }
