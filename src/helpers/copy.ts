@@ -18,7 +18,7 @@ export const getSession = (player: string, login: string) => new Promise((res, r
 	// 	shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/Default/Local\\ Storage" /root/puppet/puppet/${folder}/Default/`,{silent:true})
 	// }
 
-	if (isTidal) {
+	if (/tidal|pandora/.test(player)) {
 		shell.exec(`mkdir -p /root/puppet/puppet/${folder}`, { silent: true })
 		shell.exec(`scp -r root@${serverIp}:"/root/puppet/${folder}/*" /root/puppet/puppet/${folder}/`, { silent: true })
 	} else {
@@ -55,7 +55,7 @@ export const copyBack = (player: string, login: string) => new Promise((res, rej
 	// 	shell.exec(`scp -r /root/puppet/puppet/${folder}/Default/Local\\ Storage root@${serverIp}:"/root/puppet/${folder}/Default/"`,{silent:true})
 	// }
 
-	if (isTidal) {
+	if (/tidal|pandora/.test(player)) {
 		// shell.exec(`ssh root@${serverIp} mkdir -p /root/puppet/${folder}`, { silent: true })
 		shell.exec(`scp -r /root/puppet/puppet/${folder}/* root@${serverIp}:"/root/puppet/${folder}/"`, { silent: true })
 	} else {

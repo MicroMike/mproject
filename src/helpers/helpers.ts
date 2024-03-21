@@ -119,6 +119,40 @@ const clickOnText = (I: any, R: any, selector: string, text: string, time?: numb
 	}
 })
 
+const clickOnCoord = (I: any, R: any, selector: string, time?: number, exitOnError = true) => new Promise(async (res, rej) => {
+	// const wfs = R && await waitForSelector(R, selector, time)
+	try {
+		await wait(rand(5, 2) * 1000)
+
+		const [x, y] = selector.split(',')
+
+		const option = {
+			button: 'left',
+			x,
+			y,
+			clickCount: 1,
+		}
+
+		await I.dispatchMouseEvent({
+			...option,
+			type: 'mousePressed',
+		})
+
+		await wait(rand(2, 1) * 100)
+
+		await I.dispatchMouseEvent({
+			...option,
+			type: 'mouseReleased',
+		})
+
+		res(true)
+	}
+	catch (e) {
+		console.log('clickOnCoord', e)
+		res(false)
+	}
+})
+
 const type = (R: any, value: string, selector: string) => new Promise(async (res, rej) => {
 	await waitForSelector(R, selector)
 
@@ -280,6 +314,7 @@ export {
 	getAlbums,
 	click,
 	clickOnText,
+	clickOnCoord,
 	disableAlert,
 	get,
 	getTimePlayer,

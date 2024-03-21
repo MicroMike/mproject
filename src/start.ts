@@ -1,6 +1,6 @@
 import { shuffle } from 'lodash'
 import { nbTracks } from "./config/albums"
-import { click, get, getAlbums, getAppleTimePlayer, getTimePlayer, goToPage, press, pressedEnter, pressedSpace, rand, takeScreenshot, wait } from "./helpers/helpers"
+import { click, clickOnCoord, get, getAlbums, getAppleTimePlayer, getTimePlayer, goToPage, press, pressedEnter, pressedSpace, rand, takeScreenshot, wait } from "./helpers/helpers"
 import { userConnect } from "./userConnect"
 
 const pandoraPlay = async (I: any, R: any, S: any) => {
@@ -9,15 +9,9 @@ const pandoraPlay = async (I: any, R: any, S: any) => {
 	const isPandoraAd = await get(R, 'body', 'innerText')
 
 	if (/Watch Ad/.test(isPandoraAd)) {
-		console.log('need ad click')
-		await press(I, 'Tab')
-		await press(I, 'Tab')
-
-		await wait(rand(5, 3) * 1000)
-		await pressedEnter(I)
-
-		await wait(17 * 1000)
-		await click(I, R, S.play, 60)
+		await clickOnCoord(I, R, '400,520')
+		await wait(20 * 1000)
+		await clickOnCoord(I, R, '730,45')
 	}
 }
 
