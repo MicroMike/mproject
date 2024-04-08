@@ -158,6 +158,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			playByLoop = getPlayByLoop(album)
 
 			if (isYoutube) {
+				console.log('click pause')
 				await click(I, R, S.pauseBtn, 60)
 			}
 
