@@ -15,7 +15,7 @@ const pandoraPlay = async (I: any, R: any, S: any) => {
 	}
 }
 
-const getPlayByLoop = (album: { alb: string; nb: number; }) => 1//rand(album.nb > 10 ? 10 : album.nb, Math.ceil(album.nb / 2)) || 0
+const getPlayByLoop = (album: { alb: string; nb: number; }) => rand(album.nb > 10 ? 10 : album.nb, Math.ceil(album.nb / 2)) || 0
 // const getPlayByLoop = (album: { alb: string; nb: number; }) => rand(2, 1) || 0
 
 
