@@ -147,6 +147,11 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			await pressedSpace(I)
 			await wait(rand(5, 3) * 1000)
 
+			if (isYoutube) {
+				console.log('click pause')
+				await click(I, R, S.pauseBtn, 60, false, 1)
+			}
+
 			if (albums.length === 0) {
 				out = 'logout'
 				return
@@ -156,11 +161,6 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 			alb = album.alb || ''
 			playByLoop = getPlayByLoop(album)
-
-			if (isYoutube) {
-				console.log('click pause')
-				await click(I, R, S.pauseBtn, 60, false, 1)
-			}
 
 			await wait(rand(5, 3) * 1000)
 			alb && await goToPage(alb, P, R, I)

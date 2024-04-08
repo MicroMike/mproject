@@ -95,5 +95,11 @@ export const artists = {
 	'tidal': [
 		'https://listen.tidal.com/artist/45739131',
 		'https://listen.tidal.com/artist/16333012',
+	],
+	'youtube': [
+		'https://music.youtube.com/channel/UCrqEUr355x5waWx3rhuJ1Rg',
+		'https://music.youtube.com/channel/UCOTC7KJC9QxH4Bh1vRuvZkA',
+		'https://music.youtube.com/channel/UCrTm5Xk7dMiCi93hvAooquw',
+		'https://music.youtube.com/channel/UCoH970kJNYxh7Y7oMtzmccw',
 	]
 }
