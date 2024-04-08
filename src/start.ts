@@ -144,6 +144,10 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			alb = album.alb || ''
 			playByLoop = getPlayByLoop(album)
 
+			if (isYoutube) {
+				await click(I, R, S.pauseBtn, 60)
+			}
+
 			alb && await goToPage(alb, P, R, I)
 
 			await wait(rand(5, 3) * 1000)
