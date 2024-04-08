@@ -304,28 +304,26 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 			y: 390
 		})
 
+		await wait(rand(5, 3) * 1000)
+		await click(I, R, S.play)
+
+		// const isPandoraAd = await get(R, 'body', 'innerText')
+
+		// if (isPandora && /Watch Ad/.test(isPandoraAd)) {
+		// 	await clickOnText(I, R, 'button', 'Watch Ad')
+		// 	await wait(1000 * 17)
+		// 	await clickOnText(I, R, 'button', 'Start My Reward')
+		// 	await click(I, R, S.play)
+		// }
+
+
 		if (isYoutube) {
-			await click(I, R, '#button-shape')
-			await wait(rand(5, 3) * 1000)
-			await click(I, R, '.iron-selected')
+			// await click(I, R, '#button-shape')
+			// await wait(rand(5, 3) * 1000)
+			// await click(I, R, '.iron-selected')
 			await wait(rand(5, 3) * 1000)
 			await click(I, R, '#automix[aria-pressed="true"]')
-		} else {
-			await wait(rand(5, 3) * 1000)
-			await click(I, R, S.play)
-
-			// const isPandoraAd = await get(R, 'body', 'innerText')
-
-			// if (isPandora && /Watch Ad/.test(isPandoraAd)) {
-			// 	await clickOnText(I, R, 'button', 'Watch Ad')
-			// 	await wait(1000 * 17)
-			// 	await clickOnText(I, R, 'button', 'Start My Reward')
-			// 	await click(I, R, S.play)
-			// }
-
-			await wait(rand(5, 3) * 1000)
 		}
-
 
 		socketEmit('playerInfos', { time: 'PLAY', ok: true })
 
