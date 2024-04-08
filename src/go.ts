@@ -130,7 +130,7 @@ export const go = (propsPass?: any, indexNb?: string) => new Promise((res) => {
 
 		try {
 			// shell.exec('rm -rf ' + varPath + player + login, { silent: false })
-			!check && await getSession(player, login)
+			!/youtube/.test(player) && !check && await getSession(player, login)
 			await wait(5 * 1000)
 		} catch (e) {
 			console.log(e)
