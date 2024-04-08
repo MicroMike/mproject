@@ -153,6 +153,9 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			await wait(rand(5, 3) * 1000)
 			!isPandora ? await click(I, R, S.play, 60) : await pandoraPlay(I, R, S)
 
+			await wait(rand(5, 3) * 1000)
+			isYoutube && await click(I, R, '#automix[aria-pressed="true"]')
+
 			if (pauseCount === 0) {
 				countPlays = 0
 				socketEmit('playerInfos', { time: 'PLAY', ok: true })
