@@ -51,6 +51,11 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 			await click(I, R, '#dialogButton1', 5)
 		}
 
+		if (isYoutube) {
+			res({ alb })
+			return
+		}
+
 		const isLogged = !check && await waitForSelector(R, S.noNeedLog, 10)
 
 		try {
