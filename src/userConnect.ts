@@ -52,14 +52,6 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 		}
 
 		if (isYoutube) {
-			await wait(rand(5, 3) * 1000)
-			await click(I, R, S.play)
-
-			socketEmit('playerInfos', { time: 'PLAY', ok: true })
-
-			await wait(rand(5, 3) * 1000)
-			await click(I, R, '#automix[aria-pressed="true"]')
-
 			res({ alb })
 			return
 		}

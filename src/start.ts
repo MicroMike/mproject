@@ -56,6 +56,16 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 	alb && await goToPage(alb, P, R, I)
 
+	if (isYoutube) {
+		await wait(rand(5, 3) * 1000)
+		await click(I, R, S.play)
+
+		socketEmit('playerInfos', { time: 'PLAY', ok: true })
+
+		await wait(rand(5, 3) * 1000)
+		await click(I, R, '#automix[aria-pressed="true"]')
+	}
+
 	const inter = async () => {
 		clearTimeout(timeout)
 
