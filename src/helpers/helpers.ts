@@ -41,6 +41,9 @@ const click = (I: any, R: any, selector: string, time?: number, exitOnError = tr
 	const x = Number(e.result.value) + 10
 	const y = Number(f.result.value) + 10
 
+	console.log(selector, 'x', x)
+	console.log(selector, 'y', y)
+
 	if (!x || isNaN(x) || !y || isNaN(y)) {
 		R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].click()' })
 		res(wfs)

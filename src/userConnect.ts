@@ -293,16 +293,18 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 			await click(I, R, '#onetrust-accept-btn-handler', 5)
 		}
 
-		await goToPage(alb, P, R, I)
+		if (!isYoutube) {
+			await goToPage(alb, P, R, I)
 
-		await wait(rand(5, 3) * 1000)
+			await wait(rand(5, 3) * 1000)
 
-		await I.dispatchMouseEvent({
-			type: 'mousePressed',
-			button: 'left',
-			x: 315,
-			y: 390
-		})
+			await I.dispatchMouseEvent({
+				type: 'mousePressed',
+				button: 'left',
+				x: 315,
+				y: 390
+			})
+		}
 
 		await wait(rand(5, 3) * 1000)
 		await click(I, R, S.play)
