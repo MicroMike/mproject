@@ -30,13 +30,13 @@ const waitForSelector = (R: any, selector: string, time = 60) => new Promise((re
 	}, 1000);
 })
 
-const click = (I: any, R: any, selector: string, time?: number, exitOnError = true) => new Promise(async (res, rej) => {
+const click = (I: any, R: any, selector: string, time?: number, exitOnError = true, index = 0) => new Promise(async (res, rej) => {
 	const wfs = R && await waitForSelector(R, selector, time)
 
 	await wait(rand(5, 2) * 1000)
 
-	const e = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].getBoundingClientRect().left' })
-	const f = R && await R.evaluate({ expression: 'document.querySelectorAll(\'' + selector + '\')[0].getBoundingClientRect().top' })
+	const e = R && await R.evaluate({ expression: `document.querySelectorAll("${selector}")[${index}].getBoundingClientRect().left` })
+	const f = R && await R.evaluate({ expression: `document.querySelectorAll("${selector}")[${index}].getBoundingClientRect().top` })
 
 	const x = Number(e.result.value) + 10
 	const y = Number(f.result.value) + 10

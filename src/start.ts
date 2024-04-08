@@ -44,7 +44,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 			await click(I, R, '.iron-selected')
 
 			await wait(rand(5, 3) * 1000)
-			await click(I, R, '#automix[aria-pressed="true"]')
+			await click(I, R, '#automix[aria-pressed="true"]', 5, false)
 		} else if (isPandora) {
 			await pandoraPlay(I, R, S)
 		} else {
@@ -159,7 +159,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 			if (isYoutube) {
 				console.log('click pause')
-				await click(I, R, S.pauseBtn, 60)
+				await click(I, R, S.pauseBtn, 60, false, 1)
 			}
 
 			await wait(rand(5, 3) * 1000)
