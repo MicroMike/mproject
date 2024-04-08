@@ -32,7 +32,9 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 	let alb: string
 	let playByLoop: number
 	let album: any
+
 	const isPandora = player === 'pandora'
+	const isYoutube = player === 'youtube'
 
 	const userCallback: any = await userConnect(props)
 		.catch((e) => error = e.error)
@@ -99,7 +101,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		} else if (time < currTime) {
 			pauseCount = 0
 			next = false
-		} else {
+		} else if (!isYoutube) {
 			++pauseCount
 
 			if (pauseCount > 1) {
