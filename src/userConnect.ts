@@ -308,6 +308,8 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 			await click(I, R, '#button-shape')
 			await wait(rand(5, 3) * 1000)
 			await click(I, R, '.iron-selected')
+			await wait(rand(5, 3) * 1000)
+			await click(I, R, '#automix[aria-pressed="true"]')
 		} else {
 			await wait(rand(5, 3) * 1000)
 			await click(I, R, S.play)
