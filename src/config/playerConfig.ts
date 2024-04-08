@@ -99,7 +99,7 @@ export const getConfig = (player: TPlayer) => {
 		S.email = '#identifierId'
 		S.pass = '#ap_password'
 		S.connectBtn = '#signInSubmit'
-		S.play = '.watch-button'
+		S.play = '[aria-label="PLAY ALL"]'
 		S.pauseBtn = '#play-pause-button'
 		S.timeLine = '.time-info'
 		S.urlCo = 'https://gmail.com'
