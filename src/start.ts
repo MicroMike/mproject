@@ -18,6 +18,7 @@ const pandoraPlay = async (I: any, R: any, S: any) => {
 const getPlayByLoop = (album: { alb: string; nb: number; }) => rand(album.nb > 10 ? 10 : album.nb, Math.ceil(album.nb / 2)) || 0
 // const getPlayByLoop = (album: { alb: string; nb: number; }) => rand(2, 1) || 0
 
+
 export const start = (props: any, chrome: any, protocol: any) => new Promise(async (res) => {
 	const { N, P, R, D, B, I, T, S, socketEmit, player, login, check, country } = props
 
@@ -35,6 +36,21 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 	const isPandora = player === 'pandora'
 	const isYoutube = player === 'youtube'
+
+	const play = async () => {
+		if (isYoutube) {
+			await click(I, R, '#button-shape')
+			await wait(rand(5, 3) * 1000)
+			await click(I, R, '.iron-selected')
+
+			await wait(rand(5, 3) * 1000)
+			await click(I, R, '#automix[aria-pressed="true"]')
+		} else if (isPandora) {
+			await pandoraPlay(I, R, S)
+		} else {
+			await click(I, R, S.play)
+		}
+	}
 
 	const userCallback: any = await userConnect(props)
 		.catch((e) => error = e.error)
@@ -56,14 +72,12 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 	alb && await goToPage(alb, P, R, I)
 
+	await wait(rand(5, 3) * 1000)
+	await play()
+
+	socketEmit('playerInfos', { time: 'PLAY', ok: true })
+
 	if (isYoutube) {
-		await wait(rand(5, 3) * 1000)
-		await click(I, R, S.play)
-
-		socketEmit('playerInfos', { time: 'PLAY', ok: true })
-
-		await wait(rand(5, 3) * 1000)
-		await click(I, R, '#automix[aria-pressed="true"]')
 	}
 
 	const inter = async () => {
@@ -116,12 +130,11 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 
 			if (pauseCount > 1) {
 				await wait(rand(5, 3) * 1000)
-				!isPandora ? await click(I, R, S.play, 60) : await pandoraPlay(I, R, S)
+				await play()
 			}
 
 			socketEmit('playerInfos', { time, freeze: true, warn: pauseCount < 5, countPlays, playLoop })
 		}
-
 
 		if (check) {
 			out = 'logout'
@@ -148,13 +161,11 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 				await click(I, R, S.pauseBtn, 60)
 			}
 
+			await wait(rand(5, 3) * 1000)
 			alb && await goToPage(alb, P, R, I)
-
 			await wait(rand(5, 3) * 1000)
-			!isPandora ? await click(I, R, S.play, 60) : await pandoraPlay(I, R, S)
 
-			await wait(rand(5, 3) * 1000)
-			isYoutube && await click(I, R, '#automix[aria-pressed="true"]')
+			await play()
 
 			if (pauseCount === 0) {
 				countPlays = 0
