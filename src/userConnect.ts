@@ -52,6 +52,14 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 		}
 
 		if (isYoutube) {
+			await wait(rand(5, 3) * 1000)
+			await click(I, R, S.play)
+
+			socketEmit('playerInfos', { time: 'PLAY', ok: true })
+
+			await wait(rand(5, 3) * 1000)
+			await click(I, R, '#automix[aria-pressed="true"]')
+
 			res({ alb })
 			return
 		}
@@ -317,15 +325,6 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 		// 	await clickOnText(I, R, 'button', 'Start My Reward')
 		// 	await click(I, R, S.play)
 		// }
-
-
-		if (isYoutube) {
-			// await click(I, R, '#button-shape')
-			// await wait(rand(5, 3) * 1000)
-			// await click(I, R, '.iron-selected')
-			await wait(rand(5, 3) * 1000)
-			await click(I, R, '#automix[aria-pressed="true"]')
-		}
 
 		socketEmit('playerInfos', { time: 'PLAY', ok: true })
 
