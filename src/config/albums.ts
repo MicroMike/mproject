@@ -59,7 +59,6 @@ export const albums = (country?: string) => ({
 	youtube: [
 		'https://music.youtube.com/playlist?list=OLAK5uy_mRQymmHf2WE1VF5rTSrfhi4NeApk5ve8k', // red beast
 		'https://music.youtube.com/playlist?list=OLAK5uy_n2vh4Z_2con4v5n_zRI5-B_2x_yGQzjb4', // He Knows She Knows
-		// 'https://music.youtube.com/playlist?list=OLAK5uy_ncO3_KViomsWKfWvhbwafOU2uA-xLhOYY', // my stash
 		'https://music.youtube.com/playlist?list=OLAK5uy_nXWitqEOdlkDZHj3i11N_vb6zjPLd-Ofg', // fresh mix
 		'https://music.youtube.com/playlist?list=OLAK5uy_lJNbLVhAKyWd-NnerMMuiobEWsSXuN0pw', // take it easy
 		'https://music.youtube.com/playlist?list=OLAK5uy_l_qZepk2ZTkXQl7ifquJOJzftlhXpLuJc', // ashbadger
