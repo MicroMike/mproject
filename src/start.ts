@@ -152,25 +152,24 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 				await click(I, R, S.pauseBtn, 60, false, 1)
 			}
 
-			if (albums.length === 0) {
-				out = 'logout'
-				return
-			}
-
 			album = albums.shift() || {}
 
-			alb = album.alb || ''
-			playByLoop = getPlayByLoop(album)
+			if (!album) {
+				out = 'logout'
+			} else {
+				alb = album.alb || ''
+				playByLoop = getPlayByLoop(album)
 
-			await wait(rand(5, 3) * 1000)
-			alb && await goToPage(alb, P, R, I)
-			await wait(rand(5, 3) * 1000)
+				await wait(rand(5, 3) * 1000)
+				alb && await goToPage(alb, P, R, I)
+				await wait(rand(5, 3) * 1000)
 
-			await play()
+				await play()
 
-			if (pauseCount === 0) {
-				countPlays = 0
-				socketEmit('playerInfos', { time: 'PLAY', ok: true })
+				if (pauseCount === 0) {
+					countPlays = 0
+					socketEmit('playerInfos', { time: 'PLAY', ok: true })
+				}
 			}
 		}
 
@@ -179,7 +178,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 		await wait(5000)
 
 		if (out) {
-			await pressedSpace(I)
+			!isYoutube && await pressedSpace(I)
 			await wait(2000)
 		}
 
