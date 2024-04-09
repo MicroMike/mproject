@@ -4,30 +4,30 @@ export const albums = (country?: string) => ({
 		'https://web.napster.com/album/alb.706846102', // take it easy
 	],
 	amazon: [
-		`https://music.amazon.${country}/albums/B0CVNNGP4H`,// elements djmke
 		`https://music.amazon.${country}/albums/B07MTV7JYS`,//red Beast
 		`https://music.amazon.${country}/albums/B07VC9S3JM`,//He Knows She Knows
 		`https://music.amazon.${country}/albums/B09PF7R5H1`,// fresh mix
 		`https://music.amazon.${country}/albums/B0BHFGDMKS`,// take it easy
 		`https://music.amazon.${country}/albums/B0BZQFL22N`,// ashbadger
+		`https://music.amazon.${country}/albums/B0CVNNGP4H`,// elements djmke
 		`https://music.amazon.${country}/albums/B0CZXY6J5Q`,// redevoxy liberation
 	],
 	tidal: [
-		'https://listen.tidal.com/album/345514451',// elements djmke
 		'https://listen.tidal.com/album/102503463',//red beast
 		'https://listen.tidal.com/album/113608807',// He Knows She Knows
 		'https://listen.tidal.com/album/210703692', // fresh mix
 		'https://listen.tidal.com/album/252505614', // ordhn take it easy
 		'https://listen.tidal.com/album/285840150', // ashbadger
+		'https://listen.tidal.com/album/345514451',// elements djmke
 		'https://listen.tidal.com/album/355555834', // redevoxy liberation
 	],
 	spotify: [
-		'https://open.spotify.com/intl-fr/album/1CWvkrqiSMsSQutfirOUu2',// elements djmke
 		'https://open.spotify.com/intl-fr/album/0Tt1ldQ8b4zn5LRcM706ll',//red beast
 		'https://open.spotify.com/intl-fr/album/4griwLkxXcEjmW1gIHDFRf',//He Knows She Knows
 		'https://open.spotify.com/intl-fr/album/4szjKFxbsHKpqpxhrm7H6L',// fresh mix
 		'https://open.spotify.com/intl-fr/album/3YZrjrJjUYOmrmFqqv3EMA',// take it easy
 		'https://open.spotify.com/intl-fr/album/7AQBjg9oZDT60aTArciBW8',// ashbadger
+		'https://open.spotify.com/intl-fr/album/1CWvkrqiSMsSQutfirOUu2',// elements djmke
 		'https://open.spotify.com/intl-fr/album/5WwE73XUhQ7m5i93nrMsBD',// redevoxy liberation
 	],
 	heart: [
@@ -63,8 +63,8 @@ export const albums = (country?: string) => ({
 		'https://music.youtube.com/playlist?list=OLAK5uy_nXWitqEOdlkDZHj3i11N_vb6zjPLd-Ofg', // fresh mix
 		'https://music.youtube.com/playlist?list=OLAK5uy_lJNbLVhAKyWd-NnerMMuiobEWsSXuN0pw', // take it easy
 		'https://music.youtube.com/playlist?list=OLAK5uy_l_qZepk2ZTkXQl7ifquJOJzftlhXpLuJc', // ashbadger
-		'https://music.youtube.com/playlist?list=OLAK5uy_kgfRs1VqJ8wQX9pUOuzyH9hEH7oId2ti4', // redevoxy liberation
 		'https://music.youtube.com/playlist?list=OLAK5uy_m-dMp6z1Xkbk8epF5l6X1CnMoxjWUwMaM', // elements djmke
+		'https://music.youtube.com/playlist?list=OLAK5uy_kgfRs1VqJ8wQX9pUOuzyH9hEH7oId2ti4', // redevoxy liberation
 	],
 	pandora: [
 		'https://www.pandora.com/artist/djmke/elements/ALJlgcvrb5KPmh9', // djmke elements
@@ -85,6 +85,7 @@ export const nbTracks = [
 	5,
 	5,
 	5,
+	3,
 ]
 
 export const artists = {
