@@ -11,6 +11,7 @@ export const albums = (country?: string) => ({
 		`https://music.amazon.${country}/albums/B0BZQFL22N`,// ashbadger
 		`https://music.amazon.${country}/albums/B0CVNNGP4H`,// elements djmke
 		`https://music.amazon.${country}/albums/B0CZXY6J5Q`,// redevoxy liberation
+		`https://music.amazon.${country}/albums/B0D16ZJ2PH`,// djmke echoes
 	],
 	tidal: [
 		'https://listen.tidal.com/album/102503463',//red beast
@@ -64,6 +65,7 @@ export const albums = (country?: string) => ({
 		'https://music.youtube.com/playlist?list=OLAK5uy_l_qZepk2ZTkXQl7ifquJOJzftlhXpLuJc', // ashbadger
 		'https://music.youtube.com/playlist?list=OLAK5uy_m-dMp6z1Xkbk8epF5l6X1CnMoxjWUwMaM', // elements djmke
 		'https://music.youtube.com/playlist?list=OLAK5uy_kgfRs1VqJ8wQX9pUOuzyH9hEH7oId2ti4', // redevoxy liberation
+		'https://music.youtube.com/playlist?list=OLAK5uy_lGBtKvlA1rUlzBGMLGIQybL3ZldAqBv5E', // djmke echoes
 	],
 	pandora: [
 		'https://www.pandora.com/artist/djmke/elements/ALJlgcvrb5KPmh9', // djmke elements
@@ -85,6 +87,7 @@ export const nbTracks = [
 	5,
 	5,
 	3,
+	6,
 ]
 
 export const artists = {
