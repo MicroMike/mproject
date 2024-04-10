@@ -152,7 +152,7 @@ export const start = (props: any, chrome: any, protocol: any) => new Promise(asy
 				await click(I, R, S.pauseBtn, 60, false, 1)
 			}
 
-			album = albums.shift() || {}
+			album = albums.shift()
 
 			if (!album) {
 				out = 'logout'
