@@ -56,4 +56,4 @@ setInterval(() => {
 	shell.exec('killall chrome')
 
 	// clientSocket.emit('reset')
-}, 1000 * 60 * 60 * 6)
+}, 1000 * 60 * 60 * 3)
