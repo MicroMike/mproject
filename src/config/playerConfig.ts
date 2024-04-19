@@ -86,7 +86,7 @@ export const getConfig = (player: TPlayer) => {
 		S.pass = '#ap_password'
 		S.connectBtn = '#signInSubmit'
 		S.play = '#detailHeaderButton2'
-		S.timeLine = '#transport > :last-child > :last-child span'
+		S.timeLine = '#transport div:nth-child(4) div:nth-child(2) span'
 
 		// remember = '[name="rememberMe"]'
 		// usedDom = '.concurrentStreamsPopover'
