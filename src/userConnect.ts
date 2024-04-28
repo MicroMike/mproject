@@ -272,6 +272,10 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 			throw 'tidalError'
 		}
 
+		if (isAmazon) {
+			await click(I, R, '#dialogButton1', 5)
+		}
+
 		if (!logSuccess) {
 			await takeScreenshot(P, 'out_log_error', socketEmit, login)
 			throw 'out_log_error'
