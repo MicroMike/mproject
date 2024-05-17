@@ -18,7 +18,7 @@ export const chromeConfig = (player: string = '', login: string = '') => {
 				'--disable-features=Translate',
 				'--no-sandbox',
 				'--hide-crash-restore-bubble',
-				'--window-size=800,600',
+				// '--window-size=800,600',
 				// `--user-agent=${uAgents[rand(uAgents.length - 1)]}`,
 				player && login && '--user-data-dir=/root/puppet/puppet/' + player + login,
 				// '--disable-setuid-sandbox',
