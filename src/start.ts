@@ -9,7 +9,7 @@ const pandoraPlay = async (I: any, R: any, S: any) => {
 	const isPandoraAd = await get(R, 'body', 'innerText')
 
 	if (/Watch Ad/.test(isPandoraAd)) {
-		await clickOnCoord(I, R, '441,565')
+		await clickOnCoord(I, R, '413,526')
 		await wait(20 * 1000)
 		await clickOnCoord(I, R, '775,37')
 	}
