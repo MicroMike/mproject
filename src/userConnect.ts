@@ -26,7 +26,7 @@ export const userConnect = async ({ P, R, I, S, account, check, socketEmit, coun
 		const isGmail = /@gmail/i.test(account)
 		const isTidal = player === 'tidal'
 		const isSpotify = player === 'spotify'
-		const isSpotifyG = isSpotify && isGmail
+		const isSpotifyG = false // isSpotify && isGmail
 		const isAmazon = player === 'amazon'
 		const isNapster = player === 'napster'
 		const isApple = player === 'apple'
