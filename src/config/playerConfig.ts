@@ -51,7 +51,7 @@ export const getConfig = (player: TPlayer) => {
 		S.pass = '#login-password'
 		S.connectBtn = '#login-button'
 		S.play = '[data-testid="action-bar-row"] [data-testid="play-button"]'
-		S.timeLine = '[data-testid="playback-position"]'
+		S.timeLine = '.playback-bar__progress-time-elapsed'
 		S.shuffleBtn = '[aria-checked="false"][data-testid="control-button-shuffle"]'
 		S.urlCo = 'https://gmail.com'
 		S.signUp = '[data-encore-id="buttonTertiary"]'
